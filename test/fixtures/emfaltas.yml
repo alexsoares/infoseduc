@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  componente: 
+  especifica: MyString
+  quant: 1
+  obs: MyString
+
+two:
+  componente: 
+  especifica: MyString
+  quant: 1
+  obs: MyString

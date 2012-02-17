@@ -1,0 +1,32 @@
+<h1>Listing relatorios</h1>
+
+<table>
+  <tr>
+    <th>Unidade</th>
+    <th>Estagiario</th>
+    <th>Responsavel</th>
+    <th>Data</th>
+    <th>Problema</th>
+    <th>Procedimentos</th>
+  </tr>
+
+<% for relatorios in @relatorios %>
+<%if (estagiarios.flag == 0 and estagiarios.desligado == 0 ) then %>
+  <tr>
+    <td><%=h relatorios.unidade %></td>
+    <td><%=h relatorios.estagiario %></td>
+    <td><%=h relatorios.responsavel %></td>
+    <td><%=h relatorios.data %></td>
+    <td><%=h relatorios.problema %></td>
+    <td><%=h relatorios.procedimentos %></td>
+    <td><%= link_to 'Show', relatorios %></td>
+    <td><%= link_to 'Edit', edit_relatorio_path(relatorios) %></td>
+    <td><%= link_to 'Destroy', relatorios, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New relatorios', new_relatorio_path %>

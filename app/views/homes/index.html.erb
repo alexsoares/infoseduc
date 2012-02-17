@@ -1,0 +1,63 @@
+<link rel="stylesheet" type="text/css" href="css/layout.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+<script language="javascript" type="text/javascript" src="js/jquery.easing.js"></script>
+<script language="javascript" type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript">
+ $(document).ready( function(){
+		$('#lofslidecontent45').lofJSidernews( { interval:5000,
+											 	easing:'easeInOutQuad',
+												duration:1200,
+												auto:true } );
+	});
+
+</script>
+	<script>
+	$(function() {
+		$( "#tabs" ).tabs();
+	});
+	</script>
+<style>
+
+	ul.lof-main-wapper li {
+		position:relative;
+	}
+
+</style>
+<div id="posicao_abas">
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Seduc</a></li>
+		<li><a href="#tabs-2">Ultimas Notícias</a></li>
+		<li><a href="#tabs-3">Tecnologia</a></li>
+	</ul>
+	<div id="tabs-1">
+		<p><%= render "informe" %></p>
+	</div>
+	<div id="tabs-2">
+          <p align="center">
+            <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0" width="374" height="342" id="fl2" align="middle">
+            <param name="allowScriptAccess" value="sameDomain" />
+            <param name="movie" value="http://media.feed.informer.com/flash/fl2.swf" />
+            <param name="FlashVars" value="seturl=VI4QO5Y35P" />
+            <param name="quality" value="high" />
+            <param name="bgcolor" value="#ffffff" />
+            <embed src="http://media.feed.informer.com/flash/fl2.swf" quality="high" bgcolor="#ffffff" FlashVars="seturl=VI4QO5Y35P" width="374" height="342" name="fl2" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+            </object>
+          <p>
+
+	</div>
+	<div id="tabs-3">
+            <p align="center">
+              <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0" width="374" height="342" id="fl2" align="middle">
+              <param name="allowScriptAccess" value="sameDomain" />
+              <param name="movie" value="http://media.feed.informer.com/flash/fl2.swf" />
+              <param name="FlashVars" value="seturl=6WUGRCFPYA" />
+              <param name="quality" value="high" />
+              <param name="bgcolor" value="#ffffff" />
+              <embed src="http://media.feed.informer.com/flash/fl2.swf" quality="high" bgcolor="#ffffff" FlashVars="seturl=6WUGRCFPYA" width="374" height="342" name="fl2" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+              </object>
+            </p>
+    </div>
+</div>
+</div>

@@ -1,0 +1,28 @@
+<h1>Listing justificativas</h1>
+
+<table>
+  <tr>
+    <th>Ponto</th>
+    <th>Justificativa</th>
+    <th>Entrada</th>
+    <th>Saida</th>
+    <th>Dia</th>
+  </tr>
+
+<% @justificativas.each do |justificativa| %>
+  <tr>
+    <td><%=h justificativa.ponto %></td>
+    <td><%=h justificativa.justificativa %></td>
+    <td><%=h justificativa.entrada %></td>
+    <td><%=h justificativa.saida %></td>
+    <td><%=h justificativa.dia %></td>
+    <td><%= link_to 'Show', justificativa %></td>
+    <td><%= link_to 'Edit', edit_justificativa_path(justificativa) %></td>
+    <td><%= link_to 'Destroy', justificativa, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New justificativa', new_justificativa_path %>

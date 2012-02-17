@@ -1,0 +1,36 @@
+<br/>
+<font size="2">
+<table  class="tabelas" width="50%"align="center">
+<tr>
+   <td colspan="2" align="left">
+         <font  size=5 color="black"> <b> ORDEM DE SERVIÇO EXTERNO</b></font>
+   </td>
+  </tr>
+  <tr>
+    <td>
+     <table>
+       <tr>
+         <td>
+          <%= render 'formshow' %>
+        </td>
+      </tr>
+        <div class="botao">
+         <table width="50%" align="left">
+          <tr>
+            <td width="4%"align="left" ><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+            <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+              <td width="4%"align="left"  ><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), {:action => "edit", :id => @c_externo}, :method => "get", :title => "Alterar Unidade"%></td>
+            <%end%>
+            <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+          </tr>
+        </table>
+       </div>
+     </table>
+   </td>
+  </tr>
+</table>
+</font>
+<br/>
+
+
+

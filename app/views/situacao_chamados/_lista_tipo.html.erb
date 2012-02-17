@@ -1,0 +1,16 @@
+<br/>
+<font size="3">
+<table  width="100%">
+<% for tipos in @situacao_chamados%>
+  <tr>
+    <th width="20%">Situação:</th>
+    <th><%=h tipos.id %></th>
+    <th><%=h tipos.situacao %></th>
+      <div class="botao">
+         <th align="right"><%= button_to('Excluir',{:action => "destroy", :id =>tipos}, :confirm => 'Confirma exclusão?', :method => "delete")%></th>
+      </div>
+    
+<% end %>
+</table>
+
+</font>

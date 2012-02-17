@@ -1,0 +1,34 @@
+<% form_for([@noticia], :html => { :multipart => true }) do |f| %>
+    <%= f.error_messages %>
+    <table>
+      <tr>
+        <td>
+          <%= f.label :titulo %><br />
+          <%= f.text_field :titulo %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.label :corpo %><br />
+          <%= f.text_area :corpo %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.label :imagem %><br/>
+          <%= f.file_field :imagem %>      
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.label :descricao_curta %><br />
+          <%= f.text_field :descricao_curta %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.submit button %>
+        </td>
+      </tr>
+    </table>
+<% end %>

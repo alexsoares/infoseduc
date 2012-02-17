@@ -1,0 +1,47 @@
+<br/>  <br/>
+<font size="2">
+ <table  class="tabelas" border ="1" cellpadding="1" cellspacing="1" width="100%" >
+  <%$comp = 0%>
+      <tr>
+        <th>Unidade</th>
+         <th>Tipo Controle</th>
+        <th>Quantidade</th>
+        <th>Configuração</th>
+        <th>Usuário</th>
+        <th>Nº Patrimônio</th>
+      </tr>
+     <% for comp in @computadores %>
+      <tr>
+       <td><%=h comp.unidade.nome %></td>
+       <td><%=h comp.tipo_controle.nome %></td>
+       <td><%=h comp.quant %></td>
+       <td><%=h comp.config %></td>
+       <td><%=h comp.user %></td>
+       <%if comp.tipo_controle.nome == 'TERCEIROS'%>
+         <td><%=h comp.pertence %></td>
+        <%else%>
+         <td align="left"><%=h comp.pat %></td>
+        <%end%>
+     </tr>
+       <%$comp = $comp + comp.quant%>
+    <tr>
+      <td colspan="7">
+        <div class="botao">
+        <table>
+           <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), comp, :title => "Exibir Dados" %></td>
+            <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+               <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_computadore_path(comp), :title => "Alterar Dados"%></td>
+                 <% if current_user.has_role?('administrador')%>
+                    <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), comp, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+                 <%end%>
+            <%end%>
+        </table>
+        </div>
+       </td>
+    </tr>
+    <% end %>
+    <tr>
+       <td align="left"colspan="7"><font color="black">Total de Computadores  => <%=  $comp%></font></td>
+    </tr>
+   </table>
+</font>

@@ -1,0 +1,78 @@
+<br/><br/>
+<table class="tabelas" align="center" width="90%">
+ <tr>
+   <td colspan="2" align="left">
+      <font  size=5 color="black"> <b> CONSULTA EQUIPAMENTO</b></font>
+   </td>
+  </tr>
+  <tr>
+    <td>
+     <br/>
+      <div class="botao">
+       <table width="100%">
+        <tr>
+           <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+           <td width="6%"align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+           <td align="left" ><%= link_to image_tag("/stylesheets/images/consnum1.png", :size => "30x30"), equipamentos_path, :title => "Consulta por Nome Equipamento" %></td>
+           <div class="botao">
+             <% form_tag consulta_equipamentos_path, :method => 'get' do %>
+                <td align="right"><font size="4"> Nº de Ordem:</font>
+                    <%= text_field_tag :search, params[:search] %>
+                   <td align="left"><input type="image" src="/stylesheets/images/buscar.png" title="Buscar">
+                 <% end %>
+                </td>
+           </div>
+         </tr>
+
+      </table>
+      <br/>
+      </div>
+   <font size="2">
+    <table border="2"  width="100%">
+     <%if @equipamentos.present?%>
+      <% @equipamentos.each do |equip| %>
+       <tr>
+        <th>Nº Ordem</th>
+        <th>Equipamento</th>
+        <th>Configuracao</th>
+        <th>Estado</th>
+        <th>Providencia</th>
+        <th>Procedimento</th>
+        <th>Instalacao</th>
+     </tr>
+     <tr>
+        <td align="center"><%=h equip.id %></td>
+        <td align="left"><%=h equip.equipamento %></td>
+        <td align="left"><%=h equip.configuracao %></td>
+        <td align="center"><%=h equip.estado %></td>
+        <td align="left"><%=h equip.providencia %></td>
+        <td align="left"><%=h equip.procedimento %></td>
+        <td align="left"><%=h equip.instalacao %></td>
+      </tr>
+      <tr>
+        <td colspan="7">
+          <div class="botao">
+            <table>
+              <tr>
+                <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), equip, :title => "Exibir Dados" %></td>
+                <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                  <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_equipamento_path(equip), :title => "Alterar Dados"%></td>
+                     <% if current_user.has_role?('administrador')%>
+                       <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), equip, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+                    <%end%>
+               <%end%>
+             </tr>
+             </table>
+              </div>
+        </td>
+      </tr>
+      <% end %>
+    <% end %>
+     </table>
+     </font>
+  </td>
+</table>
+
+
+
+

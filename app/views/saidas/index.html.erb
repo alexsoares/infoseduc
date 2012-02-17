@@ -1,0 +1,88 @@
+<br/>
+<table class="tabelas"  align="center" width="100%">
+  <tr>
+    <td colspan="2" align="left">
+       <font  size=5 color="black"> <b>LANÇAMENTOS => SAIDA</b></font>
+    </td>
+  </tr>
+  <tr>
+    <td>
+     <br/>
+   <br/>
+   <font  size="2">
+   <div class="botao">
+   <table width="100%">
+    <tr>
+      <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+      <td width="6%"align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+      <td align="right">
+       <div class="botao">
+         <table>
+            <tr>
+            <% form_tag saidas_path, :method => 'get' do %>
+            <td align="right"><font size="4"> Digite Produto:</font>
+               <%= text_field_tag :search, params[:search] %>
+                <td align="left"><input type="image" src="/stylesheets/images/buscar.png" title="Buscar">
+            </td>
+            <% end %>
+            </tr>
+         </table>
+     </div>
+     </td>
+     </tr>
+     <tr>
+       <% if  $var == 0 then %>
+         <td align="left" colspan="4"><%= will_paginate @saidas %></td>
+      <%end%>
+     </tr>
+  </table>
+  <br/>
+  </div>
+         <table align="center"  border="2" width="100%">
+        <tr>
+          <th bgcolor="gray">Produto</th>
+          <th bgcolor="gray">Especificação</th>
+          <th bgcolor="gray">Quem retirou</th>
+          <th bgcolor="gray">Quantidade</th>
+          <th bgcolor="gray">Data saida</th>
+          <th bgcolor="gray">Destino</th>
+          <th bgcolor="gray">Observaçao</th>
+        </tr>
+       <% for saidas in @saidas %>
+     <tr>
+        <td><%=h saidas.componente.nome %></td>
+        <td><%=h saidas.estoque.especifica %></td>
+        <td><%=h saidas.estagiario.nome %></td>
+        <td><%=h saidas.quantidade %></td>
+        <td><%=h saidas.data_saida.strftime("%d/%m/%Y") %></td>
+        <td><%=h saidas.unidade.nome %></td>
+        <td><%=h saidas.obs%></td>
+     </tr>
+      <tr>
+        <td colspan="7">
+          <div class="botao">
+          <table>
+             <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), saidas, :title => "Exibir Unidade" %></td>
+          </table>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+ </table>
+ </font>
+ <br/>
+ <div class="botao">
+   <table width="100%" align="center">
+    <tr>
+      <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+      <td width="6%"align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+      <% if  $var == 0 then %>
+         <td align="left" colspan="4"><%= will_paginate @saidas%></td>
+      <%end%>
+    </tr>
+  </table>
+  </div>
+</td>
+</table>
+
+  <br/>

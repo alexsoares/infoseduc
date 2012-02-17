@@ -1,0 +1,82 @@
+<br/>
+ <table  class="tabelas"   align="center" width="100%">
+   <tr>
+      <td colspan="2" align="left">
+         <font  size=5><b> CONSULTA RELATÓRIO DE ESTAGIÁRIO POR UNIDADE</b></font>
+      </td>
+   </tr>
+   <tr>
+     <td>
+       <br/>
+       <div class="botao">
+       <table width="100%">
+        <tr>
+           <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+           <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+           <td align="right">
+           <div class="botao">
+             <table>
+            <tr>
+            <% form_tag relatestagiarios_path, :method => 'get' do %>
+            <td align="right"><font size="4"> Unidade:</font>
+               <%= text_field_tag :search, params[:search] %>
+                <td align="left"><input type="image" src="/stylesheets/images/buscar.png" title="Buscar">
+            </td>
+            <% end %>
+            </tr>
+         </table>
+         </div>
+         </td>
+       </tr>
+      </table>
+      <br/>
+      </div>
+      <font  size="2">
+      <table border="2" width="100%">
+        <tr>
+          <th>Estagiario</th>
+          <th>Unidade</th>
+          <th>Período</th>
+          <th>Data</th>
+          <th>Validação</th>
+        </tr>
+        <% for relatorios in @relatestagiarios %>
+       <tr>
+          <td><%=h relatorios.estagiario.nome %></td>
+          <td><%=h relatorios.unidade.nome %></td>
+          <td><%=h relatorios.periodo %></td>
+          <td><%=h relatorios.datahora.strftime("%d/%m/%Y")  %></td>
+          <% if relatorios.validacao == false %>
+              <td align="left"><b><font color="red">NÃO VALIDADO</font></b></td>
+          <%else%>
+              <td align="left"><b> VALIDADO</b></td>
+          <%end%>
+       </tr>
+      <tr>
+        <td colspan="7">
+          <div class="botao">
+          <table>
+               <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), relatorios, :title => "Exibir Relatório" %></td>
+             <% if current_user.has_role?('administrador') %>
+               <% if (relatorios.validacao == false) %>
+                  <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/listar.png", :size => "25x25"), {:action => "validacao", :id =>relatorios}, :method => "get", :title => "Validar Relatório"%></td>
+                 <%end%>
+                       <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), relatorios, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+             <%end%>
+          </table>
+          </div>
+       </td>
+    </tr>
+  <% end %>
+ </table>
+</font>
+  <div class="botao">
+   <table width="100%" align="center">
+    <tr>
+           <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+           <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>    </tr>
+  </table>
+  </div>
+</table>
+
+  <br/>

@@ -1,0 +1,101 @@
+
+  <table class="tabelas"  align="center" width="100%">
+  <tr>
+     <td colspan="2" align="left">
+        <font  size=5 color="black"> <b> DATASHOWS</b></font>
+     </td>
+  </tr>
+  <tr>
+   <td>
+   <br/>
+   <div class="botao">
+   <table width="100%">
+    <tr>
+      <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+      <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+      <td align="right">
+       <div class="botao">
+       <table>
+         <tr>
+            <% form_tag datashows_path, :method => 'get' do %>
+            <td align="right"><font size="4"> Unidade:</font>
+            <%= text_field_tag :search, params[:search] %>
+            <td align="left"><input type="image" src="/stylesheets/images/buscar.png" title="Buscar">
+             <% end %>
+            </td>
+
+        </tr>
+      </table>
+     </div>
+     </td>
+     </tr>
+  </table>
+  <br/>
+  </div>
+   <table align="center" width="100%">
+
+    <tr>
+      <td valign="top" width="50%">
+         <table border="2" width="100%">
+          <tr><td>
+           <font  size="2">
+            <table border="2" width="100%">
+              <%$comp = 0%>
+                <% @datashows.each do |datashow| %>
+                <tr>
+                    <th>Unidade</th>
+                    <th>Quantidade</th>
+                    <th>Configuração</th>
+                    <th>Pertence</th>
+                    <th>Nº Patrimônio</th>
+                </tr>
+                <tr>
+                    <td align="left"><%=h datashow.unidade.nome %></td>
+                    <td align="center"><%=h datashow.quant %></td>
+                    <td align="left"><%=h datashow.config %></td>
+                    <td align="left"><%=h datashow.pertence %></td>
+                    <td align="left"><%=h datashow.pat %></td>
+               </tr>
+               <%$comp = $comp + datashow.quant%>
+               <tr>
+                <td colspan="7">
+                <div class="botao">
+                  <table>
+                      <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), datashow, :title => "Exibir Dados" %></td>
+                      <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                        <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_datashow_path(datashow), :title => "Alterar Dados"%></td>
+                           <% if current_user.has_role?('administrador')%>
+                             <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), datashow, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+                          <%end%>
+                    <%end%>
+                  </table>
+                </div>
+               </td>
+            </tr>
+              <% end %>
+             <tr>
+               <td align="left"colspan="7"><font color="black">Total de Datashows Cadastrados  => <%=  $comp%></font></td>
+             </tr>
+
+            </table>
+           </font>
+
+          </td></tr>
+         </table>
+      </td>
+     </table>
+      <div class="botao">
+       <table width="100%">
+        <tr>
+          <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+          <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+        </tr>
+      </table>
+      </div>
+  </td>
+</table>
+
+<br/>
+
+
+

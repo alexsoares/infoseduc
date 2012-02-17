@@ -1,0 +1,76 @@
+      <table class="tabelas" width="100%" border="2">
+        <%  if params[:estagiario].present? %>
+          <h2><%= "Ponto eletrônico do Estagiário - #{Estagiario.find(params[:estagiario][:estagiario_id_equals]).nome}"%></h2>
+        <%else%>
+          <h2><%= "Ponto eletrônico do Estagiário - #{Estagiario.find(params[:estagiario_id_equals]).nome}"%></h2>
+        <%end%>
+        <h2><%= "Mês - #{translate_month_tag(params[:month].to_i)} / Período: 22/#{(params[:month].to_i - 1)}/#{Date.today.year} à 21/#{(params[:month].to_i)}/#{Date.today.year}"%></h2>
+        <tr>
+          <th><font size="2"> Dia</font></th>
+          <th><font size="2">Entrada</font></th>
+          <th><font size="2">Saída</font></th>
+          <th><font size="2">Trabalhado</font></th>
+          <th><font size="2">Acumulado</font></th>
+        </tr>
+        <% acumuladas = 0 %>
+        <%@total_trabalhado.each do |ponto_diario| %>
+          <tr>
+            <%@justificativa = Justificativa.find_by_estagiario_id(ponto_diario.estagiario_id, :conditions => ["dia = ?", ponto_diario.entrada.to_date])%>
+            <td align="left"><%=h "#{ponto_diario.entrada.strftime("%d/%m/%Y")}" %></td>
+            <td><%=h ponto_diario.entrada.strftime("%d/%m/%Y %H:%M") %></td>
+            <td><%=h ponto_diario.saida.strftime("%d/%m/%Y %H:%M") %></td>
+
+            <td align="left">
+              <b>Total trabalhado:</b>
+                  <% if ponto_diario.saida.present? %>
+                    <%if @justificativa%>
+                      <%unless @justificativa.ponto_id%>
+                        <%if @justificativa.cumpriu_horario %>
+                          <%= link_to "#{Ponto.convert_to_hour(@justificativa.qtd_hrs)}- Totalmente Justificado", justificativa_path(@justificativa)%>
+                          <% acumuladas = acumuladas + @justificativa.qtd_hrs %>
+                        <%end%>
+                      <%else%>
+                        <%= link_to "#{Ponto.convert_to_hour(@justificativa.qtd_hrs)}- Parcialmente Justificado", justificativa_path(@justificativa)%>
+                      <%end%>
+                    <%else%>
+                        <%=h  "#{Ponto.convert_to_hour(ponto_diario.total_trabalhado)}"%>
+                    <%end%>
+
+                    <% acumuladas = acumuladas + ponto_diario.total_trabalhado %>
+
+                  <%else%>
+                        <%=  "Saída Não realizada"  %>
+                  <%end%>
+            </td>
+
+            <td>
+              <%= Ponto.convert_to_hour(acumuladas) %>
+            </td>
+          </tr>
+        <%end%>
+          <tr>
+            
+            <td style="color:blue" align="left">
+              <b>Total Trabalhado</b>
+            </td>
+
+              <% if acumuladas.between?(@carga_base_mes.to_i,(@carga_base_mes.to_i - 2)) %>
+                <td colspan="4" align="left" style="color:blue"><%= Ponto.convert_to_hour(acumuladas) %></td>
+              <%else%>
+                <td colspan="4" align="left" style="color:red">*<%= Ponto.convert_to_hour(acumuladas) %></td>
+              <%end%>
+          </tr>
+          <%if !acumuladas.between?(@carga_base_mes.to_i,(@carga_base_mes.to_i - 30))%>
+            <tr>
+              <th colspan="6"><font  size="2"><%= "* Estagiário não cumpriu a carga prevista para o mês #{translate_month_tag(params[:month].to_i)}." %> </font></th>
+            </tr>
+          <%end%>
+                <div class="botao">
+       <table width="100%" align="center">
+        <tr>
+          <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+          <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+        </tr>
+      </table>
+      </div>
+      </table>

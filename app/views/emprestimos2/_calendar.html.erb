@@ -1,0 +1,41 @@
+<br/>
+<font size="2" >
+  A SEDUC POSSUI SOMENTE DOIS DATASHOWS PARA EMPRESTIMOS <br/> VERIFIQUE O CALENDÁRIO ABAIXO
+  SE NO DIA DESEJADO ESTÁ DISPONÍVEL</font>
+  
+<% if @emprestimos.present? %>
+  <div id="calendar">
+    <h2 id="month">
+      <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-%d"), :search => params[:search] %>
+      <%=h @date.strftime("%B %Y") %>
+      <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-%d"), :search => params[:search] %>
+    </h2>
+    <% calendar_for @emprestimos, :year => @date.year, :month => @date.month, :search => params[:search] do |calendar| %>
+      <%= calendar.head('Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado') %>
+      <% calendar.day(:day_method => :emprestimo) do |date, articles| %>
+        <%= date.day %>
+        <ul>
+          <% for data in articles %>
+            <li><%= link_to h(data.unidade.nome), data%>
+                <%if data.unidade_id == 53 then%>
+                - <%= data.departamento.depto   %>
+                <% end %>
+            </li>
+
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
+<%end%>
+<br/>
+<table>
+  <tr>
+    <td align="left" width="8%"><%= button_to 'Voltar', homes_path, {:method => "get"} %></td>
+   <td align="left" width="8%"> <%= button_to 'Agendar', new_emprestimo_path %></td>
+   <td align="left"><input type="Button" Value="Imprimir" onclick="javascript:window.print()"></td>
+   <td align="right"><font size="1" color="BLUE">
+       OBS: Para alterar qualquer agendamento já realizado favor entrar em contato com a Informática SEDUC</font>
+   </td>
+  </tr>
+</table>

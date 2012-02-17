@@ -1,0 +1,37 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  num_comp_seduc: 1
+  config_compseduc: MyText
+  num_imp_seduc: 1
+  config_imp_seduc: MyText
+  servidor: MyString
+  rede: MyString
+  internet: MyString
+  num_comp: 1
+  config_comp: MyText
+  pertence_comp: MyString
+  contato_comp: MyString
+  num_imp: 1
+  config_imp: MyText
+  pertence_imp: MyString
+  contato_imp: MyString
+  obs: MyText
+
+two:
+  num_comp_seduc: 1
+  config_compseduc: MyText
+  num_imp_seduc: 1
+  config_imp_seduc: MyText
+  servidor: MyString
+  rede: MyString
+  internet: MyString
+  num_comp: 1
+  config_comp: MyText
+  pertence_comp: MyString
+  contato_comp: MyString
+  num_imp: 1
+  config_imp: MyText
+  pertence_imp: MyString
+  contato_imp: MyString
+  obs: MyText

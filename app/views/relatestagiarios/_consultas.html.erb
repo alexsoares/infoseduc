@@ -1,0 +1,46 @@
+<br/><br/>
+<table  class="tabelas" align="center" width="100%">
+ <tr>
+    <td colspan="2" align="left">
+       <font  size=5 color="black"> <b> CONSULTA RELATÓRIO ESTAGIÁRIO POR NOME</b></font>
+    </td>
+  </tr>
+  <tr>
+    <td>
+    <br/>
+    <table>
+     <tr>
+      <td>
+        <div class="botao">
+        <table>
+          <tr>
+            <td>
+               <font  size="4"> Selecione nome: <%= collection_select :relatestagiario, :estagiario_id, @estagiarios, :id, :nome, :include_blank => ' -- Selecione -- '  %></font>
+             </td>
+          </tr>
+       </table>
+       </div>
+      </td>
+    <tr>
+      <td>
+      <%= observe_field 'relatestagiario_estagiario_id',
+           :update => "listagem",
+           :url    => { :action => 'lista_relatorio' },
+           :with   => 'relatestagiario_estagiario_id' %>
+        <div id="listagem"> </div>
+     </td>
+   </tr>
+  </table>
+   <div class="botao">
+   <table width="100%">
+    <tr>
+           <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+           <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+
+    </tr>
+  </table>
+ </div>
+</table>
+<br/>
+  
+

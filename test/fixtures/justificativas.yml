@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  ponto: 
+  justificativa: MyText
+  entrada: false
+  saida: false
+  dia: 2011-05-23
+
+two:
+  ponto: 
+  justificativa: MyText
+  entrada: false
+  saida: false
+  dia: 2011-05-23

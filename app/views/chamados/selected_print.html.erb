@@ -1,0 +1,91 @@
+<br/>
+<font  size="2"><b>
+<table  class="tabelas" width="100%"align="center">
+ <tr>
+   <td align="left">
+     <font  size=5 color="black"> <b> ATENDIMENTO ORDEM  DE SERVIÇO INTERNO </b></font>
+   </td>
+ </tr>
+ <tr>
+   <td>
+     <table width="100%">
+       <tr>
+          <td align="left"><font color="red"><b><%= "#{@chamados.count} chamados para atendimento." %></b></font></td>
+           <td align="right">    <%= "Americana, #{Time.now.strftime("%d de %B de %Y")}" %></td>
+       </tr>
+       <tr>
+         <td colspan="2">
+           <table border="2" width="100%">
+              <% for chamados in @chamados %>
+               <%if (chamados.situacao_chamado_id != 2) then %>
+             <tr>
+                <th> Prioridade</th>
+                <th> Protocolo</th>
+                <th> Data solicitação</th>
+                <th> Solicitante</th>
+                <th> Unidade</th>
+             </tr>
+                <tr>
+                 <td width="3%" align="center"><%= text_field_tag(:priority,nil,:size => 1) %></td>
+                 <td width="3%" align="center"><%=h chamados.id %></td>
+                 <td><%=h chamados.data_sol.strftime("%d/%m/%Y %H:%M horas")%></td>
+                 <td><%=h chamados.solicitante %></td>
+                 <td><%=h chamados.unidade.nome %></td>
+               </tr>
+               <tr>
+                  <th colspan="2" ><b>Problema</b></th>
+                  <td colspan="3" align="left"><%=h chamados.problema %></td>
+               </tr>
+               <tr>
+                 <th colspan="2"><b>Procedimento à realizar</b></th>
+                 <td colspan="3" align="left"><%=h chamados.procedimentos %></td>
+              </tr>
+                <tr>
+                  <th colspan="2"><b>Procedimento realizado</b></th>
+                  <td colspan="5" style="padding-bottom:5px"></td>
+                </tr>
+                <tr>
+                  <th colspan="2"><b>Assinatura da Unidade Escolar</b></th>
+                  <td colspan="5" style="padding-bottom:5px"></td>
+                </tr>
+                <tr>
+                  <td colspan="5" >
+
+                  </td>
+                </tr>
+               <%end%>
+              <%end%>
+</table>
+ <table width="100%">
+  </table>
+  <table width="100%" align="center" >
+   <tr>
+     <td align="center" colspan="2">
+       OBS:<%= text_field_tag(:obs1,nil,:size => 84 ) %>
+     </td>
+   </tr>
+   <tr>
+     <td align="center" colspan="2">
+       <%= text_field_tag(:obs2,nil,:size => 88) %>
+     </td>
+   </tr>
+   <tr>
+   <tr>
+      <td align="center"colspan="2"<%= collection_select :nome ,:estagiario_id, @funcionarios, :id, :nome, :include_blank => ' -- Selecione Funcionário -- ', :size=> 20 %>
+   </tr>
+   <tr>
+      <td align="center"colspan="2"> --- Funcionário e ou Estagiário ---</td>
+   </tr>
+   <tr class="botao">
+      <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+      <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+   </tr>
+   </table>
+ </td>
+ </tr>
+ </table>
+ </td>
+ </tr>
+ </table>
+ <br/>
+</font>

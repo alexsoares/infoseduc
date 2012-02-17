@@ -1,0 +1,67 @@
+<br/><br/>
+<table class="tabelas" width="60%" align="center">
+  <tr>
+    <td align="left">
+      <h1>ALTERAÇÂO DE SENHA E EMAIL</h1>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <fieldset><legend><font  size=4>Usuário</font></legend>
+          <%= error_messages_for :user %>
+          <% form_for(@user) do |f| %>
+           <font  size="2">
+              <table>
+                <tr>
+                  <td align="left"> <b>Usuários:</b></td>
+                  <td align="left"> <b><%= @user.login %></b></td>
+                </tr>
+                 <tr>
+                   <td align="left"><b> Cadastrado desde:</b></td>
+                   <td align="left"> <%= @user.created_at.strftime("%d/%m/%y") %></td>
+                </tr>
+                <tr>
+                  <td align="left"> <b>Nova Senha:</b></td>
+                  <td> <%= f.password_field :password %></td>
+                </tr>
+                <tr>
+                  <td align="left"> <b>Confirmação Nova Senha:</b></td>
+                  <td> <%= f.password_field :password_confirmation %></td>
+                </tr>
+                <tr>
+                  <td align="left"> <b>Unidade:</b></td>
+                 <%if @user.unidade_id == 53%>
+                    <td align="left"><b>Seduc - Administrador do Sistema</b></td>
+                  <%else%>
+                    <%if @user.unidade_id == 99%>
+                      <td align="left"><b>Estagiário Itinerante</b></td>
+                    <%else%>
+                      <td align="left"><b><%= f.label @user.unidade.nome %></b></td>
+                    <%end%>
+                  <%end%>
+                </tr>
+                <tr>
+                  <td align="left"> <b>Email:</b></td>
+                  <td> <%= f.text_field :email %></td>
+                </tr>
+         </table>
+       </font>
+     </fieldset>
+      <table>
+        <tr>
+         <td align="left"><%= submit_tag 'Alterar' %></td>
+         <% end %>
+         <td align="left"><%= button_to 'Voltar', homes_path, {:method => "get"}  %></td>
+        </tr>
+     </table>
+   </td>
+ </tr>
+</table>
+<br/>
+
+  </td>
+ </tr>
+</table>
+<br/>
+
+

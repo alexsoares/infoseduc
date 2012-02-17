@@ -1,0 +1,38 @@
+<br/>
+<font size="2">
+<table  class="tabelas" width="55%"align="center">
+   <tr>
+     <td colspan="2" align="left">
+         <font  size=5 color="black"> <b> ORDEM DE SERVIÇO EXTERNO</b></font>
+      </td>
+    </tr>
+    <tr>
+     <td>
+       <table>
+         <tr>
+           <td colspan="2">
+             <%= render 'formshow' %>
+           </td>
+         </tr>
+        <tr>
+          <% form_for(@c_externo) do |f| %>
+          <%= f.error_messages %>
+          <td align="left" valign="top"> <b>Observações:</b></td>
+          <td align="left" colspan="2"><%= f.text_area(:obs, :cols =>"45", :rows => "4") %></td>
+        </tr>
+        <tr>
+          <td align="left"><b>Encerrado:</b></td>
+          <td align="left"> SIM <%= f.check_box :situacao %> em <%= f.date_select(:data_encerra, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 10)) %> </td>
+        </tr>
+        <table>
+           <tr >
+             <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+             <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
+         </tr>
+         </table>
+      <%end%>
+      </table>
+   </tr>
+  </table>
+</font>
+<br/>

@@ -1,0 +1,51 @@
+<% form_for(@emprestimo) do |f| %>
+  <%= f.error_messages %>
+ <table class="tabelas" width="50%" align="center">
+  <tr>
+   <td colspan="2" align="left">
+     <font  size=5><b> EMPRESTIMO DATASHOW</b></font>
+   </td>
+  </tr>
+   <tr>
+     <td>
+       <table>
+        <tr> 
+           <td align="left"><font size=2><b>Unidade:</b></font></td>
+           <td align="left"><font size=2><%= f.collection_select :unidade_id, @unidades, :id, :nome, :include_blank => ' -- Selecione -- '  %></font></td>
+                <%= observe_field 'emprestimo_unidade_id',
+                      :with => :emprestimo_unidade_id,
+                      :url => { :action => 'seleciona' },
+                      :update => "depto" %>
+       </tr>
+       <tr>
+           <td colspan="2" align="left"> <div id="depto"></div></td>
+       </tr>
+       <tr>
+          <td align="left"><font size=2><b>Data Emprestimo:</b></font></td>
+          <td align="left"><font size=2><%= f.date_select :emprestimo %></font></td>
+      </tr>
+      <tr>
+          <td align="left"><font size=2><b>Data Devolução:</b></font></td>
+          <td align="left"><font size=2><%= f.date_select :devolucao %></font></td>
+      </tr>
+      <tr>
+          <td align="left"><font size=2><b>Responsável:</b></font></td>
+          <td align="left"><font size=2><%= f.text_field :responsavel, :size => 30 %></font></td>
+      </tr>
+      <tr>
+          <td align="left" valign="top"><font size=2><b>Observações:</b></font></td>
+          <td align="left"><font size=2><%= f.text_area(:obs, :cols =>50, :rows => "2") %></font></td>
+      </tr>
+     <table>
+        <tr>
+           <td align="left" width="8%"><%= f.submit "Salvar" %></td>
+            <% end %>
+          <td align="left" ><%= button_to 'Voltar', homes_path, {:method => "get"}%></td>
+        </tr>
+     </table>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <br/>
+

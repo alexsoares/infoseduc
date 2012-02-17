@@ -1,0 +1,63 @@
+<br/>
+<table  class="tabelas" align="left" width="100%">
+  <tr>
+    <td align="left">
+      <font  size=5><b> UNIDADES COM ESTAGIÁRIO</b></font>
+    </td>
+   <tr>
+     <td>
+       <br/>
+       <div class="botao">
+       <table width="100%">
+        <tr>
+          <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+          <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+       </tr>
+      </table>
+      <br/>
+      </div>
+      <font  size="2">
+      <table border="2" width="100%">
+        <tr>
+          <th>Unidade</th>
+          <th>Nome</th>
+          <th>Período</th>
+        </tr>
+        <% for estagiarios in @estagiarios %>
+        <%if (estagiarios.flag == 0 and estagiarios.desligado == 0 ) then %>
+        <tr>
+          <%if estagiarios.regiao_id.nil?%>
+            <td align="left"> <%=h estagiarios.unidade.nome %></td>
+          <%else%>
+             <td align="left"><%=h estagiarios.regiao.regiao %></td>
+          <%end%>
+             <td align="left"><%=h estagiarios.nome %></td>
+             <td align="left"><%=h estagiarios.periodo_trab %></td>
+         </tr>
+         <% end %>
+         <% end %>
+         <% for estagiarios in @estagiarios1 %>
+            <%if (estagiarios.flag == 0 and estagiarios.desligado == 0 ) then %>
+              <tr>
+                <%if estagiarios.regiao_id.nil?%>
+                  <td align="left"><%=h estagiarios.unidade.nome %></td>
+                <%else%>
+                   <td align="left"><%=h estagiarios.regiao.regiao %></td>
+                 <%end%>
+                   <td align="left"><%=h estagiarios.nome %></td>
+                   <td align="left"><%=h estagiarios.periodo_trab %></td>
+               </tr>
+             <% end %>
+         <% end %>
+      </font>
+   </table>
+  <div class="botao">
+   <table width="100%" align="center">
+    <tr>
+          <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+          <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+    </tr>
+  </table>
+  </table>
+  </div>
+  <br/>

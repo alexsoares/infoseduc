@@ -1,0 +1,41 @@
+<br/><br/><br/><br/>
+<table  align="center" width="80%">
+<td>
+ <fieldset><legend><font  size=5> ESTOQUE INFORMÁTICA - SEDUC</font></legend>
+   <br/>
+   <table>
+    <tr>
+      <td>
+        <div class="botao">
+        <table>
+          <tr>
+            <td>
+               <font  size="4"> Selecione componente: <%= collection_select  :estoque, :estoque_id, @estoques, :id, :nome, :include_blank => ' -- Selecione -- '  %></font>
+             </td>
+          </tr>
+       </table>
+       </div>
+      </td>
+    <tr>
+      <td>
+      <%= observe_field 'estoque_estoque_id',
+           :update => "listagem",
+           :url    => { :action => 'lista_estoque' },
+           :with   => 'estoque_estoque_id' %>
+        <div id="listagem"> </div>
+     </td>
+   </tr>
+  </table>
+ </fieldset>
+
+  <div class="botao">
+   <table width="100%">
+    <tr>
+       <td align="left" width="8%" ><%= button_to 'Voltar', homes_path, {:method => "get"} %></td>
+       <td align="left" ><input type="Button" Value="Imprimir" onclick="javascript:window.print()"></td>
+    </tr>
+  </table>
+ </div>
+</table>
+  
+

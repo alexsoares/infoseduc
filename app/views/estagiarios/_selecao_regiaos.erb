@@ -1,0 +1,7 @@
+<table width="100%">
+   <tr>
+     <td width="25%"><b>Região:</b></td>
+     <td align="left"width="75%"><%= collection_select  :estagiario, :regiao_id, @regiaos, :id, :regiao, :include_blank => ' --- Selecione opção ---'  %>
+     </td>
+   </tr>
+</table>

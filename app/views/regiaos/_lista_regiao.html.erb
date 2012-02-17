@@ -1,0 +1,22 @@
+<br/>
+<font size="3">
+<table border="1" width="100%">
+  <tr>
+    <th colspan="2" width="80%">Tipo:</th>
+    <th colspan="2"></th>
+
+  </tr>
+<% for reg in @regiaos %>
+  <tr>
+    <td><%=h reg.regiao %></td>
+      <div class="botao">
+        <% if current_user.has_role?('administrador')%>
+            <td align="center"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), reg, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+        <%end%>
+      </div>
+  </tr>
+<% end %>
+</table>
+</font>
+
+

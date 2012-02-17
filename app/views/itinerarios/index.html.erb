@@ -1,0 +1,34 @@
+<div class="botao">
+<br/><br/>
+<table class="tabelas" align="center" width="80%">
+  <tr>
+    <td align="left">
+       <font  size=5 color="black"> <b> CONSULTA ROTEIRO ITINERÂNCIA</b></font>
+    </td>
+   </tr>
+   <tr>
+     <td>
+       <table>
+         <tr>
+            <% form_for @search do |f| %>
+            <td align="right" width="95%"><font size="3">
+              <br/>
+             <%= f.label :estagiario_id_equals, "Estagiário:" %>
+             <%= f.collection_select :estagiario_id_equals, @estagiarios, :id, :nome, :include_blank => true%></font>
+                <td align="left"><input type="image" src="/stylesheets/images/buscar.png" title="Buscar">
+          </td>
+          </tr>
+          <tr>
+            <td colspan="4">
+              <%= render :partial => "calendar" %>
+            </td>
+          </tr>
+        </table>
+     </td>
+    </tr>
+    <% end %>
+  </table>
+ <br/>
+</div>
+    
+

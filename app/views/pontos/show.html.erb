@@ -1,0 +1,38 @@
+<br/>
+<table class="tabelas" align="center" width="40%">
+  <tr>
+    <td colspan="2" align="left">
+      <font  size=4><b> PONTO ELETRÔNICO</b></font>
+    </td>
+ </tr>
+ <tr>
+   <td>
+     <font size="2">
+      <table>
+        <tr>
+          <td align="left">  <b>Estagiario:</b></td>
+          <td align="left">  <%=h @ponto.estagiario.nome %></td>
+        </tr>
+        <tr>
+          <td align="left">  <b>Entrada:</b></td>
+          <td align="left"> <%=h @ponto.entrada.strftime("%d/%m/%Y %H:%M") %></td>
+        </tr>
+        <tr>
+          <td align="left"><b>Saída:</b></td>
+          <!--<td align="left"><%= @ponto.saida ? @ponto.saida.strftime("%d/%m/%Y %H:%M") : (button_to "Realizar Saida",edit_ponto_path(@ponto), :method => 'get')%></td>-->
+         <td align="left"><%= @ponto.saida ? @ponto.saida.strftime("%d/%m/%Y %H:%M") : ("Saida NÂO realizada")%></td>
+        </tr>
+        <tr>
+          <td align="left"><b>Total trabalhado:</b></td>
+          <td align="left"><%=h @ponto.saida.present? ? "#{Ponto.convert_to_hour(@ponto.total_trabalhado)} "  : "Não foi possível calcular"  %></td>
+        </tr>
+         <tr>
+             <td width="4%"align="left" colspan="2" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %>
+              <%= link_to image_tag("/stylesheets/images/ponto.png", :size => "40x40"), pontos_path, :title => "Ponto Eletrônico" %></td>
+         </tr>
+      </table>
+     </font>
+    </td>
+   </tr>
+</table>
+<br/><br/>

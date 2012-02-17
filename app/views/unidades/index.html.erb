@@ -1,0 +1,157 @@
+<br/>
+ <table  class="tabelas"   align="center" width="100%">
+   <tr>
+      <td colspan="2" align="left">
+         <font  size=5><b> CONSULTA UNIDADES CADASTRADAS</b></font>
+      </td>
+   </tr>
+   <tr>
+     <td>
+        <br/>
+        <div class="botao">
+        <table width="100%" align="center">
+          <tr>
+             <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+             <td width="6%"align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+             <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/listar.png", :size => "35x35"), print_all_unidades_path, :title => "Listar Unidades" %></td>
+             <td align="right">
+                <div class="botao">
+                <table>
+                  <tr>
+                    <% form_tag unidades_path, :method => 'get' do %>
+                     <td align="right"><font size="4"> Digite unidade:</font>
+                       <%= text_field_tag :search, params[:search] %>
+                      <td align="left"><input type="image" src="/stylesheets/images/buscar.png" title="Buscar">
+                     </td>
+                    <% end %>
+                  </tr>
+                </table>
+                </div>
+             </td>
+         </tr>
+         <tr>
+           <% if  $var == 0 then %>
+             <td align="left" colspan="4"><%= will_paginate @unidades %></td>
+           <%end%>
+         </tr>
+       </table>
+       <br/>
+       </div>
+       <font  size="2">
+       <table border="2" width="100%">
+         <% for unidades in @unidades %>
+          <tr>
+            <th>Nome</th>
+            <th>Ensino</th>
+            <th>Endereco</th>
+            <th>Num</th>
+            <th>Bairro</th>
+            <th>Fone</th>
+
+          </tr>
+          <tr>
+            <td><%=h unidades.nome %></td>
+            <td><%=h unidades.tipo.nome %></td>
+            <td><%=h unidades.endereco %></td>
+            <td><%=h unidades.num %></td>
+            <td><%=h unidades.bairro %></td>
+            <td><%=h unidades.fone %></td>
+        </tr>
+        <tr>
+           <%if (unidades.estagiarioE == 1) then%>
+              <td rowspan="2"> </td>
+              <th bgcolor="gray">Itinerância</th>
+           <%else%>
+               <td colspan="2"rowspan="2">
+           <%end%>
+           <th>Email</th>
+           <th>Diretor</th>
+           <th>Coordenador</th>
+           <th>Estagiário</th>
+        </tr>
+        <tr>
+          <%if (unidades.estagiarioE == 1) then%>
+             <% if unidades.regiao_id.nil? then %>
+             <%else%>
+               <td><%=h unidades.regiao.regiao %></td>
+              <%end%>
+            <%else%>
+            <%end%>
+           <td><%=h unidades.email %></td>
+           <td><%=h unidades.diretor %></td>
+           <td><%=h unidades.coordenador %></td>
+           <td>
+           <%if (unidades.estagiarioE == 1) then%>
+            <% unidades.regiao.estagiarios.each do |est| %>
+               <% if (est.desligado == 0 and est.periodo_trab == 'ITINERANTE') then%>
+                 <%=h est.nome %> (Itinerante)<br/>
+              <%end%>
+            <%end%>
+         <%else%>
+         <%if (unidades.estagiarioM == 1) then%>
+           <% unidades.estagiarios.each do |est| %>
+               <% if (est.desligado == 0 and est.periodo_trab == 'MATUTINO') then%>
+                 <%=h est.nome %> (mantutino)<br/>
+              <%end%>
+            <%end%>
+           <%else%>
+                 Unidade sem estagiário Matutino <br/>
+           <%end%>
+          <%if (unidades.estagiarioV == 1) then%>
+           <% unidades.estagiarios.each do |est| %>
+               <% if (est.desligado == 0 and est.periodo_trab == 'VESPERTINO') then%>
+                 <%=h est.nome %> (vespertino) <br/>
+              <%end%>
+            <%end%>
+           <%else%>
+                 Unidade sem estagiário Vespertino <br/>
+           <%end%>
+
+          <%if (unidades.estagiarioN == 1) then%>
+           <% unidades.estagiarios.each do |est| %>
+               <% if (est.desligado == 0 and est.periodo_trab == 'NOTURNO') then%>
+                 <%=h est.nome %> (noturno) <br/>
+              <%end%>
+            <%end%>
+           <%else%>
+                 Unidade sem estagiário Noturno <br/>
+           <%end%>
+       <%end%>
+       </td>
+      </tr>
+      <tr>
+         <td colspan="12">
+            <div class="botao">
+            <table >
+               <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), unidades, :title => "Exibir Unidade" %></td>
+                <td align="center" colspan="1"> <%= link_to image_tag("/stylesheets/images/anexos.png", :size => "25x25"), anexos_path(:unidade => unidades), :title => "Anexos referentes à Unidade" %></td>
+                <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                  <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_unidade_path(unidades), :title => "Alterar Unidade"%></td>
+                     <% if current_user.has_role?('administrador')%>
+                       <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), unidades, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir Unidade" %></td>
+                     <%end%>
+               <%end%>
+             <td align="left" colspan="1"><%= link_to image_tag("/stylesheets/images/Mapa.png", :size => "25x25"), geo_path(unidades.id), :title => "Mapa" %></td>
+            </table>
+            </div>
+           </td>
+        </tr>
+        <% end %>
+       </table>
+       <div class="botao">
+         <table width="100%" align="left">
+           <br/>
+          <tr>
+            <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+            <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+            <% if  $var == 0 then %>
+               <td align="left" colspan="3"><%= will_paginate @unidades %></td>
+            <%end%>
+
+        </table>
+        </div>
+     </font>
+  </table>
+<br/>
+
+   

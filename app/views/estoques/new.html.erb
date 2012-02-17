@@ -1,0 +1,51 @@
+<br/>
+<table  class="tabelas" width="50%" align="center">
+  <tr>
+    <td colspan="2" align="left">
+        <font  size=5><b> TIPO DE PRODUTO EM ESTOQUE</b></font>
+    </td>
+  </tr>
+  <tr>
+    <td>
+     <% form_for(@estoques) do |f| %>
+     <%= f.error_messages %>
+     <font  size="2">
+      <fieldset><legend><font  size=4> Produto</font></legend>
+     <table width="100%" align="center">
+        <tr>
+          <td>
+             <table>
+               <tr>
+                  <td align="left"><b>Produto:</b></td>
+                  <td align="left"><%= f.collection_select :componente_id, @componentes, :id, :nome, :include_blank => ' -- Selecione -- ' %>
+                </tr>
+                <tr>
+                   <td align="left"><b>Especificação:</b></td>
+                   <td align="left"><%= f.text_field :especifica %></td>
+                </tr>
+                <tr>
+
+                   <td valign="top"align="left"><b>Observação:</b></td>
+                  <td align="left"><%= f.text_area :obs, :cols =>39, :rows => "2" %></td>
+                </tr>
+             </table>
+         </td>
+        </tr>
+   </table>
+  </fieldset>
+  <table>
+    <tr>
+      <div id='Certeza'>
+        <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+       </div>
+       <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
+          <% end %>
+   </tr>
+  </table>
+</font>
+</td>
+</tr>
+</table>
+<br/>
+
+

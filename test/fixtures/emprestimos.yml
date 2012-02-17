@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  unidade: 
+  emprestimo: 2010-12-10 09:23:02
+  devolucao: 2010-12-10 09:23:02
+  responsavel: MyString
+  obs: MyString
+
+two:
+  unidade: 
+  emprestimo: 2010-12-10 09:23:02
+  devolucao: 2010-12-10 09:23:02
+  responsavel: MyString
+  obs: MyString

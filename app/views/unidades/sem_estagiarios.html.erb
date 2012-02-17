@@ -1,0 +1,85 @@
+<br/>
+ <table   class="tabelas"align="center" width="100%">
+  <tr>
+      <td colspan="2" align="left">
+         <font  size=5><b> UNIDADES SEM ESTAGIÁRIO</b></font>
+      </td>
+     </tr>
+   <tr>
+     <td>
+       <br/>
+       <div class="botao">
+       <table width="100%" align="center">
+        <tr>
+          <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+          <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+       </tr>
+      </table>
+      <br/>
+      </div>
+      <font  size="2">
+      <table border="2" width="100%">
+       <tr>
+         <th>Nome</th>
+         <th>Ensino</th>
+         <th>Período</th>
+         <div class="botao">
+             <th >  </th>
+         </div>
+       </tr>
+       <% for unidadesem in @sem_estagiarios %>
+        <%if  (unidadesem.id != 62)and (unidadesem.id != 64)and (unidadesem.id != 59)and (unidadesem.id != 65)and (unidadesem.id != 66)%>
+
+         <%if unidadesem.estagiarioE == 0%>
+          <%if unidadesem.nome != 'PATRIMÔNIO'%>
+             <tr>
+               <td align="left"><%=h unidadesem.nome %></td>
+               <td align="left"><%=h unidadesem.tipo.nome %></td>
+                <%if unidadesem.estagiarioM == 0%>
+                     <td>Matutino</td>
+                  <%else if unidadesem.estagiarioV == 0%>
+                       <td>Vespertino</td>
+                    <%else if unidadesem.estagiarioN == 0%>
+                        <td>Noturno</td>
+                    <%end%>
+                   <%end%>
+                 <%end%>
+              <div class="botao">
+                  <td align="center"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"),{:action => "show", :id =>unidadesem}, :method => "get", :title => "Exibir Unidade" %></td>
+              </div>
+            </tr>
+          <%end%>
+        <%end%>
+
+      <%end %>
+     <%end%>
+    <% for unidadesemreg in @sem_estagiarios_reg %>
+     
+             <tr>
+               
+               <td align="left"><%=h unidadesemreg.regiao.regiao %></td>
+               <td align="left" colspan="2">Matutino/Vespertino
+              <div class="botao">
+                  <td align="center"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"),{:action => "show", :id =>unidadesem}, :method => "get", :title => "Exibir Unidade" %></td>
+              </div>
+            </tr>
+
+     
+
+    <%end%>
+
+     </table>
+      <div class="botao">
+         <table width="100%" align="center">
+          <tr>
+          <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+          <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+
+        </table>
+        </div>
+     </font>
+  </table>
+  
+  <br/>
+
+   

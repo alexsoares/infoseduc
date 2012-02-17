@@ -1,0 +1,23 @@
+ <table class="tabelas" width="100%">
+  <tr>
+   <td colspan="2" align="left">
+     <font  size=5><b> CHAT - CONVERSA ON-LINE</b></font>
+   </td>
+  </tr>
+  <tr>
+    <td>
+      <table width="100%" border="1">
+        <tr>
+          <th colspan="2" align="left" ><font size="3">Criar Sala de Bate Papo</font></th>
+        </tr>
+        <tr>
+          <%= render "form" %>
+        </tr>
+
+        <tr>
+          <td colspan="2" align="right">
+            <%= button_to 'Voltar', chats_path, :method => :get %>
+          </td>
+        </tr>
+
+      </table>

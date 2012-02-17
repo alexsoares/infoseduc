@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  unidade: 
+  estagiario: 
+  responsavel: MyString
+  data: 2010-10-26 10:25:42
+  problema: MyString
+  procedimentos: MyString
+
+two:
+  unidade: 
+  estagiario: 
+  responsavel: MyString
+  data: 2010-10-26 10:25:42
+  problema: MyString
+  procedimentos: MyString

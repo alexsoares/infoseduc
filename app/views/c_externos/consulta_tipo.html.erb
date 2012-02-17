@@ -1,0 +1,45 @@
+<br/><br/>
+<table  align="center" width="80%">
+<td>
+ <fieldset><legend><font  size=4> CONSULTA ORDEM DE SERVIÇO POR TIPO:</font></legend>
+   <br/>
+   <table>
+    <tr>
+      <td>
+        <div class="botao">
+        <table>
+          <tr>
+            <td>
+               <font  size="4"> Tipo: <%= collection_select :c_externo, :tipo_id,  @tipo_osexterna, :id, :tipo, :include_blank => ' -- Selecione -- '  %></font>
+             </td>
+          </tr>
+       </table>
+       </div>
+      </td>
+    <tr>
+       <td>
+        <%= observe_field 'c_externo_tipo_id',
+           :update => "listagem",
+           :url    => { :action => 'lista_tipo' },
+           :with   => 'c_externo_tipo_id' %>
+        <div id="listagem"> </div>
+     </td>
+
+   </tr>
+  <div class="botao">
+   <table width="100%">
+    <tr>
+       <td align="left" width="8%" ><%= button_to 'Voltar', homes_path, {:method => "get"} %></td>
+       <td align="left" ><input type="Button" Value="Imprimir" onclick="javascript:window.print()"></td>
+    </tr>
+  </table>
+ </div>
+</table>
+</fieldset>
+</td>
+</table>
+<br/>
+
+
+
+

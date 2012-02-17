@@ -1,0 +1,87 @@
+/* 
+    Document   : impressao
+    Created on : 06/04/2011, 08:58:17
+    Author     : alexandre
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+    font-size: 10px;
+    background:gray;
+}
+
+.relatorio td#disabled {
+    color:red;    
+}
+.relatorio td#enabled {
+    color:green;
+}
+.chamados h1{
+    color:red;
+    text-align:center;
+    font-size:16px;
+}
+.chamados h3{
+    color:green;
+    text-align:center;
+    font-size:10px;
+}
+
+.chamados {
+  border: solid 3px #666;
+  border-collapse: collapse;
+}
+
+.chamados th {
+  font-size: 10px;
+  color: #FFF;
+  background-color: #404C99;
+  padding: 4px 8px;
+  padding-bottom: 4px;
+  text-align: center;
+  border: solid 3px #666;
+}
+
+.chamados td {
+  font-size: 8px;
+  padding: 4px 8px;
+  text-align: center;
+  border: solid 3px #666;
+}
+
+#centralizado h3 {
+    text-align: center;
+}
+
+.tabelas {
+  border: solid 3px #666;
+  border-collapse: collapse;
+  border-color:black;
+}
+
+.tabelas th {
+  border: solid 3px #666;
+  font-size: 10px;
+  color: black;
+  padding: 4px 8px;
+  padding-bottom: 4px;
+  text-align: center;
+}
+.tabelas th.titulo {
+    background-color: yellow;
+}
+.tabelas th.titulo h1{
+    color:#000;
+}
+
+.tabelas td {
+  color:black;
+  border: solid 3px #666;
+}

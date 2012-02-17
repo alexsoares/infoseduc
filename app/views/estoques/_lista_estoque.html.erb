@@ -1,0 +1,36 @@
+<font  size="2">
+   <table align="center"  border="2" width="100%">
+      <tr>
+        <th bgcolor="gray">Componente</th>
+        <th bgcolor="gray">Especificação</th>
+        <th bgcolor="gray">Saldo</th>
+        <th bgcolor="gray">Observação</th>
+      </tr>
+
+      <% for estoques in @estoques %>
+     <tr>
+        <td><%=h estoques.componente.nome %></td>
+        <td><%=h estoques.especifica %></td>
+        <td><%=h estoques.saldo %></td>
+        <td><%=h estoques.obs %></td>
+      </tr>
+
+      <tr>
+        <td colspan="4">
+          <div class="botao">
+          <table>
+             <td><%= button_to('Exibir',{:action => "show", :id =>estoques}, :method => "get") %></td>
+             <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+               <td> <%= button_to('Editar',{:action => "edit", :id =>estoques}, :method => "get") %></td>
+               <td><%= button_to('Excluir',{:action => "destroy", :id =>estoques}, :confirm => 'Confirma exclusão?', :method => "delete")%></td>
+             <%end%>
+         </table>
+          </div>
+        </td>
+      </tr>
+  
+    <% end %>
+ 
+   </table>
+ </font>
+

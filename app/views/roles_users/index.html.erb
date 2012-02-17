@@ -1,0 +1,63 @@
+<br/><br/>
+<font size="2">
+ <table  class="tabelas"   align="center" width="60%">
+   <tr>
+     <td colspan="2" align="left">
+        <font  size=4><b> GERENCIAMENTO DE ACESSO</b></font>
+     </td>
+   </tr>
+   <tr>
+    <td>
+      <table>
+       <tr>
+          <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+          <td width="6%" align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+          <td align="left" ><%= link_to image_tag("/stylesheets/images/associar.png", :size => "30x30"),new_roles_user_path, :title => "Imprimir" %></td>
+        </tr>
+      </table>
+      <table border="2" align="center">
+        <tr>
+          <th>Login</th>
+          <th>Acesso de</th>
+          <th>Descricao</th>
+        </tr>
+        <% for role_user in @role_users %>
+        <tr>
+          <td align="center" width="25%"><%= User.find(role_user.user_id).login %></td>
+          <td align="center"><%= Role.find(role_user.role_id).name %></td>
+          <%if Role.find(role_user.role_id).name == 'administrador' then%>
+            <td align="center">Usuário administrador do sistema. Acesso total ao sistema.</td>
+          <%else%>
+             <td align="center">Usuário estagiário. Acesso restrito ao sistema.</td>
+          <%end%>
+        </tr>
+        <tr>
+           <td colspan="12">
+             <div class="botao">
+             <table>
+                 <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"),role_user, :title => "Exibir Dados" %></td>
+                  <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                    <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"),{:action => "edit", :id =>role_user}, :method => "get", :title => "Alterar Dados"%></td>
+                       <% if current_user.has_role?('administrador')%>
+                         <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), role_user, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+                       <%end%>
+                 <%end%>
+             </table>
+             </div>
+           </td>
+         </tr>
+        <% end %>
+
+       </table>
+      <table width="60%"  align="left">
+        <tr>
+          <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+          <td width="6%" align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+          <td align="left" ><%= link_to image_tag("/stylesheets/images/associar.png", :size => "30x30"),new_roles_user_path, :title => "Imprimir" %></td>
+        </tr>
+     </table>
+   </td>
+  </tr>
+</table>
+</font>
+<br/>

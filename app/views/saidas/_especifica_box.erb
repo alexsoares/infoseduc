@@ -1,0 +1,6 @@
+           
+     <%= collection_select  :saida, :estoque_id, @estoques, :id, :especifica, :include_blank => ' -- Selecione -- '  %>
+           <%= observe_field 'saida_estoque_id',
+               :frequency => 0.1,
+               :with => :saida_estoque_id,
+               :url => { :action => 'exibe_obs' } %>

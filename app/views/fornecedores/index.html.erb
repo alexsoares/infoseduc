@@ -1,0 +1,79 @@
+ <table class="tabelas"  align="center" width="100%">
+  <tr>
+       <td colspan="2" align="left">
+         <font  size=5 color="black"> <b>FORNECEDORES</b></font>
+       </td>
+      </tr>
+  <tr>
+    <td>
+    <br/>
+    <font size="2">
+      <div class="botao">
+       <table width="100%">
+        <tr>
+           <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+           <td width="6%"align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+           <td align="left" ><%= link_to image_tag("/stylesheets/images/consnum.png", :size => "30x30"), consulta_path, :title => "Consulta Tipo Serviço" %></td>
+          <div class="botao">
+            <% form_tag fornecedores_path, :method => 'get' do %>
+            <td align="right" width="75%"><font size="4"> Fornecedor:</font>
+               <%= text_field_tag :search, params[:search] %>
+               <td align="left"><input type="image" src="/stylesheets/images/buscar.png" title="Buscar">
+            </td>
+            <% end %>
+         </div>
+        </tr>
+      </table>
+      <br/>
+      </div>
+       <font color="white">
+       <table align="center"  border="2" width="100%">
+         <tr>
+            <th>Nome</th>
+            <th>Fone</th>
+            <th>e_mail</th>
+            <th>Contato</th>
+            <th>Tipo servico</th>
+            <th>Obs</th>
+        </tr>
+        <% for fornecedores in @fornecedores %>
+         <tr>
+            <td><%=h fornecedores.nome %></td>
+            <td><%=h fornecedores.fone %></td>
+            <td><%=h fornecedores.email %></td>
+            <td><%=h fornecedores.contato %></td>
+            <td><%=h fornecedores.tipo_servico %></td>
+            <td><%=h fornecedores.obs %></td>
+          </tr>
+          <tr>
+            <td colspan="6">
+              <div class="botao">
+              <table>
+                 <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), fornecedores, :title => "Exibir Dados" %></td>
+                  <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                    <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_fornecedore_path(fornecedores), :title => "Alterar Dados"%></td>
+                       <% if current_user.has_role?('administrador')%>
+                         <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), fornecedores, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+                       <%end%>
+                 <%end%>
+              </table>
+              </div>
+            </td>
+          </tr>
+          <%end%>
+     </table>
+     <div class="botao">
+       <table width="100%" align="center">
+        <tr>
+          <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+          <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+        </tr>
+      </table>
+      </div>
+ </font>
+ </font>
+
+</td>
+</table>
+
+<br/>

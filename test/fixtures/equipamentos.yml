@@ -1,0 +1,33 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  equipamento: MyString
+  configuracao: MyString
+  unidade: 
+  dataent: 2011-06-29 15:22:36
+  estado: MyString
+  providencia: MyString
+  procedimento: MyString
+  instalacao: MyString
+  dataexec: 2011-06-29 15:22:36
+  destinacao: MyString
+  datasaida: 2011-06-29 15:22:36
+  os: 1
+  obs: MyString
+  status: 1
+
+two:
+  equipamento: MyString
+  configuracao: MyString
+  unidade: 
+  dataent: 2011-06-29 15:22:36
+  estado: MyString
+  providencia: MyString
+  procedimento: MyString
+  instalacao: MyString
+  dataexec: 2011-06-29 15:22:36
+  destinacao: MyString
+  datasaida: 2011-06-29 15:22:36
+  os: 1
+  obs: MyString
+  status: 1

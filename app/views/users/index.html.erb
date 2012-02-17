@@ -1,0 +1,62 @@
+<br/>
+ <table  align="center" width="60%">
+  <td>
+  <fieldset><legend><font  size=5> USUÁRIOS CADASTRADOS</font></legend>
+   <br/>
+   <div class="botao">
+   <table width="100%" align="center">
+     <tr>
+      <td align="right">
+       <div class="botao">
+        <table>
+          <tr>
+            <% form_tag users_path, :method => 'get' do %>
+             <td align="right"><font size="4"> Digite Unidade:</font>
+              <%= text_field_tag :search, params[:search] %>
+              <%= submit_tag "Filtrar", :login => nil %>
+             </td>
+        <% end %>
+        </tr>
+     </table>
+     </div>
+     </td>
+   </tr>
+  </table>
+  <br/>
+  </div>
+    <font  size="2">
+    <table border="2" width="100%">
+      <tr>
+       <th bgcolor="gray">Nome</th>
+     </tr>
+     <% for users in @users %>
+     <tr>
+       <td><%=h users.login%></td>
+       </tr>
+    <tr>
+      <td colspan="12">
+        <div class="botao">
+        <table>
+           <td><%= button_to('Excluir',{:action => "destroy", :id =>users}, :confirm => 'Confirma exclusão?', :method => "delete")%></td>
+        </table>
+        </div>
+       </td>
+    </tr>
+    <% end %>
+   </table>
+   </font>
+  </fieldset>
+  </table>
+  <div class="botao">
+   <table width="60%" align="center">
+    <tr>
+     <td width="8%"><%= button_to 'Cadastrar', new_unidade_path %></td>
+      <td width="8%"><%= button_to 'Voltar', homes_path, {:method => "get"}%></td>
+      <td align="left"><input type="Button" Value="Imprimir" onclick="javascript:window.print()"></td>
+
+
+  </table>
+  </div>
+  <br/>
+
+   

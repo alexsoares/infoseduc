@@ -1,0 +1,85 @@
+ <table class="tabelas"  align="center" width="100%">
+   <tr>
+       <td colspan="2" align="left">
+         <font  size=5 color="black"> <b>SERVIÇOS ENCERRADOS</b></font>
+       </td>
+   </tr>
+   <tr>
+     <td>
+      <br/>
+      <div class="botao">
+       <table width="100%">
+        <tr>
+             <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+             <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+          <td align="right">
+           <div class="botao">
+           <table>
+              <tr>
+              <% form_tag encerrados_path, :method => 'get' do %>
+              <td align="right"><font size="4"> Equipamento:</font>
+                 <%= text_field_tag :search, params[:search] %>
+                <td align="left"><input type="image" src="/stylesheets/images/buscar.png" title="Buscar">
+              </td>
+              <% end %>
+              </tr>
+          </table>
+         </div>
+         </td>
+         </tr>
+      </table>
+      <br/>
+      </div>
+   <font size="2">
+    <table border="2"  width="100%">
+       <tr>
+        <th>Nº Ordem</th>
+        <th>Equipamento</th>
+        <th>Configuracao</th>
+        <th>Estado</th>
+        <th>Instalações</th>
+        <th>Destinacao</th>
+        <th>Data</th>
+        <th>Observações</th>
+     </tr>
+      <% @equipamentos.each do |equip| %>
+     <tr>
+        <td align="center"><%=h equip.id %></td>
+        <td align="left"><%=h equip.equipamento %></td>
+        <td align="left"><%=h equip.configuracao %></td>
+        <td align="center"><%=h equip.estado %></td>
+        <td align="left"><%=h equip.instalacao %></td>
+        <td align="left"><%=h equip.destinacao %></td>
+        <td align="left"><%=h equip.datasaida.strftime("%d/%m/%Y") %></td>
+        <td align="left"><%=h equip.obs %></td>
+      </tr>
+      <tr>
+        <td colspan="8">
+          <div class="botao">
+            <table>
+              <tr>
+<td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), equip, :title => "Exibir Dados" %></td>
+              </tr>
+             </table>
+              </div>
+        </td>
+      </tr>
+      <% end %>
+     </table>
+     </font>
+     <div class="botao">
+       <table width="100%">
+        <tr><br/>
+          <td width="6%" align="left"><%= button_to 'Voltar', homes_path, {:method => "get"}%></td>
+          <td align="left"><input type="Button" Value="Imprimir" onclick="javascript:window.print()"></td>
+        </tr>
+      </table>
+      </div>
+
+  </td>
+</table>
+<br/>
+
+
+
+

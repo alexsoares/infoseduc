@@ -1,0 +1,39 @@
+  <% form_for(@chat) do |f| %>
+    <%= f.error_messages %>
+
+      <td valign="top">
+        <font size="2">
+        <table>
+          <tr>
+            <td><b>Nome:</b></td>
+            <td align="left"><%= f.text_field :nome, :size => 25 %></td>
+          </tr>
+          <tr>
+            <td valign="top"><b>Descrição:</b></td>
+            <td align="left"><%= f.text_area :descricao, :rows => 15, :cols => 32 %></td>
+          </tr>
+        </table>
+        </font>
+      </td>
+      <td>
+        <table class="informa" border="3">
+           <th colspan="4">Todos Usuários</th>
+           <% @users.in_groups_of(4, false) do |row_users| %>
+            <tr>
+              <% row_users.each do |user| %>
+                <% if user == current_user %>
+                  <td><%= check_box_tag "chat[user_ids][]", user.id, @chat.users.include?(user), :checked => true %><%= user.name %></td>
+                <%else%>
+                  <td><%= check_box_tag "chat[user_ids][]", user.id, @chat.users.include?(user)%><%= user.name %></td>
+                <%end%>
+              <% end %>
+              </tr>
+           <%end%>
+          </table>
+      </td>
+   <tr>
+    <td colspan="2" align="left">
+      <%= f.submit 'Salvar' %>
+    </td>
+   </tr>
+  <%end%>

@@ -1,0 +1,71 @@
+<% form_for(@impressoras) do |f| %>
+<%= f.error_messages %>
+<font  size="2">
+ <table class="tabelas" width="100%">
+  <tr>
+   <td colspan="2" align="left">
+     <font  size=5><b> IMPRESSORAS</b></font>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <table>
+     <tr>
+     <td width="50%">
+      <table>
+       <tr>
+          <td align="left"><b>Unidade:</b></td>
+          <td colspan="3"align="left"><%= f.collection_select :unidade_id, @unidades, :id, :nome, :include_blank => ' -- Selecione -- ' %></td>
+       <tr>
+         <td align="left"><b> Tipo:</b> </td>
+           <td width="20%"align="left"> <%= f.collection_select :tipo_controle_id, @tipo_controles, :id, :nome, :include_blank => ' -- Selecione -- ' %>
+          <td align="right"><b>Quantidade:</b> </td>
+          <td align="left"><%= f.text_field :quant,:size => 5 %> </td>
+         </td>
+       </tr>
+       <tr>
+         <td align="left"valign="top"><b>Configuração:</b></td>
+         <td  colspan="3" align="left" ><%= f.text_area(:config, :cols =>"52", :rows => "2") %></td>
+       </tr>
+      <tr>
+         <td align="left"></td>
+         <td align="left"></td>
+       </tr>
+      </table>
+     </td>
+     <td valign="top">
+      <table>
+       <tr>
+         <td align="left"><b>Usuário:</b></td>
+         <td align="left"><%= f.text_field :user, :size =>18 %></td>
+       </tr>
+
+       <tr>
+         <td align="left"><b>Pertence à:</b></td>
+         <td align="left"><%= f.text_field :pertence, :size =>18 %></td>
+       </tr>
+       <tr>
+         <td align="left"><b>Contato:</b></td>
+         <td align="left"><%= f.text_field :contato, :size =>18 %></td>
+       </tr>
+       <tr>
+         <td align="left"><b>Nº Patrimônio:</b></td>
+         <td align="left"><%= f.text_field :pat, :size =>18 %></td>
+       </tr>
+     </table>
+    </td>
+   </tr>
+  <table>
+      <tr>
+          <div id='Certeza'>
+              <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+            </div>
+            <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
+          <% end %>
+      </tr>
+    </table>
+       </table>
+     </td>
+    </tr>
+  </table>
+</font>

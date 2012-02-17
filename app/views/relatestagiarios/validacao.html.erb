@@ -1,0 +1,30 @@
+
+<br/>
+<table class="tabelas" width="45%" border="1"align="center">
+  <tr>
+    <td>
+      <font  size="4"><b><u>VALIDAÇÃO DE RELATÓRIOS</u></b></font>
+           <br/><br/>
+    </td>
+  </tr>
+   <tr>
+     <td>
+            <table>
+              <tr>
+                 <% form_tag validacao_relatestagiarios_path, :method => 'get' do %>
+                 <td align="right">
+                     <font size="4"> Senha:</font>
+                     <%= password_field_tag :validate, params[:validate] %>
+                     <%= hidden_field_tag :id,params[:id] %>
+                    <td align="left"><input type="image" src="/stylesheets/images/listar.png" title="Validar Relatório">
+                </td>
+               <% end %>
+             </tr>
+          </table>
+        <br/>
+     </td>
+   </tr>
+
+   </table>
+<br/>
+

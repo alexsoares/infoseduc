@@ -1,0 +1,40 @@
+<div id="principal4">
+<font  size="2">
+    <table border="2" width="100%">
+     <tr>
+        <th>Unidade</th>
+        <th>Estagiario</th>
+        <th>Responsavel</th>
+        <th>Data</th>
+        <th>Problema</th>
+        <th>Procedimentos</th>
+     </tr>
+         <% for relatorios in @relatorios %>
+     <tr>
+        <td><%=h relatorios.unidade.nome %></td>
+        <td><%=h relatorios.estagiario.nome %></td>
+        <td><%=h relatorios.responsavel %></td>
+        <td><%=h relatorios.data.strftime("%d/%m/%Y") %></td>
+        <td><%=h relatorios.problema %></td>
+        <td><%=h relatorios.procedimentos %></td>
+    </tr>
+     <tr>
+      <td colspan="6">
+        <div class="botao">
+        <table>
+           <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), relatorios, :title => "Exibir Dados" %></td>
+            <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+               <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_relatorio_path(relatorios), :title => "Alterar Dados"%></td>
+               <% if current_user.has_role?('administrador')%>
+                   <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), relatorios, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+                <%end%>
+           <%end%>
+        </table>
+        </div>
+       </td>
+    </tr>
+   <% end %>
+
+   </table>
+</font>
+</div>

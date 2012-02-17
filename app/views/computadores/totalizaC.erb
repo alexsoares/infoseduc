@@ -1,0 +1,190 @@
+<br/>
+<font size="2">
+<table class="tabelasT"width="40%"align="center">
+ <tr>
+   <td colspan="2" align="left">
+      <font  size=5 color="black"> <b> TOTALIZAÇÃO COMPUTADORES</b></font>
+   </td>
+ </tr>
+ <tr>
+  <td>
+  <div class="botao">
+   <table width="100%">
+    <tr>
+       <td bgcolor="#F5DEB3" width="6%" align="left"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+    </tr>
+  </table>
+  </div>
+   <table align="center" width="100%" >
+    <tr>
+      <td bgcolor="#F5DEB3"valign="top" width="20%">
+        <fieldset><legend><font  size=2> SEDUC</font></legend>
+         <br/><br/>
+         <table border="1" width="100%">
+         <%$totals = 0%>
+          <tr>
+             <th  valign="top" align="left" bgcolor="orange"><font  size="1">Usuário</font></th>
+             <th  valign="top" align="center" bgcolor="orange"><font  size="1">Nº</font></th>
+
+          </tr>
+          
+          <% for comp in @computadores %>
+          <%if comp.unidade.nome == 'SEDUC'%>
+          <tr>
+             <td bgcolor="#F5DEB3" valign="top"align="left"><font  size="1"><%=h comp.user %></font></td>
+             <td bgcolor="#F5DEB3" valign="top"><font  size="1"><%=h comp.quant %></font></td>
+             <%$totals= $totals + comp.quant%>
+          </tr>
+          <tr>
+            <td bgcolor="#F5DEB3" colspan="12">
+             <div class="botao">
+              <table>
+                <tr>
+                   <td bgcolor="#F5DEB3" ><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), comp, :title => "Exibir Dados" %></td>
+               </tr>
+              </table>
+             </div>
+           </td>
+          </tr>
+         <% end %>
+         <% end %>
+         <tr>
+            <td bgcolor="#F5DEB3" colspan="3" align="left"><font  size="2"><b> Total => <%= $totals %></b></font> </td>
+          </tr>
+        </table>
+       </fieldset>
+      </td>
+      <td valign="top" width="25%" bgcolor="#F5DEB3">
+        <fieldset><legend><font  size=2> Laboratórios</font></legend>
+         <br/><br/>
+         <table border="1" width="100%">
+         <%$totalC = 0%>
+          <tr>
+             <th  valign="top" align="left" bgcolor="orange"><font  size="1">Unidade</font></th>
+             <th  valign="top" align="left" bgcolor="orange"><font  size="1">Config.</font></th>
+             <th  valign="top" align="center" bgcolor="orange"><font  size="1">Nº</font></th>
+          </tr>
+          <% for comp in @computadores %>
+          <%if comp.tipo_controle.nome == 'LABORATÓRIO'%>
+           <tr>
+             <td bgcolor="#F5DEB3" valign="top"align="left"><font  size="1"><%=h comp.unidade.nome %></font></td>
+             <td bgcolor="#F5DEB3" valign="top"align="left"><font  size="1"><%=h comp.config %></font></td>
+             <td bgcolor="#F5DEB3" valign="top"><font  size="1"><%=h comp.quant %></font></td>
+             <%$totalC = $totalC + comp.quant%>
+          </tr>
+          <tr>
+            <td bgcolor="#F5DEB3" colspan="12">
+             <div class="botao">
+              <table>
+               <td bgcolor="#F5DEB3"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), comp, :title => "Exibir Dados" %></td>
+              </table>
+             </div>
+           </td>
+          </tr>
+         <% end %>
+         <% end %>
+         <tr>
+            <td bgcolor="#F5DEB3" colspan="3" align="left"><font  size="2"><b> Total  => <%= $totalC %></b></font> </td>
+          </tr>
+        </table>
+       </fieldset>
+      </td>
+      <td  valign="top" width="55%" bgcolor="#F5DEB3">
+        <fieldset><legend><font  size=2> Administração</font></legend>
+         <%$totalC1 = 0%>
+         <table width="100%">
+           <tr><td  valign="top" width="50%" bgcolor="#F5DEB3">
+             <fieldset><legend><font  size=2> Pertencente à SEDUC</font></legend>
+              <table  border="1" width="100%">
+               <tr>
+                  <th  valign="top" align="left" bgcolor="orange"><font  size="1">Unidade</font></th>
+                  <th  valign="top" align="left" bgcolor="orange"><font  size="1">Config.</font></th>
+                  <th  valign="top" align="center" bgcolor="orange"><font  size="1">Nº</font></th>
+
+               </tr>
+              <% for comp in @computadores %>
+              <%if comp.tipo_controle.nome == 'ADMINITRAÇÃO' then%>
+              <%if comp.unidade_id != 53 then%>
+
+              <tr>
+                 <td bgcolor="#F5DEB3" valign="top"align="left"><font  size="1"><%=h comp.unidade.nome %></font></td>
+                 <td bgcolor="#F5DEB3" valign="top"align="left"><font  size="1"><%=h comp.config %></font></td>
+                 <td bgcolor="#F5DEB3" valign="top"><font  size="1"><%=h comp.quant %></font></td>
+                 <%$totalC1= $totalC1 + comp.quant%>
+              </tr>
+              <tr>
+                <td colspan="4" bgcolor="#F5DEB3">
+                <div class="botao">
+                  <table>
+                    <td bgcolor="#F5DEB3"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), comp, :title => "Exibir Dados" %></td>
+                 </table>
+               </div>
+               </td>
+              </tr>
+             <% end %>
+             <% end %>
+             <% end %>
+           <tr>
+            <td bgcolor="#F5DEB3" colspan="3" align="left"><font  size="2"><b> Total => <%= $totalC1 %></b></font> </td>
+          </tr>
+
+           </table>
+          </filedset>
+         </td>
+         <td bgcolor="#F5DEB3" valign="top" width="50%">
+             <fieldset><legend><font  size=2> Pertencente à Terceiros</font></legend>
+              <table  border="1" width="100%">
+                <%$totalC2 = 0%>
+               <tr>
+                  <th  valign="top" align="left" bgcolor="orange"><font  size="1">Unidade</font></th>
+                  <th  valign="top" align="left" bgcolor="orange"><font  size="1">Pertence</font></th>
+                  <th  valign="top"align="center" bgcolor="orange"><font  size="1">Nº</font></th>
+
+               </tr>
+              <% for comp in @computadores %>
+              <%if comp.tipo_controle.nome == 'TERCEIROS' then%>
+              <%if comp.unidade_id != 53 then%>
+              <tr>
+                 <td bgcolor="#F5DEB3" valign="top"align="left"><font  size="1"><%=h comp.unidade.nome %></font></td>
+                 <td bgcolor="#F5DEB3" valign="top"align="left"><font  size="1"><%=h comp.pertence %></font></td>
+                 <td bgcolor="#F5DEB3" valign="top"><font  size="1"><%=h comp.quant %></font></td>
+                 <%$totalC2 = $totalC2 + comp.quant%>
+              </tr>
+              <tr>
+                <td bgcolor="#F5DEB3" colspan="3">
+                <div class="botao">
+                  <table>
+                    <tr>
+                       <td bgcolor="#F5DEB3"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), comp, :title => "Exibir Dados" %></td>
+                    </tr>
+                 </table>
+               </div>
+               </td>
+              </tr>
+             <% end %>
+             <% end %>
+             <% end %>
+            <tr>
+              <td bgcolor="#F5DEB3" colspan="3" align="left"><font  size="2"><b> Total => <%= $totalC2 %></b></font> </td>
+            </tr>
+
+           </table>
+         </td>
+        </table>
+     </fieldset>
+     </td>
+    </tr>
+    <tr>
+    <div class="botao">
+      <td align="left" width="6%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+     </div>
+      <td colspan="3" align="left"><font color="black"size="2"><b> TOTAL GERAL COMPUTADORES: <%= $totalC2 + $totalC1 + $totalC + $totals%></b></font> </td>
+    </tr
+   </table>
+  </td>
+  </tr>
+
+ </table>
+<br/>
+
+</font>

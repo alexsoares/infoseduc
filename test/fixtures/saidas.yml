@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  estoque: 
+  estagiario: 
+  quantidade: 1
+  data_saida: 
+  destino: MyString
+  obs: MyText
+
+two:
+  estoque: 
+  estagiario: 
+  quantidade: 1
+  data_saida: 
+  destino: MyString
+  obs: MyText

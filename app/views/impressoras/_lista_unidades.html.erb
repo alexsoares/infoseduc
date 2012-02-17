@@ -1,0 +1,53 @@
+
+ <table  align="center" width="100%">
+  <td>
+   <br/>
+    <font  size="2">
+    <table border="2" width="100%">
+      <%$impr = 0%>
+      <tr>
+        <th>Unidade</th>
+        <th>Tipo Controle</th>
+        <th>Quantidade</th>
+        <th>Configuração</th>
+        <th>Usuário</th>
+        <th>Nº Patrimônio</th>
+      </tr>
+     <% for imp in @impressoras %>
+      <tr>
+       <td><%=h imp.unidade.nome %></td>
+       <td><%=h imp.tipo_controle.nome %></td>
+       <td><%=h imp.quant %></td>
+       <td><%=h imp.config %></td>
+       <td><%=h imp.user %></td>
+       <%if imp.tipo_controle.nome == 'TERCEIROS'%>
+         <td><%=h imp.pertence %></td>
+       <%else%>
+         <td align="left"><%=h imp.pat %></td>
+        <%end%>
+        
+     </tr>
+       <%$impr = $impr + imp.quant%>
+    <tr>
+      <td colspan="7">
+        <div class="botao">
+        <table>
+           <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), imp, :title => "Exibir Dados" %></td>
+            <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+               <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_impressora_path(imp), :title => "Alterar Dados"%></td>
+                 <% if current_user.has_role?('administrador')%>
+                      <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), imp, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+                 <%end%>
+            <%end%>
+        </table>
+        </div>
+       </td>
+    </tr>
+    <% end %>
+    <tr>
+       <td align="left"colspan="7"><font color="black">Total de Computadores  => <%=  $impr%></font></td>
+    </tr>
+   </table>
+   </font>
+  </table>
+

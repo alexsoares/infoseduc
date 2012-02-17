@@ -1,0 +1,71 @@
+<div id="pos">
+<div id="lofslidecontent45" class="lof-slidecontent">
+<div class="preload"><div></div></div>
+ <!-- MAIN CONTENT -->
+  <div class="lof-main-outer">
+  	<ul class="lof-main-wapper">
+      <% unless (@imagens.present?)%>
+
+  		<li>
+             <%= image_tag("default.jpg", :title => "Prefeitura de Americana", :size => "400x400") %>
+             <div class="lof-main-item-desc">
+              <h3><a target="_parent" title="Americana" href="#">Prefeitura de Americana</a></h3>
+              <p>Um governo de trabalho</p>
+             </div>
+        </li>
+       <li>
+             <%= image_tag("rede_conhecimento.jpg", :title => "Secretaria de Educação", :size => "400x400")       %>
+        	 <div class="lof-main-item-desc">
+                <h3><a target="_parent" title="Newsflash 1" href="#">Secretaria de Educação</a></h3>
+                <p>Secretaria de Educação</p>
+
+             </div>
+        </li>       
+      <%else%>
+        <% @imagens.each do |image| %>
+          <li>
+            <%= image_tag(image.imagem.url(:thumb), :title => "#{image.titulo}_#{image.id}", :size => "400x400") %>
+            <div class="lof-main-item-desc">
+                <h3><%= link_to "#{image.titulo}-#{image.id}",image, :target => "_parent", :title => "#{image.titulo}" %></h3>
+                <p><%= image.descricao_curta %></p>
+            </div>
+          </li>
+        <%end%>
+      <%end%>
+    </ul>
+  </div>
+  <!-- END MAIN CONTENT -->
+    <!-- NAVIGATOR -->
+
+  <div class="lof-navigator-outer">
+  		<ul class="lof-navigator">
+          <%unless (@imagens.present?)%>
+            <li>
+            	<div>
+                    <%= image_tag("default.jpg", :title => "Prefeitura de Americana", :size => "400x400") %>
+                	<h3> Prefeitura de Americana </h3>
+                  	<span>Um governo de trabalho</span>
+                </div>
+            </li>
+
+             <li>
+             	<div>
+                    <%= image_tag("rede_conhecimento.jpg", :title => "Secretaria de Educação", :size => "400x400")       %>
+                 	<h3> Secretaria de Educação </h3>
+                  	<span>Secretaria de Educação</span>
+                </div>
+          <%else%>
+            <% @imagens.each do |f| %>
+              <li>
+                  <div>
+                    <%= image_tag(f.imagem.url) %>
+                    <h3> <%= f.titulo %></h3>
+                    <span><%= f.created_at.strftime("%d/%m/%Y - %H:%M") %></span> - <%= f.descricao_curta %>
+                  </div>
+              </li>
+            <%end%>
+          <%end%>
+        </ul>
+  </div>
+ </div>
+ </div>

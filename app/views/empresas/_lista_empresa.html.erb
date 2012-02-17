@@ -1,0 +1,25 @@
+<br/>
+<font size="2">
+<table  border="1"  width="100%">
+  <tr>
+    <th width="30%">Nome:</th>
+    <th width="20%">Tipo:</th>
+    <th width="30%">Fone:</th>
+    <th></th>
+    
+  </tr>
+<% for emp in @empresas  %>
+  <tr>
+    <td><font size="2"><%=h emp.nome %></font></td>
+    <td><font size="2"><%=h emp.tipo_servico %></font></td>
+    <td><font size="2"><%=h emp.telefone %></font></td>
+      
+        <% if current_user.has_role?('administrador')%>
+           <td align="center"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), emp, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+        <%end%>
+      
+  </tr>
+<% end %>
+</table>
+
+</font>

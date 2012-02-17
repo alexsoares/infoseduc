@@ -1,0 +1,81 @@
+<br/>
+<font size="2">
+<table class="tabelas"width="40%"align="center">
+  <tr>
+    <td colspan="2" align="left">
+       <font  size=5 color="black"> <b> EQUIPAMENTO</b></font>
+    </td>
+  </tr>
+  <tr>
+    <td>
+     <table width="100%">
+         <tr>
+          <td>
+            <fieldset><legend><font  size=3> Entrada</font></legend>
+              <%= render 'show' %>
+           </fieldset>
+          </td>
+          </tr>
+          <tr>
+            <td>
+             <fieldset><legend><font  size=3> Procedimentos</font></legend>
+              <table>
+                <tr>
+                  <td align="left"><b>Quem Verificou:</b></td>
+                  <% if @equipamento.estagiario_id.nil? %>
+                    <td align="left"></td>
+                  <%else%>  
+                    <td align="left"colspan="5"><%=h @equipamento.estagiario.nome %></td>
+                 <%end%>
+                </tr>
+                <tr>
+                  <td align="left" width="20%"><b>Procedimentos Executados:</b></td>
+                  <td align="left"colspan="5"><%=h @equipamento.procedimento %></td>
+                </tr>
+                <tr>
+                  <td align="left"><b>Instalações:</b></td>
+                  <td align="left"colspan="5"><%=h @equipamento.instalacao %></td>
+                </tr>
+                <tr>
+                  <td align="left"><b>Data </b></td>
+                  <td align="left" colspan="2"><%=h @equipamento.dataexec.strftime("%d de %B de %Y") %></td>
+                  <td align="left" colspan="3"><b>Nº Ordem Serviço:</b><%=h @equipamento.os %></td>
+                </tr>
+                <tr>
+                  <td align="left"><b>Destinação:</b></td>
+                  <td align="left"colspan="5"><%=h @equipamento.destinacao %></td>
+                </tr>
+                <tr>
+                  <td align="left"><b>Encerrado:</b></td>
+                  <% if  @equipamento.encerrado == 0  %>
+                     <td align="left"colspan="5">Não</td>
+                  <%else%>
+                     <td align="left"colspan="5">Sim em <%=h @equipamento.datasaida.strftime("%d de %B de %Y") %></td>
+                  <%end%>
+                </tr>
+                <tr>
+                  <td align="left"><b>Observações:</b></td>
+                  <td align="left"colspan="5"><%=h @equipamento.obs  %></td>
+                </tr>
+             </table>
+            </fieldset>
+           </td>
+         </tr>
+       </table>
+     <div class="botao">
+    <table>
+    <tr>
+      <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+        <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+          <td align="left" width="4%" ><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_equipamento_path(@equipamento), :title => "Alterar Dados"%></td>
+       <%end%>
+     <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+    </tr>
+  </table>
+  </div>
+ </td>
+</tr>
+</table>
+</font>
+<br/>
+

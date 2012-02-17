@@ -1,0 +1,7 @@
+           
+     <%= collection_select :administracao, :unidade_id, @unidades, :id, :nome, :include_blank => ' -- Selecione -- '  %>
+                        <%= observe_field 'administracao_unidade_id',
+                           :update => "listagem",
+                           :url    => { :action => 'lista_tipounidades' },
+                           :with   => 'administracao_unidade_id' %>
+

@@ -1,0 +1,56 @@
+<br/><br/>
+<table class="tabelas" align="center" width="100%">
+  <tr>
+     <td colspan="2" align="left">
+       <font  size=5 color="black"> <b>  DEPARTAMENTOS SEDUC</b></font>
+    </td>
+   </tr>
+ <tr>
+   <td>
+    <font  size="2">
+     <table width="100%"  >
+      <tr>
+        <td width="50%" valign="top">
+          <% form_for(@departamentos) do |f| %>
+            <fieldset><legend><font  size=4> Cadastrar</font></legend>
+             <table>
+               <tr>
+                 <td width="20%"align="left" colspan="3"><b>Departamento:</b>
+                       <%= f.text_field :depto, :size => 25%>
+                        <%= observe_field 'departamento_depto',
+                          :frequency => 0.1,
+                          :update => "cadastrados",
+                          :with => :departamento_depto,
+                         :url => { :action => 'lista' } %>
+                </td>
+              </tr>
+              <tr>
+                <div class="botao">
+                   <div id='Certeza'>
+                     <td width="1%" align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+                   </div>
+                   <td width="1%"align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
+                   <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+                 </div>
+              </tr>
+             </table>
+            </fieldset>
+          <%end%>
+         </td>
+         <td width="50%" valign="top">
+             <fieldset><legend><font  size=4> Cadastrados</font></legend>
+              <table width="100%">
+               <tr>
+                  <td align="left">
+                    <div id="cadastrados"></div>
+                  </td>
+               </tr>
+              </table>
+             </fieldset>
+           </td>
+      </tr>
+    </table>
+    </font>
+  </td>
+</table>
+<br/>

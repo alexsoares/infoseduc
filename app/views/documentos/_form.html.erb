@@ -1,0 +1,42 @@
+<% form_for([@externo,@documento], :html => {:multipart=>true}) do |f| %>
+<%= f.error_messages %>
+ <font  size="2">
+ <table class="tabelas" width="60%" align="center">
+  <tr>
+    <td colspan="2" align="left">
+    <font  size=5><b> DOCUMENTO ANEXO</b></font>
+   </td>
+  </tr>
+  <tr>
+   <td>
+     <fieldset><legend><font  size=4> Documento</font></legend>
+     <table>
+       <tr>
+         <td align="left"><b>Titulo:</b></td>
+         <td align="left"><%= f.text_field :titulo, :size =>35 %></td>
+       </tr>
+       <tr>
+         <td align="left" valign="top"><b>Descrição:</b></td>
+         <td align="left"><%= f.text_area(:descricao, :cols =>"45", :rows => "6") %></td>
+       </tr>
+       <tr>
+         <td align="left"><b>Path:</b></td>
+         <td align="left"><%= f.file_field :documento, :size => 20 %>
+       </tr>
+       <tr>
+         <td align="left"><b>Chamado nº<%= @externo.id %></b>
+         <td align="left"> --   Para empresa: <%= @externo.empresa.nome %></td>
+        </tr>
+      </table>
+     </fieldset>
+     <table>
+      <tr>
+         <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+        <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
+        <%end%>
+      </tr>
+    </table>
+   </td>
+  </tr>
+</table>
+</font>

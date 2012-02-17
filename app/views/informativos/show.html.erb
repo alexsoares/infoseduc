@@ -1,0 +1,55 @@
+<font size="2">
+<table  class="tabelas" width="100%"align="center">
+  <tr>
+       <td colspan="2" align="left">
+         <font  size=5 color="black"> <b> <%="Informativo nº #{@informativo.id} - de #{@informativo.created_at.strftime("%d/%m%Y %H:%M")}" %></b></font>
+       </td>
+      </tr>
+ <tr>
+   <td>
+      <table width="100%">
+        <tr>
+          <td width="50%">
+            <br/>
+            <fieldset>
+              <legend><font size="4">Período de exibição</font></legend>
+                <table width="100%">
+                  <tr>
+                    <td><font size="2"><b>De:</b></font></td>
+                    <td align="left"><font size="2"><%=h @informativo.starts_at.strftime("%d/%m/%Y %H:%m") %></font></td>
+                    <td><font size="2"><b>Até:</b></font></td>
+                    <td align="left"><font size="2"><% t = @informativo.ends_at %>
+                         <%=h @informativo.ends_at.strftime("%d/%m/%Y %H:%m") %></font>
+                    </td>
+                  </tr>
+
+                </table>
+            </fieldset>
+          </td>
+          <td>
+            <br/>
+            <fieldset>
+              <legend><font size="4">Mensagem</font></legend>
+               <table width="100%">
+                  <tr>
+                    <td align="left"><font size="2"> <%=h @informativo.mensagem %></font></td>
+                  </tr>
+               </table>
+            </fieldset>
+          </td>
+        </tr>
+      </table>
+     <table>
+      <tr>
+        <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+          <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+            <td align="left" width="4%" ><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_informativo_path(@informativo), :title => "Alterar Dados"%></td>
+          <%end%>
+        <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+</font>
+<br/>

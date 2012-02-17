@@ -1,0 +1,57 @@
+<br/>
+<font size="2">
+<table  class="tabelas" width="40%"align="center">
+ <tr>
+   <td colspan="2" align="left">
+    <font  size=5 color="black"> <b> EMPRESTIMO DATASHOW</b></font>
+   </td>
+ </tr>
+ <tr>
+  <td>
+    <fieldset><legend><font  size=4> Dados Emprestimo </font></legend>
+      <table width="100%">
+        <tr>
+          <td width="36%"align="left"><font size=2><b>Unidade:</b></font></td>
+          <td align="left"><font size=2><%=h @emprestimo.unidade.nome %></font></td>
+       </tr>
+       <%if @emprestimo.unidade_id == 53 then%>
+         <tr>
+            <td align="left"><font size=2><b>Departamento:</b></font></td>
+            <td align="left"><font size=2><%=h @emprestimo.departamento.depto %></font></td>
+         </tr>
+       <%end%>
+        <tr>
+           <td align="left"><font size=2><b>Data Emprestimo:</b></font></td>
+           <td align="left"><font size=2><%=h @emprestimo.emprestimo.strftime("%d/%m/%Y") %></font></td>
+       </tr>
+       <tr>
+           <td align="left"><font size=2><b>Data Devolução:</b></font></td>
+           <td align="left"><font size=2><%=h @emprestimo.devolucao.strftime("%d/%m/%Y") %></font></td>
+      </tr>
+      <tr>
+          <td align="left"><font size=2><b>Responsável:</b></font></td>
+          <td align="left"><font size=2><%=h @emprestimo.responsavel %></font></td>
+      </tr>
+      <tr>
+         <td align="left"><font size=2><b>Observações:</b></font></td>
+         <td align="left"><font size=2><%=h @emprestimo.obs %></font></td>
+      </tr>
+     </table>
+    </fieldset>
+    <table>
+        <tr>
+          <td width="4%"align="left" ><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+          <td width="4%"align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+          <td width="4%"><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "40x40"), new_emprestimo_path,  :title => "Agendar" %></td>
+          <% if current_user.has_role?('administrador') %>
+               <td align="left" width="4%" ><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"),{:action => "edit", :id => @emprestimo}, :title => "Alterar "%></td>
+               <td align="left" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), {:action => "destroy", :id =>@emprestimo}, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+          <%end%>
+      
+       </tr>
+   </table>
+  </td>
+ </tr>
+</table>
+</font>
+<br/>

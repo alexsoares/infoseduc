@@ -1,0 +1,46 @@
+<br/>
+<font size="2">
+<table  class="tabelas" width="50%"align="center">
+ <tr>
+   <td colspan="2" align="left">
+      <font  size=5 color="black"> <b> ORDEM DE SERVIÇO INTERNO</b></font>
+   </td>
+ </tr>
+ <tr>
+   <td>
+    <font  size="2">
+     <table width="100%">
+      <tr> 
+        <td>
+          <%= render 'formshow' %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <font><b>
+            >> ESTA ORDEM DE SERVIÇO SERÁ ATENDIDA ASSIM QUE POSSÍVEL<br/>
+            >> QUALQUER DÚVIDA ENTRAR EM CONTARO COM A INFORMÁTICA- SEDUC
+          </b></font>
+         </td>
+      </tr>
+       <div class="botao">
+       <table>
+        <tr>
+          <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+          <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+            <td align="left" width="4%" ><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_chamado_path(@chamados), :title => "Alterar OS"%></td>
+          <%end%>
+          <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+        </tr>
+      </table>
+      </div>
+     </table>
+   </font>
+ </td>
+ </tr>
+</table>
+</font>
+<br/>
+
+
+

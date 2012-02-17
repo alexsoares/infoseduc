@@ -1,0 +1,45 @@
+<br/><br/><br/>
+<table class="tabelas" align="center" width="80%">
+  <tr>
+     <td colspan="2" align="left">
+       <font  size=5 color="black"> <b>  IMPRESSORAS - CONSULTA POR PERTENCE</b></font>
+    </td>
+  </tr>
+  <tr>
+    <td>
+    <br/>
+    <table>
+     <tr>
+      <td>
+        <div class="botao">
+        <table>
+          <tr>
+            <td>
+               <font  size="4"> Pertence: <%= collection_select :impressora, :tipo_controle_id, @tipo_controles, :id, :nome, :include_blank => ' -- Selecione -- '  %></font>
+             </td>
+          </tr>
+       </table>
+       </div>
+      </td>
+    <tr>
+      <td>
+      <%= observe_field 'impressora_tipo_controle_id',
+           :update => "listagem",
+           :url    => { :action => 'lista_tipos' },
+           :with   => 'impressora_tipo_controle_id' %>
+        <div id="listagem"> </div>
+     </td>
+   </tr>
+   <div class="botao">
+   <table width="100%">
+    <tr>
+       <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+       <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+    </tr>
+  </table>
+ </div>
+  </table>
+</table>
+<br/>
+  
+

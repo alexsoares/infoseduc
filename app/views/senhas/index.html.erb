@@ -1,0 +1,93 @@
+ <table class="tabelas"  align="center" width="100%">
+  <tr>
+       <td align="left">
+         <font  size=5 color="black"> <b>SENHAS</b></font>
+       </td>
+      </tr>
+ <tr>
+  <td>
+   <br/>
+   <div class="botao">
+   <table width="100%">
+    <tr>
+      <td width="1%" align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+      <td width="1%"align="left" ><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "30x30"), new_senha_path, :title => "Cadastrar" %></td>
+      <td align="right">
+        <div class="botao">
+          <table>
+            <tr>
+              <% form_tag senhas_path, :method => 'get' do %>
+              <td align="right"><font size="4"> Digite local:</font>
+                 <%= text_field_tag :search, params[:search] %>
+               <td align="left"><input type="image" src="/stylesheets/images/buscar.png" title="Buscar">
+              </td>
+              <% end %>
+           </tr>
+     </table>
+     </div>
+     </td>
+   </tr>  
+   <tr>
+     <% if  $var == 0 then %>
+        <td width="20%" align="left" colspan="4"><%= will_paginate @senhas %></td>
+      <%end%>
+
+
+   </tr>
+  </table>
+  <br/>
+  </div>
+    <font  size="2">
+    <table border="2" width="100%">
+
+     <tr>
+        <th>Local</th>
+        <th>De</th>
+        <th>Usuario</th>
+        <th>Senha</th>
+        <th>Fone Instalado</th>
+        <th>Observações</th>
+    </tr>
+    <% for senhas in @senhas %>
+    <tr>
+        <td><%=h senhas.unidade.nome %></td>
+        <td><%=h senhas.de %></td>
+        <td><%=h senhas.usuario %></td>
+        <td><%=h senhas.senha %></td>
+        <td><%=h senhas.fone %></td>
+        <td><%=h senhas.obs %></td>
+    </tr>
+    <tr>
+      <td colspan="12">
+        <div class="botao">
+        <table>
+            <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+               <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"),{:action => "edit", :id =>senhas}, :method => "get", :title => "Alterar Dados"%></td>
+                  <% if current_user.has_role?('administrador')%>
+                       <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), senhas, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+                     <%end%>
+               <%end%>
+        </table>
+        </div>
+       </td>
+    </tr>
+    <% end %>
+   </table>
+   </font>
+  <div class="botao">
+   <table width="100%">
+    <tr>
+      <td width="1%" align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+      <td width="1%"align="left" ><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "30x30"), new_senha_path, :title => "Cadastrar" %></td>     <% if  $var == 0 then %>
+        <td align="left" colspan="4"><%= will_paginate @senhas %></td>
+      <%end%>
+   </tr>
+  </table>
+  </div>
+  </table>
+
+<br/>
+
+
+
+

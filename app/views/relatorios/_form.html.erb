@@ -1,0 +1,57 @@
+<% form_for(@relatorios) do |f| %>
+<%= f.error_messages %>
+<font  size="2">
+ <table class="tabelas" width="60%" align="center" >
+  <tr>
+   <td colspan="2" align="left">
+     <font  size=5><b> RELATÓRIOS ITINERANTES</b></font>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <fieldset><legend><font  size=4> Relatório</font></legend>
+    <table>
+        <tr>
+         <td align="left"><b>Unidade:</b></td>
+         <td align="left"><%= f.collection_select :unidade_id, @unidades, :id, :nome, :include_blank => ' -- Selecione -- ' %>
+       </tr>
+       <tr>
+         <td align="left"><b> Estagiário:</b></td>
+         <td align="left"><%= f.collection_select :estagiario_id, @estagiarios, :id, :nome, :include_blank => ' -- Selecione -- ' %></td>
+
+       </tr>
+       <tr>
+         <td align="left"><b>Responsável Unidade:</b></td>
+         <td align="left"><%= f.text_field :responsavel, :size =>42 %></td>
+       </tr>
+       <tr>
+         <td align="left"><b>Data:</b></td>
+         <td align="left"><%= f.date_select(:data, :order => [:day, :month, :year], :start_year => (Date.today.year)) %></td>
+       </tr>
+       <tr>
+         <td  valign="top"align="left"><b>Descrição Problemas Encontrados:</b></td>
+         <td align="left" > <%= f.text_area :problema, :cols =>"54", :rows => "3"%></td>
+       </tr>
+       <tr>
+         <td  valign="top"align="left"><b>Descrição Procedimento Realizados:</b></td>
+         <td align="left"> <%= f.text_area :procedimentos, :cols =>"54", :rows => "3"%></td>
+       </tr>
+       <tr>
+        <td valign="top" align="left"><b>Observações:</b></td>
+        <td align="left"><%= f.text_area(:obs, :cols =>"54", :rows => "2") %></td>
+       </tr>
+     </table>
+     </fieldset>
+     <table align="left" width="60%">
+       <tr>
+           <div id='Certeza'>
+              <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+            </div>
+            <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
+          <% end %>
+       </tr>
+     </table>
+    </td>
+  </tr>
+  </table>
+</font>

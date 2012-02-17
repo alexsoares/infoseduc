@@ -1,0 +1,58 @@
+<% form_for(@informativo) do |f| %>
+  <%= f.error_messages %>
+  <font  size="2">
+<table class="tabelas" width="100%" align="center">
+  <tr>
+   <td colspan="2" align="left">
+     <font  size=5><b> INFORMATIVO</b></font>
+   </td>
+  </tr>
+     <tr>
+      <td width="50%">
+          <table width="100%">
+            <tr>
+              <td width="52%" valign="top">
+                <fieldset>
+                  <legend><font  size=4>Período de exibição</font></legend>
+                    <table >
+      
+                      <tr>
+                        <td><%= f.label :starts_at,"De:" %></td>
+                        <td><%= f.datetime_select :starts_at %></td>
+                      </tr>
+                      <tr>
+                        <td><%= f.label :ends_at,"Até" %></td>
+                        <td><%= f.datetime_select :ends_at %></td>
+                       </tr>
+                     <tr></tr>
+                     <tr></tr>
+                     </table>
+                </fieldset>
+
+              </td>
+
+              <td valign="top">
+                <fieldset>
+                  <legend><font  size=4>Informação a ser repassada</font></legend>
+                  <%= f.text_area :mensagem, :rows => 4, :cols => 48  %>
+                </fieldset>
+              </td>
+
+            </tr>
+
+        </table>
+          <table>
+              <tr>
+                <div id='Certeza'>
+                  <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+                </div>
+                <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
+              <% end %>
+              </tr>
+            </table>
+       </table>
+    </table>
+
+        <br/>
+ </font>
+

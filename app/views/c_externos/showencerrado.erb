@@ -1,0 +1,76 @@
+<br/>
+<font  size="2">
+<table width="100%" align="center">
+ <tr>
+  <td>
+   <fieldset><legend><font  size=5> ORDEM SERVIÇO EXTERNO</font></legend>
+     <table>
+       <tr>
+         <td width="45%" valign="TOP">
+           <%= render 'formshow' %>
+         </td>
+        <td>
+         <fieldset><legend><font  size=4> Solcitação Realizada</font></legend>
+           <table>
+               <tr>
+                  <td align="left" width="37%"><b>Nº Protocolo:</b></td>
+                  <td align="left" colspan="2"><%=h @c_externo.id %></td>
+               </tr>
+              <tr>
+                <td align="left" width="37%"><b>Empresa:</b></td>
+                <td align="left" colspan="2"><%=h @c_externo.empresa.nome %></td>
+              </tr>
+              <tr>
+                <td align="left" width="20%"><b>Unidade:</b></td>
+                <td align="left" colspan="2"><%=h @c_externo.unidade.nome %></td>
+              </tr>
+              <tr>
+                <td align="left" width="20%"><b>Tipo  Serviço:</b></td>
+                <td align="left" colspan="2"><%=h @c_externo.tipo_osexterna.tipo %></td>
+              </tr>
+              <tr>
+                <td align="left"><b>Nº Protocolo / OS:</b></td>
+                <td align="left"colspan="2"><%=h @c_externo.protocolo %></td>
+              </tr>
+              <tr>
+                <td align="left"><b>Atendente:</b></td>
+                <td align="left"colspan="2"><%=h @c_externo.atendente %></td>
+              </tr>
+              <tr>
+                <td align="left"><b>Data e Hora Atendimento:</b></td>
+                <td align="left"colspan="2"><%=h  @c_externo.data_hora.strftime("%d/%m/%Y") %></td>
+              </tr>
+              <tr>
+                <td align="left"><b>Observações:</b></td>
+                <td align="left"colspan="2"><%=h  @c_externo.obs %></td>
+              </tr>
+              <% if @c_externo.situacao == 1 then %>
+                <tr>
+                  <td align="left"><b>Situação:</b></td>
+                  <td align="left"> Chamado ENCERRADO em </td>
+                   <td align="left"><%=h  @c_externo.data_encerra.strftime("%d/%m/%Y") %></td>
+                </tr>
+              <%else%>
+                <tr>
+                  <td align="left"><b>Situação:</b></td>
+                  <td align="left" colspan="2"> Chamado NÂO ENCERRADO </td>
+                </tr>
+            <%end%>
+         </table>
+        </fieldset>
+      </td>
+     </tr>
+       <div class="botao">
+         <table width="50%" align="left">
+          <tr>
+           <td align="left" width="8%"><%= button_to 'Voltar', homes_path, {:method => "get"} %></td>
+           <td align="left"><input type="Button" Value="Imprimir" onclick="javascript:window.print()"></td>
+          </tr>
+        </table>
+       </div>
+        </table>
+  </fieldset>
+ </td>
+ </tr>
+</table>
+<br/>

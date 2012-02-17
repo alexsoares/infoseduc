@@ -1,0 +1,47 @@
+<h1>New protocolo</h1>
+
+<% form_for(@protocolo) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :unidade %><br />
+    <%= f.text_field :unidade %>
+  </p>
+  <p>
+    <%= f.label :problema %><br />
+    <%= f.text_field :problema %>
+  </p>
+  <p>
+    <%= f.label :solicitante %><br />
+    <%= f.text_field :solicitante %>
+  </p>
+  <p>
+    <%= f.label :data_sol %><br />
+    <%= f.datetime_select :data_sol %>
+  </p>
+  <p>
+    <%= f.label :solicitado %><br />
+    <%= f.text_field :solicitado %>
+  </p>
+  <p>
+    <%= f.label :atendente %><br />
+    <%= f.text_field :atendente %>
+  </p>
+  <p>
+    <%= f.label :solicitacao %><br />
+    <%= f.text_field :solicitacao %>
+  </p>
+  <p>
+    <%= f.label :protocolo %><br />
+    <%= f.text_field :protocolo %>
+  </p>
+  <p>
+    <%= f.label :obs %><br />
+    <%= f.text_field :obs %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', protocolos_path %>

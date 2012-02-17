@@ -1,0 +1,59 @@
+<br/>
+<font size="2">
+<table  class="tabelas" width="50%"align="center">
+<tr>
+ <td>
+   <table>
+     <tr>
+       <td colspan="2" align="left">
+         <font  size=5 color="black"> <b> RELATÓRIO ITINERÂNCIA</b></font>
+       </td>
+      </tr>
+    </table>
+      <fieldset><legend><font  size=4> Relatório</font></legend>
+      <% form_for(@relatorios) do |f| %>
+      <%= f.error_messages %>
+      <font  size="2">
+      <table width="100%">
+
+        <tr>
+          <td width="10%"align="left"><b>Estagiário:</b></td>
+          <td align="left"><%=h @relatorios.estagiario.nome %></td>
+        </tr>
+        <tr>
+          <td align="left"><b>Data:</b></td>
+          <td align="left"><%=h @relatorios.data.strftime("%d de %B de %Y") %></td>
+        </tr>
+
+        <tr>
+          <td align="left"><b>Unidade:</b></td>
+          <td align="left"><%=h @relatorios.unidade.nome %></td>
+        </tr>
+        <tr>
+          <td align="left"><b>Responsável:</b></td>
+          <td align="left"><%=h @relatorios.responsavel %></td>
+        </tr>
+        <tr>
+          <td align="left"><b>Problemas:</b></td>
+          <td align="left"><%=h @relatorios.problema %></td>
+        </tr>
+        <tr>
+          <td align="left"><b>Procedimentos:</b></td>
+          <td align="left"><%=h @relatorios.procedimentos %></td>
+        </tr>
+      </table>
+      </font>
+      <%end%>
+      </fieldset>
+      <div class="botao">
+         <table width="60%" align="left">
+          <tr>
+             <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+             <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>          </tr>
+        </table>
+       </div>
+     </td>
+   </tr>
+ </table>
+<br/>
+</font>

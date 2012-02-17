@@ -1,0 +1,72 @@
+<br/>
+<font size="2">
+<table class="tabelas"width="40%"align="center">
+  <tr>
+     <td colspan="2" align="left">
+         <font  size=5 color="black"> <b> LANÇAMENTO SAIDA</b></font>
+      </td>
+ </tr>
+ <tr>
+  <td>
+   <table>
+
+    </table>
+    <fieldset><legend><font  size=4> Dados Lançamento</font></legend>
+    <% form_for(@saidas) do |f| %>
+    <%= f.error_messages %>
+    <font  size="2">
+    <table width="100%">
+      <tr>
+        <td width="30%" align="left"><b>Produto:</b></td>
+        <td align="left"><%=h @saidas.componente.nome %></td>
+      </tr>
+      <tr>
+         <td align="left"><b>Especificação:</b></td>
+       <td align="left"><%=h @saidas.estoque.especifica %></td>
+      </tr>
+      <tr>
+        <td align="left"><b>  Quem retirou:</b></td>
+        <td align="left"> <%=h @saidas.estagiario.nome%>
+      </tr>
+      <tr>
+        <td align="left"><b>Quantidade:</b></td>
+        <td align="left"> <%=h @saidas.quantidade%>
+      </tr>
+      <tr>
+        <td align="left"><b> Data:</b></td>
+        <td align="left"> <%=h @saidas.data_saida.strftime("%d de %B de %Y")  %>
+      </tr>
+      <tr>
+        <td align="left"><b> Destino:</b></td>
+        <td align="left"> <%=h @saidas.unidade.nome%>
+      </tr>
+      <tr>
+        <td align="left"><b>Observação:</b></td>
+        <td align="left"><%=h @saidas.obs %></td>
+      </tr>
+      <tr>
+        <td align="left"><b> Data Lançamento:</b></td>
+        <td align="left"> <%=h @saidas.created_at.strftime("%d de %B de %Y")  %>
+      </tr>
+        <tr>
+        <td align="left"><b> Data Alteração:</b></td>
+        <td align="left"> <%=h @saidas.updated_at.strftime("%d de %B de %Y")  %>
+      </tr>
+       <%end%>
+     </table>
+    </fieldset>
+       <div class="botao">
+         <table>
+          <tr>
+             <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+             <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+          </tr>
+        </table>
+       </div>
+       </table>
+     </font>
+  </td>
+ </tr>
+</table>
+<br/>
+

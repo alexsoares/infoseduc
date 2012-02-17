@@ -1,0 +1,121 @@
+<br/>
+<font size="2">
+<table  class="tabelas" width="50%"align="center">
+  <tr>
+    <td colspan="2" align="left">
+        <font  size=5 color="black"> <b> UNIDADE</b></font>
+    </td>
+  </tr>
+  <tr>
+    <td>
+       <fieldset><legend><font  size=4> Dados Unidade</font></legend>
+        <table width="100%">
+          <tr>
+            <td align="left"><b>Nome:</b></td>
+            <td align="left"><%=h @unidades.nome %></td>
+          </tr>
+          <tr>
+            <td align="left"><b>Endereço:</b></td>
+            <td align="left"><%=h @unidades.endereco %> Nº<%=h @unidades.num %></td>
+          </tr>
+          <tr>
+            <td align="left"><b>Complemento:</b></td>
+            <td align="left"><%=h @unidades.complemento %></td>
+          </tr>
+          <tr>
+            <td align="left"><b>Bairro:</b></td>
+            <td align="left"><%=h @unidades.bairro %></td>
+          </tr>
+          <tr>
+            <td align="left"><b>Fone:</b></td>
+            <td align="left"><%=h @unidades.fone %></td>
+          </tr>
+          <tr>
+            <td align="left"><b>Tipo Ensino:</b></td>
+            <td align="left"><%=h @unidades.tipo.nome %></td>
+          </tr>
+          <% if @unidades.regiao_id.nil? then %>
+          <%else%>
+              <tr>
+                 <td align="left"><b>Região Itinerancia:</b></td>
+                 <td align="left"><%=h @unidades.regiao.regiao %></td>
+              </tr>
+         <%end%>
+          <tr>
+            <td align="left"><b>E_mail:</b></td>
+            <td align="left"><%=h @unidades.email %></td>
+          </tr>
+          <tr>
+            <td align="left"><b>Diretor:</b></td>
+            <td align="left"><%=h @unidades.diretor %></td>
+          </tr>
+          <tr>
+            <td align="left"><b>Diretor:</b></td>
+            <td align="left"><%=h @unidades.coordenador %></td>
+          </tr>
+          <tr>
+            <td align="left" valign="top"><b>Observações:</b></td>
+            <td align="left"><%=h @unidades.obs %></td>
+          </tr>
+          <tr>
+            <td align="left" valign="top"><b>Estagiários:</b></td>
+            <td align="left">
+             <%if (@unidades.estagiarioE == 1) then%>
+                <% @unidades.regiao.estagiarios.each do |est| %>
+                   <% if (est.desligado == 0 and est.periodo_trab == 'ITINERANTE') then%>
+                     <%=h est.nome %> (Itinerante)<br/>
+                  <%end%>
+                <%end%>
+             <%else%>
+             <%if (@unidades.estagiarioM == 1) then%>
+               <% @unidades.estagiarios.each do |est| %>
+                   <% if (est.desligado == 0 and est.periodo_trab == 'MATUTINO') then%>
+                     <%=h est.nome %> (mantutino)<br/>
+                  <%end%>
+                <%end%>
+               <%else%>
+                     Unidade sem estagiário Matutino <br/>
+               <%end%>
+
+              <%if (@unidades.estagiarioV == 1) then%>
+               <% @unidades.estagiarios.each do |est| %>
+                   <% if (est.desligado == 0 and est.periodo_trab == 'VESPERTINO') then%>
+                     <%=h est.nome %> (vespertino) <br/>
+                  <%end%>
+                <%end%>
+               <%else%>
+                     Unidade sem estagiário Vespertino <br/>
+               <%end%>
+              <%if (@unidades.estagiarioN == 1) then%>
+               <% @unidades.estagiarios.each do |est| %>
+                   <% if (est.desligado == 0 and est.periodo_trab == 'NOTURNO') then%>
+                     <%=h est.nome %> (noturno) <br/>
+                  <%end%>
+                <%end%>
+               <%else%>
+                     Unidade sem estagiário Noturno <br/>
+               <%end%>
+
+           <%end%>
+          </td>
+          </tr>
+         </table>
+        </fieldset>
+       <div class="botao">
+       <table>
+        <tr>
+          <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+          <td align="left" width="4%"> <%= link_to image_tag("/stylesheets/images/anexos.png", :size => "25x25"), anexos_path(:unidade => @unidades), :title => "Anexos referentes à Unidade" %></td>
+          <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+            <td align="left" width="4%" ><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_unidade_path(@unidades), :title => "Alterar Unidade"%></td>
+          <%end%>
+          <td align="left" width="4%" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+          <td align="left" colspan="1"><%= link_to image_tag("/stylesheets/images/Mapa.png", :size => "25x25"), geo_path(@unidades.id), :title => "Mapa" %></td>
+         </tr>
+      </table>
+      </div>
+      </td>
+    </tr>
+ </table>
+</font>
+<br/>

@@ -1,0 +1,46 @@
+<br/>
+<table  class="tabelas" width="50%"align="center">
+<tr>
+ <td>
+   <table>
+     <tr>
+       <td colspan="2" align="left">
+         <font  size=5 color="black"> <b> ROTEIRO CADASTRADO</b></font>
+       </td>
+      </tr>
+    </table>
+    <fieldset><legend><font  size=4> Roteiro</font></legend>
+    <table width="100%">
+      <tr>
+        <td align="left"><font size=2><b>Estagiário:</b></font></td>
+        <td align="left"><font size=2><%=h @itinerario.estagiario.nome %></font></td>
+      </tr>
+      <tr>
+        <td align="left"><font size=2><b>Unidade:</b></font></td>
+        <td align="left"><font size=2><%=h @itinerario.unidade.nome %></font></td>
+      </tr>
+      <tr>
+        <td align="left"><font size=2><b>Data Visita:</b></font></td>
+        <td align="left"><font size=2><%=h @itinerario.data_visita.strftime("%d/%m/%Y") %></font></td>
+      </tr>
+      <tr>
+        <td align="left"><font size=2><b>Observações:</b></font></td>
+        <td align="left"><font size=2><%=h @itinerario.obs %></font></td>
+      </tr>
+     </table>
+    </fieldset>
+      <table>
+         <tr>
+             <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+              <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                  <td align="left" width="4%" ><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"),  {:action => "edit", :id => @itinerario}, :method => "get", :title => "Alterar Dados"%></td>
+                <%end%>
+             <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+        </tr>
+      </table>
+
+   </td>
+  </tr>
+</table>
+<br/>
+

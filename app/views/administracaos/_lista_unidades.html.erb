@@ -1,0 +1,51 @@
+
+ <table  align="center" width="100%">
+  <td>
+   <div class="botao">
+   <table width="100%">
+    <tr>
+       <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+       <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+   </tr>
+  </table>
+  <br/>
+  </div>
+    <font  size="2">
+    <table border="2" width="100%">
+      <tr>
+        <th bgcolor="gray">Unidade</th>
+         <th bgcolor="gray">Pertence</th>
+        <th bgcolor="gray">Servidor</th>
+        <th bgcolor="gray">Rede</th>
+        <th bgcolor="gray">Internet</th>
+        <th bgcolor="gray">Obs</th>
+      </tr>
+     <% for administracaos in @administracao %>
+      <tr>
+       <td><%=h administracaos.unidade.nome %></td>
+       <td><%=h administracaos.tipo_controle.nome %></td>
+       <td><%=h administracaos.servidor %></td>
+       <td><%=h administracaos.rede %></td>
+       <td><%=h administracaos.internet %></td>
+       <td><%=h administracaos.obs %></td>
+     </tr>
+    <tr>
+      <td colspan="6">
+        <div class="botao">
+        <table>
+           <td><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), administracaos, :title => "Exibir Equipamentos" %></td>
+             <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+               <td><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), administracaos, :title => "Alterar Equipamentos" %></td>
+                  <% if current_user.has_role?('administrador')%>
+                     <td><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), administracaos, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir Equipamentos" %></td>
+                  <%end%>
+           <%end%>
+        </table>
+        </div>
+       </td>
+    </tr>
+    <% end %>
+   </table>
+   </font>
+  </table>
+

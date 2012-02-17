@@ -1,0 +1,85 @@
+class DepartamentosController < ApplicationController
+  # GET /departamentos
+  # GET /departamentos.xml
+  def index
+    @departamentos = Departamento.find(:all)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @departamentos }
+    end
+  end
+
+  # GET /departamentos/1
+  # GET /departamentos/1.xml
+  def show
+    @departamentos = Departamento.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @departamentos }
+    end
+  end
+
+  # GET /departamentos/new
+  # GET /departamentos/new.xml
+  def new
+    @departamentos = Departamento.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @departamentos }
+    end
+  end
+
+  # GET /departamentos/1/edit
+  def edit
+    @departamentos = Departamento.find(params[:id])
+  end
+
+  # POST /departamentos
+  # POST /departamentos.xml
+  def create
+    @departamentos = Departamento.new(params[:departamento])
+
+    respond_to do |format|
+      if @departamentos.save
+        flash[:notice] = 'Departamentos was successfully created.'
+        format.html { redirect_to(@departamentos) }
+        format.xml  { render :xml => @departamentos, :status => :created, :location => @departamentos }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @departamentos.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /departamentos/1
+  # PUT /departamentos/1.xml
+  def update
+    @departamentos = Departamento.find(params[:id])
+
+    respond_to do |format|
+      if @departamentos.update_attributes(params[:departamentos])
+        flash[:notice] = 'Departamentos was successfully updated.'
+        format.html { redirect_to(@departamentos) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @departamentos.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /departamentos/1
+  # DELETE /departamentos/1.xml
+  def destroy
+    @departamentos = Departamento.find(params[:id])
+    @departamentos.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(departamentos_url) }
+      format.xml  { head :ok }
+    end
+  end
+end

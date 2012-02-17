@@ -1,0 +1,99 @@
+<br/>
+ <table  class="tabelas"align="center" width="100%">
+   <tr>
+      <td colspan="2" align="left">
+         <font  size=5><b> ANALISTAS CADASTRADOS</b></font>
+      </td>
+     </tr>
+    <tr>
+      <td>
+        <br/>
+        <div class="botao">
+        <table width="100%">
+          <tr>
+          <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+            <% if current_user.has_role?('administrador')  %>
+              <td width="4%"><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "40x40"), new_estagiario_path,  :title => "Cadastrar" %></td>
+            <%end%>
+          <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+            <td align="right">
+             <div class="botao">
+               <table>
+               <tr>
+                <% form_tag analistas_path, :method => 'get' do %>
+                 <td align="right"><font size="4"> Digite nome:</font>
+                 <%= text_field_tag :search, params[:search] %>
+                 <%= submit_tag "Filtrar", :name => nil %>
+              </td>
+              <% end %>
+              </tr>
+           </table>
+           </div>
+           </td>
+         </tr>
+        </table>
+        <br/>
+       </div>
+        <font  size="2">
+        <table border="2" width="100%">
+         <tr>
+           <th>Nome</th>
+           <th>Fone</th>
+           <th>Cel</th>
+           <th>Email</th>
+           <th>Endereco</th>
+           <th>Nº</th>
+           <th>Bairro</th>
+           <th>Cidade</th>
+        </tr>
+         <% for estagiarios in @analistas %>
+        <tr>
+           <td><%=h estagiarios.nome %></td>
+           <td><%=h estagiarios.fone %></td>
+           <td><%=h estagiarios.cel %></td>
+           <td><%=h estagiarios.email %></td>
+           <td><%=h estagiarios.endereco %></td>
+           <td><%=h estagiarios.num%></td>
+           <td><%=h estagiarios.bairro %></td>
+           <td><%=h estagiarios.cidade %></td>
+        </tr>
+        <tr>
+          <td colspan="12">
+            <div class="botao">
+            <table >
+               <td align="center" ><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), estagiarios, :title => "Exibir Unidade" %></td>
+                <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                  <td align="center" ><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), {:action => "edit", :id =>estagiarios}, :method => "get", :title => "Alterar Dados"%></td>
+                     <% if current_user.has_role?('administrador')%>
+                       <td align="center"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), estagiarios, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir Unidade" %></td>
+                     <%end%>
+               <%end%>
+            </table>
+            </div>
+           </td>
+        </tr>
+        <% end %>
+       </table>
+        <div class="botao">
+         <table width="100%" align="center">
+           <br/>
+          <tr>
+             <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+            <% if current_user.has_role?('administrador')  %>
+              <td width="4%"><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "40x40"), new_estagiario_path,  :title => "Cadastrar" %></td>
+            <%end%>
+
+             <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+           </tr>
+        </table>
+      </div>
+     </font>
+  </table>
+  <br/>
+
+
+
+
+
+
+

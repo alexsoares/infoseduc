@@ -1,0 +1,63 @@
+<br/>
+<font  size="2">
+<table width="100%" class="tabelas" >
+  <tr>
+    <td  colspan="20" align="left">
+         <font  size=5 color="black"> <b>CONSULTA PONTO ELETRÔNICO</b></font>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="botao">
+       <table width="100%" align="center">
+        <tr>
+          <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+          <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+        </tr>
+      </table>
+      </div>
+      <table width="100%" class="tabelas" border="2">
+       <%if @buscas.present?%>
+        <tr>
+            <th><font  size="2">Nome do Estagiário</font></th>
+            <th><font  size="2">Tempo de Trabalho</font></th>
+            <th><font  size="2">Horas em Contrato</font></th>
+         </tr>
+          <%@buscas.each do |estagiario|%>
+          <tr>
+             <td><%= link_to estagiario.nome, :controller => 'estagiarios', :action => 'carga_horaria', :params => {:estagiario_id_equals => estagiario, :year => params[:year], :month => params[:month]} %></td>
+             <td><%= estagiario.total_trabalhado ? Ponto.convert_to_hour(estagiario.total_trabalhado) : 0 %></td>
+             <td><%= Ponto.convert_to_hour(@carga_base_mes) %></td>
+          </tr>
+       <%end%>
+       <%else%>
+         <%if @busca_ano.present?%>
+            <%@busca_ano.each do |ano|%>
+              <tr>
+                <th colspan="12"><font  size="2"><%= ano.ano %></font></th>
+              </tr>
+              <tr>
+                    <%@busca_mes.each do |ponto|%>
+                          <%if ponto.created_at.between?(("#{ano.ano}-#{ponto.mes.to_i - 1}-22").to_date,("#{ano.ano}-#{(ponto.mes.to_i)}-21").to_date)%>
+                            <td><%= link_to translate_month_tag(ponto.mes.to_i), :controller => 'estagiarios', :action => 'rel_ponto', :params => {:year => ano.ano, :month => ponto.mes} %></td>
+                          <%else%>
+                              <td><%= link_to translate_month_tag((ponto.mes.to_i)), :controller => 'estagiarios', :action => 'rel_ponto', :params => {:year => ano.ano, :month => ((ponto.mes.to_i))} %></td>
+                          <%end%>
+                    <%end%>
+              </tr>
+         <%end%>
+       <%end%>
+     <%end%>
+     </table>
+     <div class="botao">
+       <table width="100%" align="center">
+        <tr>
+          <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+          <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+        </tr>
+      </table>
+      </div>
+    </td>
+  </tr>
+</table>
+</font>

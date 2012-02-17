@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  unidade: 
+  quant: 1
+  config: MyString
+  user: MyString
+  pertenece: MyString
+  contato: MyString
+
+two:
+  unidade: 
+  quant: 1
+  config: MyString
+  user: MyString
+  pertenece: MyString
+  contato: MyString

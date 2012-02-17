@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  empresa: 
+  atendente: MyString
+  data_hora: 2010-12-23 10:29:13
+  obs: MyText
+
+two:
+  empresa: 
+  atendente: MyString
+  data_hora: 2010-12-23 10:29:13
+  obs: MyText

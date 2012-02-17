@@ -1,0 +1,39 @@
+<br/>
+<table class="tabelas" align="center" width="40%">
+  <tr>
+    <td colspan="2" align="left">
+       <font  size=4><b> PONTO ELETRÔNICO - Saida</b></font>
+    </td>
+  </tr>
+  <tr>
+    <td>
+        <% form_for(@ponto) do |f| %>
+        <%= f.error_messages %>
+         <font size="2">
+         <table>
+          <tr>
+            <td align="left"><b>Estagiário:</b></td>
+            <td colspan="2" align="left"><%= @ponto.estagiario.nome %> </td>
+         </tr>
+         <tr>
+           <td align="left"><b>Entrada:</b></td>
+           <td colspan="2" align="left"><%= @ponto.entrada.strftime("%d/%m/%Y %H:%M") %> </td>
+         </tr>
+         <tr>
+           <td>
+             <table>
+               <tr>
+                  <td width="4%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+                     <% end %>
+                   <td align="left"><input type="image" src="/stylesheets/images/saida.gif" title="Ponto - Saida"></td>
+               </tr>
+             </table>
+           </td>
+           <td align="left"><font size="1">(Clique para registrar saida)</font></td>
+        </tr>
+      </table>
+     </font>
+   </td>
+   </tr>
+</table>
+<br/>

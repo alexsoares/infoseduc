@@ -1,0 +1,46 @@
+<% form_for(@itinerario) do |f| %>
+  <%= f.error_messages %>
+<font  size="2">
+ <table class="tabelas" width="60%" align="center">
+  <tr>
+   <td colspan="2" align="left">
+     <font  size=5><b> CADASTRO ROTEIRO ITINERÂNCIA</b></font>
+   </td>
+  </tr>
+  <tr>
+  <tr>
+    <td>
+     <fieldset><legend><font  size=4> Roteiro</font></legend>
+       <table>
+          <tr>
+            <td align="left"><font size=2><b>Estagiário:</b></font></td>
+            <td align="left"><font size=2><%= f.collection_select :estagiario_id, @estagiarios, :id, :nome, :include_blank => ' -- Selecione -- '  %></font></td>
+          </tr>
+         <tr>
+            <td align="left"><font size=2><b>Unidade:</b></font></td>
+            <td align="left"><font size=2><%= f.collection_select :unidade_id, @unidades, :id, :nome, :include_blank => ' -- Selecione -- '  %></font></td>
+         </tr>
+         <tr>
+            <td align="left"><font size=2><b>Data Visita:</b></font></td>
+            <td align="left"><font size=2><%= f.date_select :data_visita %></font></td>
+         </tr>
+         <tr>
+            <td align="left" valign="top"><font size=2><b>Observações:</b></font></td>
+           <td align="left"><font size=2><%= f.text_area(:obs, :cols =>50, :rows => "2") %></font></td>
+         </tr>
+        </table>
+     </field>
+      <table width="60%" align="left">
+          <tr>
+           <div id='Certeza'>
+              <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+            </div>
+            <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
+          <% end %>
+          </tr>
+        </table>
+      </td>
+   </tr>
+ </table>     
+  <br/>
+</font>

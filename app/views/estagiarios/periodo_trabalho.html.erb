@@ -1,0 +1,77 @@
+<script Language="JavaScript">
+function Imprimir(){
+window.print();
+}
+</script>
+<br/><br/>
+<font size="2">
+<table  class="tabelas" align="center" width="80%">
+ <tr>
+   <td colspan="2" align="left">
+     <font  size=5 color="black"> <b> ESTAGIÁRIO POR PERÍODO</b></font>
+   </td>
+ </tr>
+<tr>
+  <td>
+    <br/><br/>
+    <div class="botao">
+      <table width="100%">
+        <tr>
+          <% form_for @search do |f| %>
+            <tr>
+               <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+               <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+               <!--<td width="8%" align="left"><input type="Button" Value="Imprimir" onclick="javascript:window.print()"></td>-->
+               <td align="right" width="46%"><font  size="3" color="black"> Selecione Período:<%= f.select :periodo_trab_equals, options_for_select(PERIODO), :include_blank => true%></font></td>
+               <td align="left"  width="8%"><input type="image" src="/stylesheets/images/buscar.png" title="Buscar"></td>
+           </tr>
+          <% end %>
+          </tr>
+        </table>
+    </div>
+    <table border ="1" width="100%"  class="tabelas">
+        <tr style="font-size:12px">
+         <br/>
+            <th width="50%">Nome Estagiario</th>
+            <th width="15%">Periodo</th>
+            <th width="35%">Sede</th>
+        </tr>
+        <%if @estagiario_periodo == "Selecione o periodo"%>
+          <center><b><%= @estagiario_periodo %></b></center>
+          <br/>
+        <%else%>
+            <h3 align="center">Estagiários do período:  <%= params[:search][:periodo_trab_equals] %></h3>
+          <% for periodo in @estagiario_periodo %>
+            <tr>
+
+              <td><center><%=h periodo.nome %></center></td>
+              <td><center><%=h periodo.periodo_trab %></center></td>
+              <% if periodo.unidade_id.present? %>
+                <td><center><%=h periodo.unidade.nome %></center></td>
+              <%else%>
+                <td><center><%=h periodo.regiao.regiao %></center></td>
+              <%end%>
+            </tr>
+            <tr>
+            </tr>
+        <% end %>
+        <%if params[:search][:periodo_trab_equals] != "TODOS"%>
+          <%= will_paginate @estagiario_periodo %>
+        <%end%>
+    <%end%>
+    </table>
+
+    <br/>
+
+    <table>
+      <tr>
+          <% if @estagiario_periodo != "Selecione o periodo" %>
+            <div class="botao">
+               <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+               <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+            </div>
+          <%end%>
+      </tr>
+    </table>
+</table>
+</font>

@@ -1,0 +1,49 @@
+<div id="principal4">
+<font  size="2">
+    <table border="2" width="100%">
+     <tr>
+        <th>Unidade</th>
+        <th>Estagiario</th>
+        <th>Data/Hora</th>
+        <th>Período</th>
+        <th>Responsável</th>
+        <th>Validação</th>
+     </tr>
+         <% for relatorios in @relatestagiarios %>
+     <tr>
+        <td><%=h relatorios.unidade.nome %></td>
+        <td><%=h relatorios.estagiario.nome %></td>
+        <%if relatorios.datahora.nil? then%>
+           <td><%=h relatorios.datahora%></td>
+        <%else%>
+        <td><%=h relatorios.datahora.strftime("%d/%m/%Y") %></td>
+        <%end%>
+        <td><%=h relatorios.periodo %></td>
+        <td><%=h relatorios.responsavel %></td>
+        <% if relatorios.validacao == false %>
+           <td align="left"><b><font color="red">NÃO VALIDADO</font></b></td>
+        <%else%>
+            <td align="left"><b> VALIDADO</b></td>
+        <%end%>
+    </tr>
+     <tr>
+      <td colspan="8">
+
+          <div class="botao">
+          <table>
+               <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), relatorios, :title => "Exibir Relatório" %></td>
+             <% if current_user.has_role?('administrador') %>
+               <% if (relatorios.validacao == false) %>
+                  <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/listar.png", :size => "25x25"), {:action => "validacao", :id =>relatorios}, :method => "get", :title => "Validar Relatório"%></td>
+                 <%end%>
+                       <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), relatorios, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+             <%end%>
+          </table>
+          </div>
+       </td>
+    </tr>
+    <% end %>
+
+   </table>
+</font>
+</div>

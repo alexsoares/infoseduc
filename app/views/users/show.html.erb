@@ -1,0 +1,44 @@
+<br/><br/>
+<font size="2">
+<table  class="tabelas" width="50%"align="center">
+<tr>
+ <td>
+   <table>
+     <tr>
+       <td colspan="2" align="left">
+         <font  size=5 color="black"> <b>DADOS DO USUÁRIO LOGADO</b></font>
+       </td>
+      </tr>
+    </table>
+    <fieldset><legend><font  size=4> Usuário</font></legend>
+       <% form_for(@users) do |f| %>
+       <%= f.error_messages %>
+        <font  size="2">
+        <table width="50%">
+          <tr>
+             <td align="left"><b>Usuário:</b></td>
+             <td align="left"><%=h @users.login %></td>
+          </tr>
+           <tr>
+             <td align="left"><b> Data Cadastramento:</b></td>
+             <td align="left"> <%=h @users.created_at.strftime("%d/%m/%y") %></td>
+          </tr>
+         </table>
+        </font>
+        </fieldset>
+         <%end%>
+
+         <div class="botao">
+           <table width="50%" align="left">
+            <tr>
+             <td align="left" width="8%"><%= button_to 'Voltar', homes_path, {:method => "get"} %></td>
+             <td align="left"><input type="Button" Value="Imprimir" onclick="javascript:window.print()"></td>
+            </tr>
+          </table>
+          </div>
+   </table>
+ </font>
+<br/>
+
+
+

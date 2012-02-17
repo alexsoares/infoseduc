@@ -1,0 +1,49 @@
+<br/>
+<font size="2">
+<table  class="tabelas" width="40%"align="center">
+ <tr>
+   <td colspan="2" align="left">
+     <font  size=5 color="black"> <b> PRODUTO EM FALTA</b></font>
+   </td>
+ </tr>
+ <tr>
+ <td>
+   <table>
+
+    </table>
+      <fieldset><legend><font  size=4> Dados Produto</font></legend>
+      <font  size="2">
+      <table width="100%">
+        <tr>
+          <td width="10%" align="left"><b>Componente:</b></td>
+          <td align="left"><%=h @emfaltas.componente.nome %></td>
+        </tr>
+        <tr>
+           <td align="left"><b>Especificação:</b></td>
+           <td align="left"><%=h @emfaltas.especifica%>
+        </tr>
+        <tr>
+          <td align="left"><b> Quantidade:</b></td>
+          <td align="left"> <%=h @emfaltas.quant%>
+        </tr>
+        <tr>
+          <td align="left"><b>Observação:</b></td>
+          <td align="left"><%=h @emfaltas.obs %></td>
+        </tr>
+     </table>
+    </fieldset>
+        <div class="botao">
+           <table>
+            <tr>
+             <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+             <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+         </tr>
+          </table>
+         </div>
+       </table>
+       </font>
+   </td>
+  </tr>
+</table>
+<br/>
+

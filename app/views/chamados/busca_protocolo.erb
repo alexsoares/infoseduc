@@ -1,0 +1,69 @@
+<br/><br/>
+<font size="2">
+<table class="tabelas" align="center" width="90%">
+  <tr>
+    <td align="left">
+       <font  size=5 color="black"> <b> CONSULTA ORDEM DE SERVIÇO INTERNO</b></font>
+     </td>
+   </tr>
+   <tr>
+     <td>
+       <table width="100%">
+        <tr>
+          <td align="right">
+            <% form_tag busca_protocolo_chamados_path, :method => 'get' do %>
+            <font size="4"> Nº Protocolo:</font>
+
+            <%= text_field_tag :search, params[:search] %>
+            <td align="left"><input type="image" src="/stylesheets/images/buscar.png" title="Buscar">
+          </td>
+          <% end %>
+        </tr>
+        <tr>
+          <td colspan="2">
+              <table border="2" width="100%">
+                 <%if @chamados.present?%>
+                 <% for chamado in @chamados %>
+                 <tr>
+                    <th>Nº Ordem</th>
+                    <th>Data sol</th>
+                    <th>Solicitante</th>
+                    <th>Unidade</th>
+                    <th>Solicitação</th>
+                    <%if chamado.situacao_chamado_id == 6%>
+                       <th colspan="2">Procedimento</th>
+                    <%else%>
+                       <th colspan="2">Problema</th>
+                    <%end%>
+                    <th>Status</th>
+                 </tr>
+                 <tr>
+                    <td><%=h chamado.id %></td>
+                    <td><%=h chamado.data_sol.strftime("%d/%m/%Y %H:%M horas")%></td>
+                    <td><%=h chamado.solicitante %></td>
+                    <td><%=h chamado.unidade.nome %></td>
+                    <td><%=h chamado.forma_sol %></td>
+                    <%if chamado.situacao_chamado_id == 6%>
+                       <td colspan="2"><%=h chamado.procedimentos %></td>
+                    <%else%>
+                       <td colspan="2"><%=h chamado.problema %></td>
+                    <%end%>
+                    <td><%=h chamado.situacao_chamado.situacao %></td>
+                 </tr>
+                 <%end%>
+                 <%end%>
+              </table>
+          <div class="botao">
+           <table width="80%" align="left">
+              <tr>
+                <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+                <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>              </tr>
+           </table>
+          </div>
+        </td>
+       </tr>
+     </table>
+    </td>
+   </table>
+  <br/>
+</font>

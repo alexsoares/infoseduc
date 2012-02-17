@@ -1,0 +1,100 @@
+<br/>
+ <table class="tabelas" align="center" width="50%">
+  <tr>
+    <td colspan="2" align="left">
+      <font  size=5><b> LANÇAMENTO</b></font>
+    </td>
+  </tr>
+  <tr>
+   <td>
+        <% form_for(@saidas) do |f| %>
+        <%= f.error_messages %>
+        <font  size="2">
+        <table width="100%" align="center">
+
+          <tr>
+            <td>
+             <fieldset><legend><font  size=4>Saidas </font></legend>
+               <table>
+                 <tr>
+                   <td align="left"><b>Produto:</b></td>
+                   <td colspan="3" align="left"><%= f.collection_select :componente_id, @componentes, :id, :nome, :include_blank => ' -- Selecione -- ' %>
+                        <%= observe_field 'saida_componente_id',
+                          :frequency => 0.2,
+                          :with => :saida_componente_id,
+                          :url => { :action => 'nome_estoque' } %>
+                </tr>
+                 <tr>
+                   <td align="left"><b>Espeficiação:</b></td>
+                   <td colspan="3"align="left"><div id= 'especificacao'></div></td>
+
+                   <%= observe_field 'saida_estoque_id',
+                    :frequency => 0.5,
+                    :update => "listagem",
+                    :url    => { :action => 'especifica_estoque' },
+                   :with   => 'saida_estoque_id' %>
+                 </tr>
+                <tr>
+                   <td colspan="4" align="left"><div id="estoque_obs"></div></td>
+                 </tr>
+                  <tr>
+                     <td align="left"><b>Quantidade:</b></td>
+                     <td  colspan="3" align="left"><%= f.text_field :quantidade, :size => 4 %></td>
+                  </tr>
+                  <tr>
+                    <td align="left"><b>Data:</b></td>
+                    <td  colspan="3" align="left"><%= f.date_select(:data_saida, :order => [:day, :month, :year], :start_year => (Date.today.year), :end_year => (Date.today.year - 50)) %></td>
+
+                  </tr>
+                  <tr>
+                     <td align="left"><b>Retirado por:</b></td>
+
+                      <td  colspan="3" align="left"><%= f.collection_select :estagiario_id, @estagiarios, :id, :nome, :include_blank => ' -- Selecione -- ' %>
+                              <%= observe_field 'saida_estagiario_id',
+                             :with => :saida_estagiario_id,
+                             :url => { :action => 'nome_estagiario' } %>
+                      </td>
+                   <tr>
+                    <td></td>
+                    <td align="left"><div id='estagiario_nome'></div></td>
+
+                  </tr>
+                  <tr>
+                     <td align="left"><b>Destino:</b></td>
+                    <td colspan="3" align="left"><%= f.collection_select :unidade_id, @unidades, :id, :nome, :include_blank => ' -- Selecione -- ' %>
+                              <%= observe_field 'saida_unidade_id',
+                             :with => :saida_unidade_id,
+                             :url => { :action => 'nome_unidade' } %>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td align="left"><div id='unidade_nome'></div></td>
+
+                  </tr>
+                 <tr>
+                     <td align="left" valign="top"><b>Observações:</b></td>
+                     <td  colspan="3" align="left"><%= f.text_area :obs, :cols =>50, :rows => "2"%></td>
+                  </tr>
+                   <tr>
+                     <td colspan="4" align="left"><font color="red" size="3">Quando tratar-se estorno de lançamentos, anotar no campo <i>Observações</i> justificativa e os valores originais antes das alterações</font></td>
+
+                  </tr>
+               </table>
+             </fieldset>
+           </td>
+          </tr>
+           <table>
+            <tr>
+              <div id='Certeza'>
+                <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+              </div>
+              <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
+            <% end %>
+            </tr>
+          </table>
+        </table>
+       </font>
+     </td>
+   </tr>
+</table>
+<br/>

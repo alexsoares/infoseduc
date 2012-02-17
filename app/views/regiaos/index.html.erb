@@ -1,0 +1,89 @@
+
+ <br/>
+ <table  class="tabelas"   align="center" width="100%">
+  <tr>
+    <td colspan="2" align="left">
+         <font  size=5><b> REGIÕES ITINERÂNCIA</b></font>
+    </td>
+  </tr>
+  <tr>
+   <td>
+    <br/>
+   <div class="botao">
+   <table width="100%">
+      <tr>
+         <td width="4%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+         <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+      </tr>
+  </table>
+  <br/>
+  </div>
+      <table border="2" width="100%">
+         <% @regiaos.each do |reg| %>
+             <tr>
+                <th width="8%"><font size="2">Nome</font></th>
+                <th><font size="2">Bairros</font></th>
+                <th><font size="2">Unidades</font></th>
+                <th><font size="2">Estagiário</font></th>
+                <th><font size="2">Observações</font></th>
+             </tr>
+             <tr>
+                <td align="left"><font size="2"><%=h reg.regiao %></font></td>
+                <td align="left"><font size="2"><%=h reg.local %></font></td>
+                <td align="center"><font size="2"><%=h reg.unidade %></font></td>
+                <% reg.estagiarios.each do |est| %>
+                  <%if est.desligado == 0 then%>
+                    <td align="left"><font size="2"><%=h est.nome %></font></td>
+                  <%end%>
+                <%end%>
+                <td align="left"><font size="2"><%=h reg.obs %></font></td>
+             </tr>
+             <tr>
+                <td colspan="7">
+                <div class="botao">
+                  <table>
+                      <td align="center"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), reg, :title => "Exibir Dados" %></td>
+                      <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                        <td align="center"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_regiao_path(reg), :title => "Alterar Dados"%></td>
+                          <% if current_user.has_role?('administrador')%>
+                           <td align="center"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), reg, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+                        <%end%>
+                     <%end%>
+                     <%if reg.id == 1 then%>
+                        <%  $unidade = 6%>
+                       <%else if reg.id == 2 then%>
+                          <%  $unidade = 25 %>
+                         <%else if reg.id == 3 then%>
+                           <%  $unidade = 41 %>
+                          <%else if reg.id == 4 then%>
+                            <%  $unidade = 53 %>
+                           <%else if reg.id == 5 then%>
+                          <%  $unidade = 4 %>
+                        <%end%>
+                          <%end%>
+                        <%end%>
+                      <%end%>
+                    <%end%>
+                       <td align="left" ><%= link_to image_tag("/stylesheets/images/Mapa.png", :size => "25x25"), geo_path($unidade), :title => "Mapa" %></td>
+                  </table>
+                </div>
+               </td>
+            </tr>
+
+         <% end %>
+         
+      </table>
+
+   <div class="botao">
+    <table width="100%">
+      <br/>
+        <tr>
+         <td width="4%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+         <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+        </tr>
+      </table>
+      </div>
+   </td>
+ </table>
+ <br/>
+ 

@@ -1,0 +1,34 @@
+    <table width="100%">
+            <tr>
+              <td align="left" width="20%"><b>Nº DE ORDEM:</b></td>
+              <td colspan="5"align="left" ><font size="4">  <%=h @equipamento.id %></font></td>
+            </tr>
+            <tr>
+              <td align="left" width="20%"><b>Equipamento:</b></td>
+              <td align="left" width="20%" >  <%=h @equipamento.equipamento %></td>
+              <td align="left" width="20%"><b>Patrimônio:</b></td>
+              <td align="right"><%=h @equipamento.pat %></td>
+              <td align="left"><b>Estado:</b></td>
+              <td align="left"><%=h @equipamento.estado %></td>
+            </tr>
+            <tr>
+              <td align="left" width="20%"><b>Quem trouxe</b></td>
+              <td colspan="5"align="left" >  <%=h @equipamento.trouxe%></td>
+            </tr>
+            <tr>
+              <td align="left" width="20%"><b>Data Entrada</b></td>
+              <td colspan="5"align="left" >  <%=h @equipamento.dataent.strftime("%d de %B de %Y") %></td>
+            </tr>
+            <tr>
+              <td align="left"><b>Configuração:</b></td>
+              <td align="left"colspan="5"><%=h @equipamento.configuracao %></td>
+            </tr>
+            <tr>
+              <td align="left"><b>Undidade:</b></td>
+              <td align="left"colspan="5"><%=h @equipamento.unidade.nome %></td>
+            </tr>
+            <tr>
+              <td align="left"><b>Providencias à executar:</b></td>
+              <td align="left"colspan="5"><%=h @equipamento.providencia %></td>
+            </tr>
+    </table>

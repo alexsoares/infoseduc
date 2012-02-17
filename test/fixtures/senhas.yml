@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  local: MyString
+  usuario: MyString
+  senha: MyString
+  obs: MyText
+
+two:
+  local: MyString
+  usuario: MyString
+  senha: MyString
+  obs: MyText

@@ -1,0 +1,28 @@
+<br/>
+<b><h1><%= "Noticia - #{@noticia.titulo}" %></h1></b>
+<br/>
+<table border="1" width="60%" class="tabelas" align="center">
+    <tr>
+      <td colspan="2" align="center">
+        <b>Titulo:</b>
+        <%=h @noticia.titulo %>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2" align="center">
+        <b>Corpo:</b>
+        <%=h @noticia.corpo %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+        <b>Imagem da Noticia:</b><br/>
+        <%= image_tag(@noticia.imagem.url(:medium)) %>
+      </td>
+    </tr>  
+    <tr>
+      <td align="center" width="50%"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"),  edit_noticia_path(@noticia), :method => "get", :title => "Alterar Dados"%></td>
+      <td align="center" width="50%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), noticias_path , :title => "Voltar"%></td>
+    </tr>
+</table>

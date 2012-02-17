@@ -1,0 +1,71 @@
+br/>
+<font size="2">
+ <table  class="tabelas"   align="center" width="100%">
+  <td>
+   <table>
+    <tr>
+      <td colspan="2" align="left">
+         <font  size=5><b>DOCUMENTOS ANEXOS CHAMADO Nº <%=h @externo.id %></b></font>
+      </td>
+     </tr>
+   </table>
+   <br/>
+   <div class="botao">
+   <table width="100%">
+    <tr>
+      <td width="4%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+      <td width="4%"align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+      <td align="left"><%= link_to image_tag("/stylesheets/images/adicionar.png", :size => "25x25"),new_c_externo_documento_path, :method => "get" %></td>
+     </tr>
+   </table>
+   <br/>
+   </div>
+   <table align="center" border="2" width="100%">
+     <tr>
+        <th>Titulo</th>
+        <th>Descricao</th>
+        <th>Protocolo</th>
+        <th>Tamanho</th>
+     </tr>
+     <%$numchamados = 0%>
+     <% @documentos.each do |documento| %>
+     <tr>
+        <td><%=h documento.titulo %></td>
+        <td><%=h documento.descricao %></td>
+        <td><%=h documento.c_externo.protocolo %></td>
+        <td><%= documento.documento_file_size %></td>
+     </tr>
+     <tr>
+        <td colspan="4">
+          <div class="botao">
+           <table>
+              <td align="center"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), {:action => "show", :id =>documento}, :title => "Exibir Anexo" %></td>
+                 <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                     <td align="center" ><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), {:action => "edit", :id =>documento}, :method => "get", :title => "Alterar Anexo" %></td>
+                        <% if current_user.has_role?('administrador')%>
+                           <td align="center"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), {:action => "destroy", :id =>documento}, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir Anexo" %></td>
+                         <%end%>
+                 <%end%>
+           </table>
+          </div>
+         </td>
+      </tr>
+      <%$numchamados = $numchamados +1%>
+      <% end %>
+      <tr>
+         <td align="left"colspan="4"><font color="black">Total de documentos anexos ao chamado nº <%=h @externo.id %>  => <%=  $numchamados%></font></td>
+      </tr>
+  </table>
+   <div class="botao">
+   <table width="100%">
+    <tr>
+      <td width="4%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+      <td width="4%"align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+      <td align="left"><%= link_to image_tag("/stylesheets/images/adicionar.png", :size => "25x25"),new_c_externo_documento_path, :method => "get" %></td>
+    </tr>
+  </table>
+  </div>
+ </td>
+ </table>
+</font>
+

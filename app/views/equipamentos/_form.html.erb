@@ -1,0 +1,104 @@
+<% form_for(@equipamento) do |f| %>
+<%= f.error_messages %>
+<font  size="2">
+ <table class="tabelas" align="center" width="50%">
+  <tr>
+   <td colspan="2" align="left">
+     <font  size=5><b> EQUIPAMENTO</b></font>
+   </td>
+  </tr>
+  <tr>
+    <td>
+      <table width="100%">
+        <tr>
+          <td>
+            <fieldset><legend><font  size=5> Entrada</font></legend>
+              <table width="100%">
+               <tr>
+                 <td colspan="6" align="left"><b>Equipamento enviado à informática SEDUC em: </b>
+                  <%= f.date_select :dataent, :order => [:day, :month, :year], :start_year => (Date.today.year) %></td>
+               </tr>
+               <tr>
+                  <td align="left" width="10%"><b>Equipamento:</b></td>
+                  <td align="left" width="10%"> <%= f.select :equipamento, EQUIPAMENTO, :include_blank => '---Selecione---',  :size =>20  %></td>
+                  <td align="right" width="10%"><b>Patrimônio:</b></td>
+                  <td align="left"> <%= f.text_field :pat, :size => 4 %></td>
+                  <td align="right" width="10%"><b>Estado:</b></td>
+                  <td align="left"> <%= f.select :estado, ESTADO, :include_blank => '---Selecione---',  :size =>10  %></td>      <tr>
+               <tr>
+                 <td align="left" valign="top"><b>Quem Trouxe:</b></td>
+                 <td  colspan="5" align="left" ><%= f.text_field :trouxe,  :size =>50 %></td>
+               </tr>
+               <tr>
+                 <td align="left" valign="top"><b>Configuração:</b></td>
+                 <td  colspan="5" align="left" ><%= f.text_area(:configuracao, :cols =>"64", :rows => "2") %></td>
+               </tr>
+               <tr>
+                  <td align="left"><b>Unidade:</b></td>
+                  <td colspan="5" align="left"><%= f.collection_select :unidade_id, @unidades, :id, :nome, :include_blank => ' -- Selecione -- ' , :size => 20%></td>
+               </tr>
+               <tr>
+                 <td colspan="6" align="left"> <b> Providências a  executar:</b>
+                  <%= f.text_field :providencia, :size =>"39" %></td>
+              </tr>
+             </table>
+           </fieldset>
+          </td>
+        </tr>
+      </table>
+      <table width="100%">
+        <tr>
+          <td>
+            <fieldset><legend><font  size=5> Procedimentos</font></legend>
+              <table width="100%">
+                   <tr>
+                      <td align="left"><b>Quem verificou:</b></td>
+                      <td colspan="5" align="left"><%= f.collection_select :estagiario_id, @estagiarios, :id, :nome, :include_blank => ' -- Selecione -- ' , :size => 20%></td>
+                   </tr>
+                   <tr>
+                     <td align="right" width="10%"valign="top"><b>Procedimentos executados:</b> </td>
+                     <td colspan="3"align="left"> <%= f.text_area(:procedimento, :cols =>"65", :rows => "2") %></td>
+                   </tr>
+                   <tr>
+                     <td align="left"><b>Instalações:</b> </td>
+                     <td colspan="3"align="left"> <%= f.text_field :instalacao, :size => "50" %></td>
+                   </tr>
+                   <tr>
+                     <td align="left"valign="top"><b>Data:</b></td>
+                     <td align="left" width="50%"><%= f.date_select :dataexec %></td>
+                     <td align="right" ><b>Ordem Serviço:</b></td>
+                     <td align="center"><%= f.text_field :os, :size =>4 %></td>
+                   </tr>
+                   <tr>
+                     <td align="left"><b>Destinação:</b> </td>
+                     <td colspan="3" align="left"> <%= f.text_field :destinacao, :size => "50" %></td>
+                   </tr>
+                   <tr>
+                     <td align="left"><b>Encerrado:</b></td>
+                     <td colspan="3" align="left">SIM <%= f.check_box :encerrado %>
+                        <b>em:</b>  <%= f.date_select :datasaida %></td>
+                   </tr>
+                   <tr>
+                     <td align="right"><b>Obs:</b> </td>
+                     <td colspan="3"align="left"> <%= f.text_field :obs, :size => "50" %></td>
+                   </tr>
+             </table>
+           </fieldset>
+          <table>
+              <tr>
+               <div id='Certeza'>
+                  <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+               </div>
+               <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
+              <% end %>
+              </tr>
+            </table>
+          </td
+        </tr>
+
+     </table>
+    </td>
+   </tr>
+
+  </table>
+</font>

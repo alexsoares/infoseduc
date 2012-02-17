@@ -1,0 +1,45 @@
+<br/>
+<table  class="tabelas" align="center" width="40%">
+  <tr>
+     <td colspan="2" align="left">
+        <font  size=4><b> PONTO ELETRÔNICO - Entrada</b></font>
+    </td>
+   </tr>
+ <tr>
+   <td>
+       <% form_for(@ponto) do |f| %>
+        <%= f.error_messages %>
+         <font  size="2">
+          <table width="100%">
+           <tr>
+            <td width="50%">
+              <table>
+                <tr>
+                   <td align="left"><b>Estagiário:</b></td>
+                   <td align="left"><%= Estagiario.find(params[:estagiario_id]).nome %>
+                                   <%= f.hidden_field(:estagiario_id, :value => params[:estagiario_id])  %></td>
+                    <br/>
+                </tr>
+                <tr>
+                  <td>
+                    <table>
+                      <tr>
+                         <td width="4%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+                          <% end %>
+                         <td align="left"><input type="image" src="/stylesheets/images/entrada.gif" title="Ponto - Entrada"></td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td align="left"><font size="1">(Clique para registrar entrada) </font></td>
+              </tr>
+             </table>
+
+        </table>
+     </font>
+   </td>
+  </tr>
+</table>
+<br/>
+
+
+

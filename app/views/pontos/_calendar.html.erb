@@ -1,0 +1,128 @@
+<table  width="100%" align="center">
+ <tr>
+   <td>
+      <% if @ponto.present? %>
+        <div id="calendar">
+          <h2 id="month">
+            <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-%d"), :search => params[:search] %>
+            <%=h @date.strftime("%B %Y") %>
+            <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-%d"), :search => params[:search] %>
+          </h2>
+          <% calendar_for @ponto, :year => @date.year, :month => @date.month, :search => params[:search] do |calendar| %>
+            <%= calendar.head('Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado') %>
+            <% calendar.day(:day_method => :created_at) do |date, articles| %>
+              <%= date.day %>
+              <ul>
+                <%  if articles.present? %>
+                  <% articles.each do |data| %>
+                    <% just = Justificativa.find_by_ponto_id(data.id, :conditions => ["dia = ? and hora_saida is not NULL",date]) %>
+                     <% feriado = Justificativa.find_by_estagiario_id(data.estagiario_id, :conditions => ["dia = ? and feriado = 1 ",date]) %>
+                      <% recesso = Justificativa.find_by_estagiario_id(data.estagiario_id, :conditions => ["dia = ? and recesso = 1 ",date]) %>
+                      <% fimsemana = Justificativa.find_by_estagiario_id(data.estagiario_id, :conditions => ["dia = ? and fimsemana = 1 ",date]) %>
+                      <%if feriado.present?%>
+                          <li><font color="bluek">FERIADO</font></li>
+                      <%else%>
+                        <%if recesso.present?%>
+                            <li><font color="bluek">RECESSO</font></li>
+                        <%else%>
+                           <%if fimsemana.present?%>
+                              <li><font color="bluek">FIM DE SEMANA</font></li>
+                          <%else%>
+
+                        <%if (data.saida.nil? || data.total_trabalhado == 0) && (data.entrada.present?) %>
+
+                        <%if !(data.entrada.strftime("%d/%m/%Y") != Date.current.strftime("%d/%m/%Y"))%>
+                            <li><font color="green"> Entrada:<%=h data.entrada.strftime("%H:%M") %></font></li>
+                            <li><%= link_to "Realizar Saída", edit_ponto_path(data)%></li>
+
+                        <%else%>
+                          <li><font color="green"> Entrada:<%=h data.entrada.strftime("%H:%M") %></font></li>
+                          <li><font color="red">Saída não realizada</font></li>
+                          <% if just %>
+                             <li>Justificado</li>
+                             <li><%= "#{Ponto.convert_to_hour(data.total_trabalhado)} " %></li>
+                             <li><%= "#{link_to "OK", justificativa_path(just)} - #{Ponto.convert_to_hour(data.total_trabalhado)}"%></li>
+                          <%else%>
+                             <li><%= link_to "Favor Justificar", new_justificativa_path(:ponto_id => data) %></li>
+                          <%end%>
+
+                        <%end%>
+
+                    <%else%>
+                        <%if data.entrada.nil? && data.saida.nil?%>
+                          <% just = Justificativa.find_by_estagiario_id(data.estagiario_id, :conditions => ["dia = ?",date] ) %>
+                           <li>Trabalhado: </li>
+                            <%if just.present?%>
+                               <% cumpriu = Justificativa.find_by_estagiario_id(data.estagiario_id, :conditions => ["dia = ? and cumpriu_horario =1",date] ) %>
+                               <% if cumpriu.present? %>
+                                  <%if data.total_trabalhado.nil?%>
+                                   <%  justificativa_ponto = Justificativa.find_by_estagiario_id(params[:search][:estagiario_id_equals], :conditions => ["dia = ?", date])  %>
+                                    <li><font color="red">5h:00minutos</font> </li>
+                                    
+                                    <li><%= link_to "Justificado", :controller => "justificativas" ,:action => "show", :id => justificativa_ponto %></li>
+                                  <%else%>
+                                       <li><%= "#{Ponto.convert_to_hour(data.total_trabalhado)}" %></li>
+                                  <%end%>
+                              <%else%>
+                                  <li><%= link_to "Faltou", justificativa_path(just) %></li>
+                                <%end%>
+                            <%else%>
+                              
+                            <%end%>
+                        <%else%>
+                          <%if data.entrada.nil?%>
+                            <%= link_to "Realizar Entrada", new_ponto_path(:estagiario_id => params[:search][:estagiario_id_equals]) %>
+                          <%else%>
+                            <%if just.present?%>
+                               <li><font color="green"> Entrada: <%=h data.entrada.strftime("%H:%M") %></font></li>
+                               <li><font color="green"> Saida: <%=h data.saida.strftime("%H:%M") %></font></li>
+                              <li><font color="red"><%= "#{Ponto.convert_to_hour(data.total_trabalhado)}" %></font></li>
+                              <li><%= link_to "Justificado", justificativa_path(just) %></li>
+                            <%else%>
+                              <%if data.total_trabalhado.nil?%>
+                               <%  justificativa_ponto = Justificativa.find_by_estagiario_id(params[:search][:estagiario_id_equals], :conditions => ["dia = ?", date])  %>
+                                <li><font color="red">5h:00minutos</font> </li>
+                                   <li><%= link_to "Justificado", :controller => "justificativas" ,:action => "show", :id => justificativa_ponto %></li>
+                              <%else%>
+                               <li><font color="green"> Entrada: <%=h data.entrada.strftime("%H:%M") %></font></li>
+                               <li><font color="green"> Saida: <%=h data.saida.strftime("%H:%M") %></font></li>
+                               <li><font color="red"><%= "#{Ponto.convert_to_hour(data.total_trabalhado)}" %></font></li>
+
+                             <%end%>
+                            <%end%>
+
+                          <%end%>
+                        <%end%>
+                      <%end%>
+                   <%end%>
+                  <%end%>
+                <%end%>
+                <%end%>
+                <%else%>
+                  <%if (date.to_date == Time.current.strftime("%Y-%m-%d").to_date )%>
+                    <li><%= link_to "Bater Ponto", new_ponto_path(:estagiario_id => params[:search][:estagiario_id_equals]) %></li>
+                  <%else%>
+                    <%if (date.to_date > Time.current.strftime("%Y-%m-%d").to_date )%>
+                      <li>Aguarde</li>
+                      <%else%>
+                        <%  justificativa_ponto = Justificativa.find_by_estagiario_id(params[:search][:estagiario_id_equals], :conditions => ["dia = ?", date])  %>
+                        <%if justificativa_ponto.present?%>
+                          <li>Justificado</li>
+                          <li>trabalhado</li>
+                          <li><font color="red"><%=  justificativa_ponto.qtd_hrs %>h:00minutos</font></li>
+                          <li><%= link_to "OK", :controller => "justificativas" ,:action => "show", :id => justificativa_ponto %></li>
+                        <%else%>
+                          <li><%= link_to "Favor Justificar", new_justificativa_path(:estagiario_id => params[:search][:estagiario_id_equals],:date => date) %></li>
+                        <%end%>
+                      <%end%>
+                  <%end%>
+
+                <%end%>
+              </ul>
+            <% end %>
+          <% end %>
+        </div>
+      <%end%>
+    </td>
+  </tr>
+</table>

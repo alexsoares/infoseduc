@@ -1,0 +1,20 @@
+<h1>Você Foi convidado a participar de uma sessão de chat no infoseduc.seducpma.com/chats</h1>
+<h2>Não responda este email. Email gerado automaticamente.</h2>
+<h2>Sistema de Controle Informático - Infoseduc</h2>
+<h3>Prefeitura Municipal de Americana - Secretaria de Educação</h3>
+
+<p>
+  <h1><b>Chat Nº: </b></h1>
+  <font color="red"> <%= @chat.id %></font><br/>
+</p>
+<p>
+  <b>Chat criado por: </b>
+  <font color="green"> <%= @chat.user.name %></font><br/>
+</p>
+<p>
+  <b>Descrição do chat: </b>
+  <font color="blue"> <%= @chat.descricao %></font><br/>
+</p>
+
+
+<%= link_to "Entrar no Chat", @chat%>

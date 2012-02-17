@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  estagiario: 
+  unidade: 
+  data_visita: 2010-11-04
+
+two:
+  estagiario: 
+  unidade: 
+  data_visita: 2010-11-04

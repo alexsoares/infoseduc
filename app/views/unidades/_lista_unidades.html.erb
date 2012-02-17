@@ -1,0 +1,111 @@
+  <br/>  <br/>
+   <font  size="2">
+   <table  class="tabelas" border ="1" cellpadding="1" cellspacing="1" width="100%" >
+     <% for unidade in @unidades %>
+      <tr>
+       <th>Nome</th>
+       <th>Ensino</th>
+       <th>Endereco</th>
+       <th>Num</th>
+       <th>Complemento</th>
+       <th>Bairro</th>
+      </tr>
+      <tr>
+       <td><%=h unidade.nome %></td>
+       <td><%=h unidade.tipo.nome %></td>
+       <td><%=h unidade.endereco %></td>
+       <td><%=h unidade.num %></td>
+       <td><%=h unidade.complemento %></td>
+       <td><%=h unidade.bairro %></td>
+      </tr>
+      <tr>
+       <td rowspan="4" ></td>
+       <th>Fone</th>
+       <th>Email</th>
+       <th>Diretor</th>
+       <th>Coordenador</th>
+       <th>Obs</th>
+      </tr>
+      <tr>
+        <td><%=h unidade.fone %></td>
+        <td><%=h unidade.email %></td>
+        <td><%=h unidade.diretor %></td>
+        <td><%=h unidade.coordenador %></td>
+        <td><%=h unidade.obs %></td>
+     </tr>
+    <%if current_user.has_role?('administrador')%>
+     <tr>
+        <th colspan="4">Estagiários</th>
+       <th>Região</th>
+     </tr>
+     <tr>
+        <td colspan="4" align="left">
+             <%if (unidade.estagiarioE == 1) then%>
+              <% unidade.regiao.estagiarios.each do |est| %>
+                 <% if (est.desligado == 0 and est.periodo_trab == 'ITINERANTE') then%>
+                   <%=h est.nome %> (Itinerante)<br/>
+                <%end%>
+              <%end%>
+           <%else%>
+           <%if (unidade.estagiarioM == 1) then%>
+             <% unidade.estagiarios.each do |est| %>
+                 <% if (est.desligado == 0 and est.periodo_trab == 'MATUTINO') then%>
+                   <%=h est.nome %> (mantutino)<br/>
+                <%end%>
+              <%end%>
+             <%else%>
+                   Unidade sem estagiário Matutino <br/>
+             <%end%>
+            <%if (unidade.estagiarioV == 1) then%>
+             <% unidade.estagiarios.each do |est| %>
+                 <% if (est.desligado == 0 and est.periodo_trab == 'VESPERTINO') then%>
+                   <%=h est.nome %> (vespertino) <br/>
+                <%end%>
+              <%end%>
+             <%else%>
+                   Unidade sem estagiário Vespertino <br/>
+             <%end%>
+               <%if (unidade.estagiarioN == 1) then%>
+                  <% unidade.estagiarios.each do |est| %>
+                     <% if (est.desligado == 0 and est.periodo_trab == 'NOTURNO') then%>
+                        <%=h est.nome %> (noturno) <br/>
+                    <%end%>
+                <%end%>
+              <%else%>
+                   Unidade sem estagiário Noturno<br/>
+             <%end%>
+           <%end%>
+           </td>
+            <td>
+              <% if unidade.regiao_id.nil? then %>
+                  Estagiário Fixo
+              <%else%>
+                 <%=h unidade.regiao.regiao %>
+              <%end%>
+        </td>
+     </tr>
+     <%end%>
+     <tr>
+       <td colspan="12">
+          <div class="botao">
+            <table >
+               <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), unidade, :title => "Exibir Unidade" %></td>
+                <td align="center" colspan="1"> <%= link_to image_tag("/stylesheets/images/anexos.png", :size => "25x25"), anexos_path(:unidade => unidade), :title => "Anexos referentes à Unidade" %></td>
+                <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                  <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_unidade_path(unidade), :title => "Alterar Unidade"%></td>
+                     <% if current_user.has_role?('administrador')%>
+                       <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), unidade, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir Unidade" %></td>
+                     <%end%>
+               <%end%>
+             <td align="left" colspan="1"><%= link_to image_tag("/stylesheets/images/Mapa.png", :size => "25x25"), geo_path(unidade.id), :title => "Mapa" %></td>
+            </table>
+           </div>
+       </td>
+    </tr>
+   <% end %>
+  </table>
+ </font>
+
+
+
+

@@ -1,0 +1,59 @@
+<br/>
+<div class="relatorio">
+<table class="tabelas" align="center" width="100%">
+  <tr>
+     <td colspan="2" align="left">
+       <font  size=5 color="black"> <b> INTERNET</b></font>
+    </td>
+  </tr>
+  <tr>
+   <td>
+   <table width="100%">
+     <tr>
+       <td>
+          <div class="botao">
+           <table>
+              <tr>
+                <td align="left" width="6%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar"%></td>
+                <td align="left"><%= link_to_function image_tag("/stylesheets/images/imprimir.png", :size => "35x35"), "Imprimir()",:title => "Imprimir relação" %></td>
+              </tr
+           </table>
+         </div>
+      </td>
+     </tr>
+     <tr>
+      <td>
+          <font  size="2">
+           <table border="2" width="100%">
+               <tr>
+                <th bgcolor="gray">Unidade</th>
+                <th bgcolor="gray">Internet</th>
+                <th bgcolor="gray">Local</th>
+               </tr>
+             <% for administracaos in @administracaos %>
+               <tr>
+                <td align="left"><%=h administracaos.unidade.nome %></td>
+                <td align="left"><%=h administracaos.internet %></td>
+                <td align="left"><%=h administracaos.tipo_controle.nome %></td>
+                </tr>
+
+           <% end %>
+          </table>
+        </font>
+      </td>
+    </tr>
+     <tr>
+       <td>
+          <div class="botao">
+           <table>
+              <tr>
+                <td align="left" width="6%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar"%></td>
+                <td align="left"><%= link_to_function image_tag("/stylesheets/images/imprimir.png", :size => "35x35"), "Imprimir()",:title => "Imprimir relação" %></td>              </tr
+           </table>
+         </div>
+      </td>
+     </tr>
+   </table>
+ </td
+</table>
+</div>

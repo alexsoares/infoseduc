@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  estagiario: 
+  entrada: 2011-03-11 13:50:33
+  saida: 2011-03-11 13:50:33
+  total_trabalhado: 2011-03-11 13:50:33
+
+two:
+  estagiario: 
+  entrada: 2011-03-11 13:50:33
+  saida: 2011-03-11 13:50:33
+  total_trabalhado: 2011-03-11 13:50:33

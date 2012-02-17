@@ -1,0 +1,65 @@
+<br/>
+<div class="relatorio">
+  <table class="tabelas" border="2" frame="box" rules="all" width="100%">
+   <tr>
+      <td colspan="8" align="left">
+        <br/>
+         <font  size=5 color="black"> <b> TODOS ESTAGIÁRIOS</font> <font size="3"> (Atuais e Antigos)</b></font>
+       <br/><br/>
+      </td>
+     </tr>
+   <tr>
+    <tr>
+      <td>
+       <div class="botao">
+        <table width="100%">
+          <tr>
+             <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+             <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+         </tr>
+         </table>
+         </div>
+        <table border="2">
+          <tr>
+             <th><font size="2">Nome</font></th>
+             <th><font size="2">Fone</font></th>
+             <th><font size="2">Cel</font></th>
+             <th><font size="2">Email</font></th>
+             <th><font size="2">Maticulado</font></th>
+             <th><font size="2">Unidade</font></th>
+             <th><font size="2">Período</font></th>
+             <th><font size="2">Status</font></th>
+          </tr>
+          <% for estagiarios in @estagiarios %>
+            <tr>
+               <td><%=h estagiarios.nome %></td>
+               <td><%=h estagiarios.fone %></td>
+               <td><%=h estagiarios.cel %></td>
+               <td><%=h estagiarios.email %></td>
+               <td><%=h estagiarios.periodo_est %></td>
+               <%if estagiarios.unidade_id.nil?%>
+                     <td><%=h estagiarios.regiao.regiao %></td>
+               <%else%>
+                     <td><%=h estagiarios.unidade.nome %></td>
+               <%end%>
+                <td><%=h estagiarios.periodo_trab %></td>
+               <%if estagiarios.desligado == 1 %>
+                 <td id="disabled"><font color="red"><%=h "Desligado" %></font></td>
+               <%else%>
+                 <td id="enabled"><font color="green"><%=h "Trabalhando" %></font></td>
+               <%end%>
+            </tr>
+          <% end %>
+          </table>
+           <div class="botao">
+           <table width="100%"align="center">
+             <tr>
+                <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+                 <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+             </tr>
+           </table>
+          </div>
+
+   </table>
+  <br/>
+</div>

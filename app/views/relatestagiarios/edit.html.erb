@@ -1,0 +1,98 @@
+<br/>
+<table class="tabelas"width="100%" align="center">
+  <tr>
+     <td colspan="2" align="left">
+       <font  size=5 color="black"> <b> RELATÓRIO ESTAGIÁRIO</b></font>
+     </td>
+  </tr>
+  <tr>
+    <td>
+     <font  size=2>
+      <% @relatestagiario ? @relatestagiario.separacao : "" %>
+      <% form_for(@relatestagiario) do |f| %>
+      <%= f.error_messages %>
+        <table width="100%" align="center">
+          <tr>
+           <td valign="top">
+            <fieldset><legend><b><font  size=4> Estagiário</font></b></legend>
+            <table>
+              <tr valign="top">
+                <td align="left"><b> Estagiário:</b></td>
+                <td align="left"><%=h @relatestagiario.estagiario.nome %></td>
+               </tr>
+               <tr>
+                <td align="left"><b>Unidade:</b></td>
+                <td align="left"><%=h @relatestagiario.unidade.nome %></td>
+               </tr>
+               <tr>
+                 <td align="left"><b>Período:</b></td>
+                 <td align="left"><%=h @relatestagiario.periodo %></td>
+               </tr>
+               <tr>
+                 <td align="left"><b>Data:</b></td>
+                 <td align="left"><%=h @relatestagiario.datahora.strftime("%d de %B de %Y") %></td>
+               </tr>
+               <tr>
+                 <td align="left"><b>Responsável:</b></td>
+                 <td align="left"><%=h @relatestagiario.responsavel %></td>
+               </tr>
+               <tr>
+                  <td valign="top" align="left"><b>Observações:</b></td>
+                  <td align="left"><%= f.text_area(:obs, :cols =>"23", :rows => "6 ") %></td>
+              </tr>
+             </table>
+             </fieldset>
+           </td>
+           <td>
+              <fieldset><legend><b><font  size=4> Atividades Desenvolvidas</font></b></legend>
+                 <table>
+                       <tr>
+                           <td align="left"><b>Segunda Feira:</b></td>
+                           <td align="left"><%= f.text_field :segunda, :size =>40 %></td>
+                         </tr>
+                         <tr>
+                           <td align="left"><b>Terça Feira:</b></td>
+                           <td align="left"><%= f.text_field :terca, :size =>40 %></td>
+                         </tr>
+                         <tr>
+                           <td align="left"><b>Quarta Feira:</b></td>
+                           <td align="left"><%= f.text_field :quarta, :size =>40 %></td>
+                         </tr>
+                         <tr>
+                           <td align="left"><b>Quinta Feira:</b></td>
+                           <td align="left"><%= f.text_field :quinta, :size =>40 %></td>
+                         </tr>
+                         <tr>
+                           <td align="left"><b>Sexta Feira:</b></td>
+                           <td align="left"><%= f.text_field :sexta, :size =>40 %></td>
+                         </tr>
+                         <tr>
+                           <td  valign="top"align="left"><b>Procedimento NÂO Executados:</b></td>
+                           <td align="left"> <%= f.text_area :providencia, :cols =>"52", :rows => "2"%></td>
+                         </tr>
+
+                 </table>
+                 </fieldset>
+              </td>
+            </tr>
+            <tr>
+  
+                <tr>
+                  <td align="left" colspan="2"><font size="3"><b>VALIDA RELATÓRIO? - SIM </b></font><%= f.check_box :validacao %>
+                  <font size="3"><b>Nome:</b></font><%= f.text_field :nome %></td>
+                </tr>
+           <table>
+                <tr>
+                  <td align="left" width="6%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+                  <td align="left"><input type="image" src="/stylesheets/images/listar.png" title="Validar"></td>
+               </tr>
+              </table>
+            </tr>
+         </table>
+      <% end %>
+      </font>
+    </td>
+  </tr>
+ </table>
+
+

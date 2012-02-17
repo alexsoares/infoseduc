@@ -1,0 +1,20 @@
+<h1>Listing tipo_controles</h1>
+
+<table>
+  <tr>
+    <th>Nome</th>
+  </tr>
+
+<% @tipo_controles.each do |tipo_controle| %>
+  <tr>
+    <td><%=h tipo_controle.nome %></td>
+    <td><%= link_to 'Show', tipo_controle %></td>
+    <td><%= link_to 'Edit', edit_tipo_controle_path(tipo_controle) %></td>
+    <td><%= link_to 'Destroy', tipo_controle, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New tipo_controle', new_tipo_controle_path %>

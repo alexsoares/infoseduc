@@ -1,0 +1,40 @@
+<%= javascript_include_tag :juggernaut %>
+
+<%= juggernaut(:channels => [@chat.id]) %>
+<span style="color:#A60">Chat: </span>
+<%=@chat.nome%>
+
+<div id="users">
+  <p><b>Membros do chat:</b></p>
+  <p>
+    <ul id="users_list">
+      <% unless @chat.users.empty? %>
+        <% @chat.users.each do |user| %>
+          <li id="<%= dom_id user %>">
+            <% @user_online = OnlineUser.find_by_user_id(user.id) %>
+            <%  if @user_online.present? %>
+              <%if @user_online.online %>
+                <div><b style="color:green"><%=h user.name %></b></div>
+              <%else%>
+                <b style="color:red"><%=h user.name %></b>
+              <%end%>
+            <%end%>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </p>
+  <p>
+    <%= button_to("Desconectar",desconectar_path(), :onclick => remote_function(:url => {:action => "desconectar"}) )%>
+  </p>
+</div>
+ <div id="chat_room"></div>
+ <div id="chat_form">
+ <%= form_remote_tag(
+   :url => { :action => :send_data },
+   :complete => ["$('chat_input').value = '',$('id').value = ''"] ) %>
+   <%= text_field_tag( 'chat_input', '', { :size => '50', :id => 'chat_input'} ) %>
+   <%= hidden_field_tag(:chat_id, @chat.id) %>
+   <%= submit_tag "Enviar" %>
+
+  </div>

@@ -1,0 +1,84 @@
+<br/>
+<table  class="tabelas" align="center" width="75%">
+  <tr>
+    <td align="left">
+      <font  size=5> <b>EQUIPAMENTO</b></font>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <% form_for(@equipamento) do |f| %>
+      <%= f.error_messages %>
+        <font  size="2">
+           <table width="100%">
+            <tr>
+              <td>
+                <table width="100%">
+                  <tr>
+                    <td>
+                      <fieldset><legend><font  size=4> Entrada</font></legend>
+                          <%= render 'show' %>
+                     </fieldset>
+                    </td
+                  </tr>
+                </table>
+                <table width="100%">
+                  <tr>
+                    <td>
+                      <fieldset><legend><font  size=4> Procedimentos</font></legend>
+                        <table width="100%">
+                             <tr>
+                                <td align="left"><b>Quem verificou:</b></td>
+                                <td colspan="5" align="left"><%= f.collection_select :estagiario_id, @estagiarios, :id, :nome, :include_blank => ' -- Selecione -- ' , :size => 20%></td>
+                             </tr>
+                             <tr>
+                               <td align="right" width="10%"valign="top"><b>Procedimentos executados:</b> </td>
+                               <td colspan="3"align="left"> <%= f.text_area(:procedimento, :cols =>"65", :rows => "2") %></td>
+                             </tr>
+                             <tr>
+                               <td align="left"><b>Instalações:</b> </td>
+                               <td colspan="3"align="left"> <%= f.text_field :instalacao, :size => "50" %></td>
+                             </tr>
+                             <tr>
+                               <td align="left"valign="top"><b>Data:</b></td>
+                               <td align="left" width="50%"><%= f.date_select :dataexec %></td>
+                               <td align="right" ><b>Ordem Serviço:</b></td>
+                               <td align="center"><%= f.text_field :os, :size =>4 %></td>
+                             </tr>
+                             <tr>
+                               <td align="left"><b>Destinação:</b> </td>
+                               <td colspan="3" align="left"> <%= f.text_field :destinacao, :size => "50" %></td>
+                             </tr>
+                             <tr>
+                               <td align="left"><b>Enviado:</b></td>
+                               <td colspan="3" align="left">SIM <%= f.check_box :encerrado %>
+                                  <b>em:</b>  <%= f.date_select :datasaida %></td>
+                             </tr>
+                             <tr>
+                               <td align="left"><b>Observações:</b> </td>
+                               <td colspan="3"align="left"> <%= f.text_field :obs, :size => "50" %></td>
+                             </tr>
+                       </table>
+                     </fieldset>
+                    </td
+                  </tr>
+
+               </table>
+              </td>
+             </tr>
+            <table>
+              <tr>
+               <div id='Certeza'>
+                  <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+               </div>
+               <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
+              <% end %>
+             </tr>
+           </table>
+         </table>
+      </font>
+
+    </td>
+  </tr>
+</table>
+<br/>

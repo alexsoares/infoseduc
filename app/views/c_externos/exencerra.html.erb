@@ -1,0 +1,77 @@
+<br/>
+ <table  class="tabelas2"   align="center" width="100%">
+  <tr>
+    <td colspan="2" align="left">
+      <font  size=5><b> ORDEM DE SERVIÇO EXTERNO ENCERRADOS</b></font>
+   </td>
+  </tr>
+  <tr>
+    <td>
+      <br/>
+      <div class="botao">
+      <table width="100%">
+        <tr>
+          <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+          <td width="6%"align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+          <td align="right"><b>Total de Ordem de Serviço Externo Encerrados:  <%= $conta %></b></td>
+       </tr>
+      </table>
+      <br/>
+     </div>
+     <font  size="2">
+     <table border="2" width="100%">
+       <%$conta=0%>
+       <tr>
+          <th>Nº Protocolo</th>
+          <th>Empresa</th>
+          <th>Atendente</th>
+          <th>Data hora</th>
+          <th>Unidade</th>
+          <th>Tipo Serviço</th>
+          <th>Obs</th>
+          <th>Encerrada</th>
+       </tr>
+       <% for c_externo in @c_externos %>
+         <%if (c_externo.situacao == 1) then %>
+           <tr>
+              <td><%=h c_externo.id %></td>
+              <td><%=h c_externo.empresa.nome %></td>
+              <td><%=h c_externo.atendente %></td>
+              <td><%=h c_externo.data_hora.strftime("%d/%m/%Y") %></td>
+              <td><%=h c_externo.unidade.nome %></td>
+              <td><%=h c_externo.tipo_osexterna.tipo %></td>
+              <td><%=h c_externo.obs %></td>
+              <td><%=h c_externo.data_encerra.strftime("%d/%m/%Y") %></td>
+         </tr>
+         <tr>
+            <td colspan="8">
+             <div class="botao">
+               <table>
+                   <% if (c_externo.tipo_id == 1)|| (c_externo.tipo_id == 2)|| (c_externo.tipo_id == 3)%>
+                      <td align="center" colspan="1"> <%= link_to image_tag("/stylesheets/images/anexos.png", :size => "25x25"), c_externo_documentos_path(c_externo), :method => "get", :title => "Anexos referentes ao Chamado" %></td>
+                   <%else%>
+
+                   <%end%>
+                      <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), {:action => "show", :id =>c_externo}, :method => "get", :title => "Exibir" %></td>
+              </table>
+           </div>
+         </td>
+       </tr>
+       <%$conta=$conta+1%>
+     <% end %>
+    <% end %>
+   </table>
+   </font>
+      <div class="botao">
+      <table width="100%">
+        <tr>
+          <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+          <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+       </tr>
+      </table>
+      <br/>
+     </div>
+  </td>
+ </tr>
+</table>
+<br/>

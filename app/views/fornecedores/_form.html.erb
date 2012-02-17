@@ -1,0 +1,74 @@
+<% form_for(@fornecedores) do |f| %>
+<%= f.error_messages %>
+<font  size="2">
+<table class="tabelas" width="60%" align="center">
+  <tr>
+   <td colspan="2" align="left">
+     <font  size=5><b> FORNECEDORES</b></font>
+   </td>
+  </tr>
+  <tr>
+    <td>
+      <table>
+          <tr>
+             <td align="left"><b>Nome:</b></td>
+             <td align="left"><%= f.text_field :nome, :size =>41 %></td>
+                    <%= observe_field :estagiario_nome,
+                      :with => :estagiario_nome,
+                      :url => { :action => 'mesmo_nome' } %>
+           </tr>
+           <tr>
+               <td align="left"><b> Endereço:</b></td>
+               <td align="left"> <%= f.text_field :endereco, :size => 33%>
+                   <b>Nº </b>
+                   <%= f.text_field :num, :size => 2 %></td>
+           </tr>
+           <tr>
+              <td align="left"><b> Complemento:</b></td>
+              <td align="left"><%= f.text_field :complemento, :size =>41 %></td>
+           </tr>
+           <tr>
+              <td align="left"><b> Cidade:</b></td>
+              <td align="left"><%= f.text_field :cidade, :size =>41 %></td>
+           </tr>
+           <tr>
+              <td align="left"><b>Telefone:</b></td>
+              <td align="left"><%= f.text_field :fone, :size =>15 %>
+                  <b> Celular:</b>
+                     <%= f.text_field :cel, :size =>15 %></td>
+           </tr>
+           <tr>
+              <td align="left"><b> e_mail:</b></td>
+              <td align="left"><%= f.text_field :email, :size =>41%></td>
+           </tr>
+            <tr>
+               <td align="left"><b>Contato:</b></td>
+               <td align="left"><%= f.text_field :contato, :size =>41 %></td><p>
+          </tr>
+              <tr>
+               <td align="left"><b>Tipo Seriço:</b></td>
+               <td align="left"><%= f.text_field :tipo_servico, :size =>41 %></td><p>
+          </tr>
+          <tr>
+             <td valign="top" align="left"><b>Observações:</b></td>
+             <td align="left"><%= f.text_area(:obs, :cols =>"53", :rows => "2") %></td>
+          </tr>
+            <tr>
+               <td align="left"><b>Aval</b></td>
+               <td align="left"><%= f.text_field :aval, :size =>41 %></td><p>
+            </tr>
+          <table>
+              <tr>
+                <div id='Certeza'>
+                  <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+                </div>
+                <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
+              <% end %>
+              </tr>
+            </table>
+       </table>
+      </td>
+    </tr>
+
+  </table>
+</font>

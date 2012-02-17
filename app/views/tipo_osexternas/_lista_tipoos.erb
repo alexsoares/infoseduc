@@ -1,0 +1,22 @@
+<br/>
+<font size="3">
+<table border="1" width="100%">
+  <tr>
+    <th colspan="2" width="80%">Tipo:</th>
+    <th></th>
+  </tr>
+  <% for tipos in @tipo_osexterna  %>
+  <tr>
+    <td><font size="2"> <%=h tipos.tipo %></font></td>
+      <div class="botao">
+        <% if current_user.has_role?('administrador')%>
+          <td align="center"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), tipos, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+       <%end%>
+      </div>
+  </tr>
+<% end %>
+</table>
+</font>
+
+
+

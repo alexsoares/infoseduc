@@ -1,0 +1,52 @@
+<% form_for(@administracaos) do |f| %>
+<%= f.error_messages %>
+<font  size="2">
+ <table class="tabelas" align="center"width="60%">
+  <tr>
+   <td colspan="2" align="left">
+     <font  size=5><b> REDE/INTERNET</b></font>
+   </td>
+  </tr>
+  <tr>
+   <td>
+     <table>
+        <tr>
+           <td width="10%"align="left" ><b>Unidade:</b></td>
+           <td width="20%"align="left"> <%= f.collection_select :unidade_id, @unidades, :id, :nome, :include_blank => ' -- Selecione -- ' %>
+        </tr>
+        <tr>
+           <td width="10%"align="left" ><b>Pertence:</b></td>
+           <td width="20%"align="left"> <%= f.collection_select :tipo_controle_id, @tipo_controles, :id, :nome, :include_blank => ' -- Selecione -- ' %>
+        </tr>
+         <tr>
+            <td align="left"><b> Servidor:</b></td>
+            <td align="left"><%= f.text_field :servidor, :size=>46 %></td>
+         </tr>
+         <tr>
+            <td align="left"><b> Rede:</b></td>
+            <td align="left"><%= f.text_field :rede, :size=>46 %></td>
+         </tr>
+         <tr>
+            <td align="left"><b> Internet:</b></td>
+            <td align="left"><%= f.text_field :internet, :size=>46 %></td>
+         </tr>
+         <tr>
+           <td align="left"><b>Observações</b></td>
+           <td align="left"><%= f.text_area(:obs, :cols =>59, :rows => "2") %></td>
+
+         </tr>
+         <table  width="100%" align="center">
+            <tr>
+               <div id='Certeza'>
+                  <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+               </div>
+               <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
+              <% end %>
+             </tr>
+          </table>
+     </table>
+    </td>
+   </tr>
+ </table>
+ </font>
+

@@ -1,0 +1,72 @@
+<br/><br/>
+<table class="tabelas" align="center" width="100%">
+  <tr>
+     <td colspan="2" align="left">
+       <font  size=5 color="black"> <b> EMPRESA Prestadora de Serviços</b></font>
+    </td>
+   </tr>
+ <tr>
+   <td>
+    <font  size="2">
+     <table width="100%"  >
+      <tr>
+        <td width="30%" valign="top">
+          <% form_for(@empresa) do |f| %>
+          <%= f.error_messages %>
+            <fieldset><legend><font  size=4> Cadastro de Empresas</font></legend>
+             <table>
+               <tr>
+                 <td width="20%"align="left" ><b>Nome:</b></td>
+                 <td align="left"><%= f.text_field :nome, :size => 20 %>
+                       <%= observe_field 'empresa_nome',
+                          :frequency => 0.1,
+                          :update => "cadastrados",
+                         :url => { :action => 'lista' } %>
+                </td>
+              </tr>
+              <tr>
+                <td width="20%"align="left" ><b> Tipo Seviço:</b></td>
+                <td align="left"><%= f.text_field :tipo_servico, :size => 20 %></td>
+              </tr>
+              <tr>
+                <td width="20%"align="left" ><b> Fone Contato:</b></td>
+                <td align="left"><%= f.text_field :telefone, :size => 20 %></td>
+              </tr>
+               <tr>
+                 <td>
+                   <table>
+                    <div class="botao">
+                     <div id='Certeza'>
+                       <td width="1%" align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+                     </div>
+                     <td width="1%"align="left" colspan="2"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar">
+                     <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+                   </div>
+                  </table>
+                 </td>
+              </tr>
+             </table>
+            </fieldset>
+         <%end%>
+         </td>
+         <td width="50%" valign="top">
+             <fieldset><legend><font  size=4> Empresas Cadastradas</font></legend>
+              <table width="100%">
+               <tr>
+                  <td align="left">
+                    <div id="cadastrados"></div>
+                  </td>
+               </tr>
+              </table>
+             </fieldset>
+           </td>
+      </tr>
+    </table>
+    </font>
+  </td>
+</table>
+<br/>
+
+
+
+

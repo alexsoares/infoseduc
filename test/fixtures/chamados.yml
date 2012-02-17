@@ -1,0 +1,29 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  data_sol: 2010-11-03 15:42:24
+  solicitante: MyString
+  unidade: MyString
+  forma_sol: MyString
+  problema: MyString
+  data_aten: 2010-11-03 15:42:24
+  funcionario: 
+  tipo_problema: 
+  patrimonio: 1
+  local: MyString
+  procedimentos: MyString
+  situacao: 
+
+two:
+  data_sol: 2010-11-03 15:42:24
+  solicitante: MyString
+  unidade: MyString
+  forma_sol: MyString
+  problema: MyString
+  data_aten: 2010-11-03 15:42:24
+  funcionario: 
+  tipo_problema: 
+  patrimonio: 1
+  local: MyString
+  procedimentos: MyString
+  situacao: 

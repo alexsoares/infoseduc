@@ -1,0 +1,48 @@
+<br/>
+<font size="2">
+<table  class="tabelas" width="50%"align="center">
+<tr>
+  <td colspan="2" align="left">
+         <font  size=5 color="black"> <b>ANEXO DOCUMENTO CHAMADO Nº<%=h @externo.id %></b></font>
+  </td>
+</tr>
+ <td>
+   <fieldset><legend><font  size=5> Dados Documento</font></legend>
+     <table width="100%">
+      <tr>
+        <td align="left"><b>Titulo:</b></td>
+        <td align="left" colspan="2"><%=h @documento.titulo %></td>
+      </tr>
+      <tr>
+        <td align="left" width="20%"><b>Descrição:</b></td>
+        <td align="left" colspan="2"><%=h @documento.descricao %></td>
+      </tr>
+      <tr>
+        <td align="left"><b>Visualizar:</b></td>
+        <td align="left" colspan="2"><%= link_to image_tag(@documento.documento.url(:thumb), :size => "50x50"), @documento.documento.url %></td>
+      </tr>
+ </table>
+ </fieldset>
+ <div class="botao">
+   <table>
+    <tr>
+            <td width="4%"align="left" ><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+            <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+              <td width="4%"align="left"  ><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), {:action => "edit", :id =>  @documento}, :method => "get", :title => "Alterar Unidade"%></td>
+            <%end%>
+            <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+    </tr>
+  </table>
+ </div>
+</td>
+</table>
+</font>
+<br/>
+
+
+
+
+
+
+
+,,

@@ -1,0 +1,81 @@
+<br/>
+ <table  class="tabelas"   align="center" width="90%">
+   <tr>
+      <td colspan="2" align="left">
+         <font  size=5><b> PRODUTOS EM FALTA</b></font>
+      </td>
+  </tr>
+  <tr>
+   <td>
+    <font  size="2">
+    <div class="botao">
+    <table width="100%">
+      <tr>
+        <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+        <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+        <td align="right">
+        <div class="botao">
+          <table>
+           <tr>
+           <% form_tag emfaltas_path, :method => 'get' do %>
+           <td align="right"><font size="4"> Produto:</font>
+            <%= text_field_tag :search, params[:search] %>
+            <td align="left"><input type="image" src="/stylesheets/images/buscar.png" title="Buscar">
+        </td>
+        <% end %>
+        </tr>
+     </table>
+     </div>
+     </td>
+     </tr>
+  </table>
+  <br/>
+  </div>
+   <fieldset><legend><font  size=5> Produtos</font></legend>
+   <table align="center"  border="2" width="100%">
+      <tr>
+        <th>Produto</th>
+        <th>Especificação</th>
+        <th>Quantidade</th>
+        <th>Observação</th>
+      </tr>
+      <% for falta in @emfaltas %>
+     <tr>
+        <td><%=h falta.componente.nome %></td>
+        <td><%=h falta.especifica %></td>
+        <td><%=h falta.quant %></td>
+        <td><%=h falta.obs %></td>
+      </tr>
+
+      <tr>
+        <td colspan="4">
+          <div class="botao">
+          <table>
+                      <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), falta, :title => "Exibir Dados" %></td>
+                      <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                        <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_emfalta_path(falta), :title => "Alterar Dados"%></td>
+                           <% if current_user.has_role?('administrador')%>
+                             <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), falta, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+                          <%end%>
+                    <%end%>
+          </table>
+          </div>
+        </td>
+      </tr>
+      <%end%>
+   </table>
+  </fieldset>
+  <div class="botao">
+   <table width="100%" align="center">
+    <br/>
+    <tr>
+      <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+      <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+    </tr>
+  </table>
+  </div>
+ </font>
+ </td>
+</table>
+
+<br/>

@@ -1,0 +1,48 @@
+<br/><br/>
+<table  class="tabelas" align="center" width="80%">
+  <tr>
+     <td colspan="2" align="left">
+       <font  size=5 color="black"> <b> CONSULTA POR TIPO DE UNIDADE</b></font>
+     </td>
+   </tr>
+   <tr>
+     <td>
+     <br/>
+     <table>
+      <tr>
+        <td>
+          <div class="botao">
+          <table>
+            <tr>
+              <td>
+                 <font  size="4" color="black"> Tipo: <%= collection_select :unidade, :tipo_id, @tipos, :id, :nome, :include_blank => ' -- Selecione -- '  %></font>
+               </td>
+            </tr>
+         </table>
+         </div>
+        </td>
+      <tr>
+        <td>
+        <%= observe_field 'unidade_tipo_id',
+             :update => "listagem",
+             :url    => { :action => 'lista_tipo' },
+             :with   => 'unidade_tipo_id' %>
+          <div id="listagem"> </div>
+       </td>
+     </tr>
+    <div class="botao">
+     <table width="100%" align="left">
+      <tr>
+          <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+          <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+      </tr>
+    </table>
+   </div>
+  </table>
+  </td>
+ </tr>
+</table>
+<br/>
+
+
+

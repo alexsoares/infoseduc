@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  estagiario: 
+  unidade: 
+  datahora: 2011-03-11 08:49:41
+  responsavel: MyString
+  ocorrencia: MyString
+  providencia: MyString
+  obs: MyString
+
+two:
+  estagiario: 
+  unidade: 
+  datahora: 2011-03-11 08:49:41
+  responsavel: MyString
+  ocorrencia: MyString
+  providencia: MyString
+  obs: MyString

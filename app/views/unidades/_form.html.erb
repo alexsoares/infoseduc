@@ -1,0 +1,91 @@
+
+<% form_for(@unidades) do |f| %>
+<%= f.error_messages %>
+<font  size="2">
+ <table class="tabelas" width="100%">
+  <tr>
+   <td colspan="2" align="left">
+     <font  size=5><b> CADASTRO DE UNIDADES</b></font>
+   </td>
+  </tr>
+  <tr>
+    <td>
+      <fieldset><legend><font  size=4> Unidade</font></legend>
+        <table>
+           <tr>
+              <td width="50%">
+                <table>
+                 <tr>
+                   <td align="left"><b>Nome:</b></td>
+                   <td><%= f.text_field :nome, :size =>30 %></td>
+                       <%= observe_field :unidade_nome,
+                        :with => :unidade_nome,
+                        :url => { :action => 'mesmo_nome' } %>
+                 </tr>
+                 <tr>
+                     <td colspan="2">
+                      <font size="4" color="red">
+                        <div id='nome_aviso'></div>
+                      </font>
+                    </td>
+                 </tr>
+
+                 <tr>
+                   <td align="left"><b> Endereço:</b></td>
+                   <td> <%= f.text_field :endereco,:size =>22 %>
+                       <b>Nº </b>
+                       <%= f.text_field :num, :size => 2 %></td>
+                 </tr>
+                 <tr>
+                   <td align="left"><b> Bairro:</b></td>
+                   <td><%= f.text_field :bairro, :size =>30 %></td>
+                 </tr>
+                 <tr>
+                   <td align="left"><b> Complemento:</b></td>
+                   <td><%= f.text_field :complemento, :size =>11%>
+                      <b>Fone</b>
+                      <%= f.text_field :fone, :size =>11%>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td align="left"><b>Tipo:</b></td>
+                   <td align="left"><%= f.collection_select  :tipo_id, @tipos, :id, :nome, :include_blank => ' -- Selecione -- ' %></td>
+                 </tr>
+                 <tr>
+                   <td align="left"><b>Região:</b></td>
+                   <td align="left"><%= f.collection_select  :regiao_id, @regiaos, :id, :regiao, :include_blank => ' -- Selecione -- ' %></td>
+                 </tr>
+                 <tr>
+                   <td align="left"><b>E_mail:</b></td>
+                   <td><%= f.text_field :email, :size =>30 %></td>
+                 </tr>
+               </table>
+              </td>
+              <td valign="top">
+                <table>
+                  <tr>
+                   <td align="left"><b>Diretor:</b></td>
+                   <td> <%= f.text_field :diretor, :size =>28%></td>
+                 </tr>
+                 <tr>
+                   <td align="left"><b>Coordenador:</b></td>
+                   <td> <%= f.text_field :coordenador, :size =>28%></td>
+                 </tr>
+                 <tr >
+                    <td valign="top"><b>Observações:</b></td>
+                    <td valign="top"><%= f.text_area(:obs, :cols =>"37", :rows => "10") %></td>
+                 </tr>
+                </table>
+              </td>
+          </tr>
+        </table>
+     </fieldset>    
+         <table width="100%" align="left">
+           <tr>
+               <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+               <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
+           </tr>
+       </table>
+      <% end %>
+  </table>
+</font>

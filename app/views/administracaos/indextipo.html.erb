@@ -1,0 +1,99 @@
+<br/>
+ <table  align="center" width="100%">
+  <td>
+  <fieldset><legend><font  size=5> REDE/INTERNET</font></legend>
+   <br/>
+   <div class="botao">
+   <table width="100%">
+    <tr>
+     <td align="left" width="6%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar"%></td>
+     <td align="left" width="6%"><%= link_to_function image_tag("/stylesheets/images/imprimir.png", :size => "40x40"), "Imprimir()",:title => "Imprimir relação" %></td>
+     <% if  $var == 0 then %>
+         <td align="left" colspan="4"><%= will_paginate @administracaos %></td>
+      <%end%>
+      <td align="right">
+       <div class="botao">
+       <table>
+         <tr>
+            <% form_tag administracaos_path, :method => 'get' do %>
+            <td align="right"><font size="4"> Unidade:</font>
+             
+                <%= text_field_tag :search, params[:search] %>
+                <%= submit_tag "Filtrar", :nome => nil %>
+             <% end %>
+            </td>
+        
+        </tr>
+      </table>
+     </div>
+     </td>
+     </tr>
+  </table>
+  <br/>
+  </div>
+   <table align="center" width="100%">
+
+    <tr>
+      <td valign="top" width="50%">
+        <fieldset><legend><font  size=4> Pertencentes à SEDUC</font></legend>
+         <table border="2" width="100%">
+          <tr><td>
+           <font  size="2">
+            <table border="2" width="100%">
+              <% for administracaos in @administracaos %>
+               <tr>
+                <th bgcolor="gray">Unidade</th>
+                <th bgcolor="gray">Tipo Controle</th>
+                <th bgcolor="gray">Servidor</th>
+                <th bgcolor="gray">Rede</th>
+                <th bgcolor="gray">Internet</th>
+                <th bgcolor="gray">Obs</th>
+               </tr>
+               <tr>
+                <td align="left"><%=h administracaos.unidade.nome %></td>
+                <td align="left"><%=h administracaos.tipo_controle.nome %></td>
+                <td align="left"><%=h administracaos.servidor %></td>
+                <td align="left"><%=h administracaos.rede %></td>
+                <td align="left"><%=h administracaos.internet %></td>
+                <td align="left"><%=h administracaos.obs %></td>
+                </tr>
+              <tr>
+                <td colspan="6">
+                <div class="botao">
+                  <table>
+                    <td><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "30x30"), administracaos, :title => "Exibir Equipamentos" %></td>
+                    <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                      <td><%= link_to image_tag("/stylesheets/images/edit.png", :size => "30x30"), administracaos, :title => "Alterar Equipamentos" %></td>
+                        <% if current_user.has_role?('administrador')%>
+                          <td><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "30x30"), administracaos, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir Equipamentos" %></td>
+                        <%end%>
+                    <%end%>
+                  </table>
+                </div>
+               </td>
+            </tr>
+              <% end %>
+            </table>
+           </font>
+
+          </td></tr>
+         </table>
+        </fieldset>
+      </td>
+     </table>
+   </fieldset>
+  </td>
+</table>
+ <div class="botao">
+   <table width="100%">
+    <tr>
+
+      <td width="6%" align="left"><%= button_to 'Voltar', homes_path, {:method => "get"}%></td>
+      <td align="left"><input type="Button" Value="Imprimir" onclick="javascript:window.print()"></td>
+      <% if  $var == 0 then %>
+         <tr><td align="left" colspan="4"><%= will_paginate @administracaos %></td></tr>
+      <%end%>
+    </tr>
+  </table>
+  </div>
+  <br/>

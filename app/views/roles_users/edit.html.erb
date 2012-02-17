@@ -1,0 +1,39 @@
+<br/><br/>
+<table width="50%" class="tabelas" align="center">
+ <tr>
+  <td align="left">
+   <font  size=5><b> NÍVEL DE ACESSO</b></font>
+   <font  size=2>
+   <table width="100%">
+     <% form_for(@role_user) do |f| %>
+     <%@user = User.find(:all,:conditions => ['id = ' + @role_user.user_id.to_s])%>
+     <%= f.error_messages %>
+      <tr>
+       <td><%= f.label :user_id,'Selecione o Usuário' %></td>
+       <td><%= f.collection_select  :user_id,@user, :id, :login, :include_blank => ' -- Selecione -- ' %>
+      </tr>
+      <tr>
+       <td><%= f.label :role_id,'Selecione o nível de acesso :' %></td>
+       <td><%= f.collection_select  :role_id,@roles, :id, :name, :include_blank => ' -- Selecione -- ' %>
+             <%= observe_field :roles_user_role_id,
+             :with => :roles_user_role_id,
+             :url => { :action => 'role_id' } %>
+             <div id="aviso"></div>
+       </tr>
+  </table>
+ </font>
+ <br/>
+ <table  width="50%" align="left">
+  <tr>
+        <div id='Certeza'>
+           <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+        </div>
+         <td align="left"><input type="image" src="/stylesheets/images/associar.png" title="Associar Usuários"></td>
+        <% end %>
+   </tr>
+</table>
+ 
+</td>
+</tr>
+</table>
+<br/>

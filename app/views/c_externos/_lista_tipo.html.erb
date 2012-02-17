@@ -1,0 +1,81 @@
+<br/>
+
+  <br/> 
+   <font  size="2">
+   <table align="center" width="100%">
+    <tr>
+      <td valign="top" width="50%">
+        <fieldset><legend><font  size=5> Cadastrados</font></legend>
+         <table border="2" width="100%">
+          <tr><td>
+           <font  size="2">
+            <table border="2" width="100%">
+              <tr>
+                <th>Empresa</th>
+                <th>Atendente</th>
+                <th>Data hora</th>
+                <th>Unidade</th>
+                <th>Tipo Serviço</th>
+                <th>Obs</th>
+                <th>Status</th>
+              </tr>
+          <%$numchamados = 0%>
+          <% @c_externos.each do |c_externo| %>
+            <tr>
+              <td><%=h c_externo.empresa.nome %></td>
+              <td><%=h c_externo.atendente %></td>
+              <td><%=h c_externo.data_hora.strftime("%d/%m/%Y") %></td>
+              <td><%=h c_externo.unidade.nome %></td>
+              <td><%=h c_externo.tipo_osexterna.tipo %></td>
+              <td><%=h c_externo.obs %></td>
+              <% if c_externo.situacao == 1 then %>
+                <td> ENCERRADO em <%=h  c_externo.data_encerra.strftime("%d/%m/%Y") %></td>
+              <%else%>
+                <td> NÂO ENCERRADO </td>
+              <%end%>
+           </tr>
+               <tr>
+                <td colspan="8">
+                <div class="botao">
+                  
+                  <table>
+                    <% if (c_externo.tipo_id == 1)|| (c_externo.tipo_id == 2)|| (c_externo.tipo_id == 3)%>
+                      <td><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "50x50"), c_externo_documentos_path(c_externo) %></td>
+                   <%else%>
+
+                   <%end%>
+                    <td><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "50x50"), c_externo %></td>
+                    <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                       <td> <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "50x50"), edit_c_externo_path(c_externo) %></td>
+                       <% if current_user.has_role?('administrador')%>
+                          <td><%= button_to('Excluir',{:action => "destroy", :id =>c_externo}, :confirm => 'Confirma exclusão?', :method => "delete")%></td>
+                       <%end%>
+                     <%end%>
+                  </table>
+                </div>
+               </td>
+            </tr>
+
+       <%$numchamados = $numchamados +1%>
+          <% end %>
+
+         <tr>
+               <td align="left"colspan="4"><font color="black">Total de OS Externa => <%=  $numchamados%></font></td>
+             </tr>
+
+            </table>
+           </font>
+
+          </td></tr>
+         </table>
+        </fieldset>
+      </td>
+    </table>
+
+
+
+
+
+
+
+   </font>

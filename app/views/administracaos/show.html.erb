@@ -1,0 +1,52 @@
+<br/>
+<font size="2">
+<table class="tabelas"width="40%"align="center">
+ <tr>
+    <td colspan="2" align="left">
+         <font  size=5 color="black"> <b> REDE/INTERNET</b></font>
+   </td>
+ </tr>
+<tr>
+  <td>
+    <fieldset><legend><font  size=4> Dados</font></legend>
+    <table width="100%">
+        <tr>
+          <td width="25%"align="left" ><b>Unidade:</b></td>
+          <td align="left"><%=h @administracaos.unidade.nome%></td>
+         </tr>
+        <tr>
+          <td width="20%"align="left" ><b>Pertence:</b></td>
+          <td align="left"><%=h @administracaos.tipo_controle.nome%></td>
+         </tr>
+        <tr>
+          <td width="20%"align="left" ><b>Servidor:</b></td>
+          <td align="left"><%=h @administracaos.servidor%></td>
+         </tr>
+        <tr>
+          <td width="20%"align="left" ><b>Rede:</b></td>
+          <td align="left"><%=h @administracaos.rede%></td>
+         </tr>
+        <tr>
+          <td width="20%"align="left" ><b>Internet:</b></td>
+          <td align="left"><%=h @administracaos.internet%></td>
+         </tr>
+        <tr>
+          <td width="20%"align="left" ><b>Observações:</b></td>
+          <td align="left"><%=h @administracaos.obs%></td>
+         </tr>
+        </table>
+        </fieldset>
+          <div class="botao">
+             <table width="100%" align="center">
+              <tr>
+                <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+                  <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                    <td align="left" width="4%" ><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_administracao_path(@administracaos), :title => "Alterar Dados"%></td>
+                 <%end%>
+               <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+              </tr>
+            </table>
+          </div>
+      </table>
+     </font>
+<br/>

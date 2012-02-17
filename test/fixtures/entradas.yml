@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  estoque: 
+  quantidade: 1
+  dataent: 
+  procedencia: MyString
+  NF: MyString
+  obs: MyText
+
+two:
+  estoque: 
+  quantidade: 1
+  dataent: 
+  procedencia: MyString
+  NF: MyString
+  obs: MyText

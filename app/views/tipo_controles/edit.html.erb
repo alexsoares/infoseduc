@@ -1,0 +1,16 @@
+<h1>Editing tipo_controle</h1>
+
+<% form_for(@tipo_controle) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @tipo_controle %> |
+<%= link_to 'Back', tipo_controles_path %>

@@ -1,0 +1,5 @@
+<h1 style="color:red">Aviso!!!!</h1>
+<h2>O Estagiário <%=  @ponto.estagiario.nome%> Não cumpriu a carga horária deste mês</h2>
+<% unless @ponto.estagiario.present? %>
+  <h3>Entrar em contato com a unidade <%= @ponto.estagiario.unidade.nome %></h3>
+<%end%>

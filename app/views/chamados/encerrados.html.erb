@@ -1,0 +1,128 @@
+<br/>
+ <table  class="tabelas2"   align="center" width="100%">
+   <tr>
+     <td colspan="2" align="left">
+         <font  size=5><b> ORDEM DE SERVIÇO INTERNO ENCERRADOS</b></font>
+     </td>
+   </tr>
+   <tr>
+     <td>
+     <br/>
+     <div class="botao">
+      <table width="100%">
+       <tr>
+          <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+          <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+         <td align="left"><b>Total de Ordem de Serviço Interno Encerrados:  <%= $conta %></b></td>
+        <!--
+        <td align="right">
+          <div class="botao">
+          <table>
+            <tr>
+                <% form_tag encerrados_path, :method => 'get' do %>
+                <td align="right"><font size="4"> Unidade:</font>
+                <%= text_field_tag :search, params[:search] %>
+                <%= submit_tag "Filtrar", :name => nil %>
+               </td>
+              <% end %>
+            </tr>
+           </table>
+          </div>
+        </td>
+        -->
+       </tr>
+     </table>
+     <br/>
+     </div>
+     <font  size="2">
+       <table border="2" width="100%">
+         <%$conta=0%>
+         <tr>
+            <th> Nº Ordem</th>
+            <th> Encerrado</th>
+            <th> Unidade</th>
+            <th> Tipo Problema</th>
+            <th colspan="2"> Problema</th>
+            <th> Procedimentos</th>
+            <th> Funcionário</th>
+            <th> Status</th>
+         </tr>
+         <% for chamado in @chamados %>
+         <%if (chamado.situacao_chamado_id == 2) then %>
+         <tr>
+           <td><%=h chamado.id %></td>
+           <td><%=h chamado.data_enc.strftime("%d/%m/%Y")%></td>
+           <%if chamado.unidade_id.nil? %>
+                <td><font color="red">ERRO no registro nº <%=h chamado.id %></font></td>
+           <%else%>
+               <td><%=h chamado.unidade.nome %></td>
+           <%end%>
+           <%if chamado.tipos_problema.nil?%>
+             <td></td>
+           <%else%>
+             <td><%=h chamado.tipos_problema.tipo %></td>
+           <%end%>
+           <td colspan="2"><%=h chamado.problema %></td>
+             <%if (chamado.tipos_problema !=1) or (chamado.tipos_problema !=2)%>
+               <td> <%=h chamado.procedimentos%>  </td>
+             <%end%>
+             <%if chamado.estagiario_id.nil? %>
+               <td><font color="red">ERRO no registro nº <%=h chamado.id %></font></td>
+             <%else%>
+               <td><%=h chamado.estagiario.nome %></td>
+             <%end%>
+           <td><%=h chamado.situacao_chamado.situacao %></td>
+        </tr>
+           <%$conta=$conta+1%>
+        <tr>
+           <td colspan="12">
+            <div class="botao">
+             <table>
+               <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                 <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), {:action => "showencerrado", :id =>chamado}, :method => "get", :title => "Exibir Dados" %></td>
+               <%end%>
+             </table>
+            </div>
+           </td>
+        </tr>
+        <% end %>
+        <% end %>
+        <tr>
+          <td align="left" colspan="11">
+             <font color ="black" size="4" ><b><center> ESTATÍSTICA </center></b></font>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="left"><font  color ="black "size="2"><b> Encerradas:</b></font> </td>
+          <td colspan="8" align="left"><font  color ="black "size="2">
+             <b> Total:<%= $conta %></b></font> </td>
+        </tr>
+        <tr>
+           <td align="left" colspan="2"><font color ="black "size="2"><b>Problema:</b></font></td>
+           <td colspan="2" align="center"><font  color ="black "size="2"><b>Hardware: <%= @chamadose_hardware.count %></b></font></td>
+           <td colspan="2"align="center"><font  color ="black "size="2"><b>Sofware: <%= @chamadose_software.count %></b></font></td>
+           <td align="center"><font  color ="black "size="2"><b>S.O.: <%= @chamadose_so.count %></b></font></td>
+           <td  align="center"><font  color ="black "size="2"><b>Usuário: <%= @chamadose_user.count %></b></font></td>
+           <td colspan="2" align="center"><font  color ="black "size="2"><b>Impressora: <%= @chamadose_impressora.count %></b></font></td>
+        </tr>
+        <tr>
+           <td align="center" colspan="2"></td>
+           <td align="center" colspan="2"><font color ="black "size="2"><b>Internet: <%= @chamadose_internet.count %></b></font></td>
+           <td align="center" colspan="2"><font color ="black "size="2"><b>Rede: <%= @chamadose_rede.count %></b></font></td>
+           <td align="center" ><font color ="black "size="2"><b>Servidor: <%= @chamadose_servidor.count %></b></font></td>
+           <td align="center"><font  color ="black "size="2"><b>Não definido: <%= @chamadose_ndefinido.count %></b></font></td>
+           <td colspan="2"align="center"><font  color ="black "size="2"><b>Outros: <%= @chamadose_outros.count %></b></font></td>
+        </tr>
+     </table>
+    </font>
+  <div class="botao">
+   <table width="100%" align="center">
+    <tr>
+        <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+        <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+    </tr>
+   </table>
+  </div>
+   </td>
+ </table>
+<br/>

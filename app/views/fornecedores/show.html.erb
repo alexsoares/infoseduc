@@ -1,0 +1,75 @@
+<font size="2">
+<table  class="tabelas" width="60%"align="center">
+  <tr>
+      <td colspan="2" align="left">
+         <font  size=5 color="black"> <b> FORNECEDOR</b></font>
+      </td>
+     </tr>
+  <tr>
+   <td>  
+      <table width="100%">
+      <tr><td>
+        <fieldset><legend><font  size=4> Dados Fornecedores</font></legend>
+          <table>
+            <tr>
+              <td align="left" width="20%"><b>Nome:</b></td>
+              <td align="left"><%=h @fornecedores.nome %></td>
+            </tr>
+            <tr>
+              <td align="left"><b>Endereço:</b></td>
+              <td align="left"><%=h @fornecedores.endereco %> Nº<%=h @fornecedores.num %></td>
+            </tr>
+            <tr>
+              <td align="left"><b>Complemento:</b></td>
+              <td align="left"><%=h @fornecedores.complemento %></td>
+            </tr>
+            <tr>
+              <td align="left"><b>Fone:</b></td>
+              <td align="left"><%=h @fornecedores.fone%></td>
+            </tr>
+            <tr>
+              <td align="left"><b>Celular:</b></td>
+              <td align="left"><%=h @fornecedores.cel %></td>
+            </tr>
+            <tr>
+              <td align="left"><b>E_mail:</b></td>
+              <td align="left"><%=h @fornecedores.email %></td>
+            </tr>
+            <tr>
+              <td align="left"><b>Contato:</b></td>
+              <td align="left"><%=h @fornecedores.contato %></td>
+            </tr>
+            <tr>
+              <td align="left"><b>Tipo Serviço:</b></td>
+              <td align="left"><%=h @fornecedores.tipo_servico %></td>
+            </tr>
+            <tr>
+              <td align="left"><b>Aval:</b></td>
+              <td align="left"><%=h @fornecedores.aval %></td>
+            </tr>
+            <tr>
+              <td align="left" valign="top"><b>Observações:</b></td>
+              <td align="left"><%=h @fornecedores.obs %></td>
+            </tr>
+            </table>
+           </fieldset>
+         </td></tr>
+         </table>
+         <div class="botao">
+         <table width="40%" align="left">
+              <tr>
+                 <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+                  <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                      <td align="left" width="4%" ><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_fornecedore_path(@fornecedores), :title => "Alterar Dados"%></td>
+                    <%end%>
+                 <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+              </tr>
+         </table>
+      </div>
+ </table>
+<br/>
+</font>
+
+
+
+

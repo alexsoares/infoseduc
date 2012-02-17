@@ -1,0 +1,36 @@
+<h1>Listing protocolos</h1>
+
+<table>
+  <tr>
+    <th>Unidade</th>
+    <th>Problema</th>
+    <th>Solicitante</th>
+    <th>Data sol</th>
+    <th>Solicitado</th>
+    <th>Atendente</th>
+    <th>Solicitacao</th>
+    <th>Protocolo</th>
+    <th>Obs</th>
+  </tr>
+
+<% @protocolos.each do |protocolo| %>
+  <tr>
+    <td><%=h protocolo.unidade %></td>
+    <td><%=h protocolo.problema %></td>
+    <td><%=h protocolo.solicitante %></td>
+    <td><%=h protocolo.data_sol %></td>
+    <td><%=h protocolo.solicitado %></td>
+    <td><%=h protocolo.atendente %></td>
+    <td><%=h protocolo.solicitacao %></td>
+    <td><%=h protocolo.protocolo %></td>
+    <td><%=h protocolo.obs %></td>
+    <td><%= link_to 'Show', protocolo %></td>
+    <td><%= link_to 'Edit', edit_protocolo_path(protocolo) %></td>
+    <td><%= link_to 'Destroy', protocolo, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New protocolo', new_protocolo_path %>

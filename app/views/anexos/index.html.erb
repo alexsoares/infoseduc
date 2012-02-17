@@ -1,0 +1,54 @@
+<font size="2">
+<br/>
+ <table  class="tabelas"   align="center" width="80%">
+   <tr>
+      <td colspan="2" align="left">
+         <font  size=5><b> ANEXOS DA UNIDADE <%= params[:unidade].present? ? params[:unidade] : "" %> - <%= params[:unidade].present? ? Unidade.find(params[:unidade]).nome : "Todos" %></b></font>
+      </td>
+   </tr>
+   <tr>
+     <td>
+        <br/>
+        <div class="botao">
+          <table border=""width="100%">
+            <tr>
+              <th>Titulo</th>
+              <th>Descricao</th>
+              <th>Criado por</th>
+              <th>Tipo de arquivo</th>
+            </tr>
+            <% @anexos.each do |anexo| %>
+            <tr>
+              <td><%=h anexo.titulo %></td>
+              <td><%=h anexo.descricao %></td>
+              <td><%=h anexo.user.name %></td>
+              <td><%=h anexo.file_content_type %></td>
+            </tr>
+            <tr>
+         <td colspan="12">
+            <div class="botao">
+            <table >
+               <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), anexo, :title => "Exibir Anexo" %></td>
+               <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                  <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_anexo_path(anexo), :title => "Alterar Anexo" %></td>
+                    <% if current_user.has_role?('administrador')%>
+                       <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), anexo, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir Anexo" %></td>
+                     <%end%>
+               <%end%>
+            </table>
+            </div>
+           </td>
+         </tr>
+        <% end %>
+      </table>
+    </div>
+    <br />
+       <div class="botao">
+         <table width="100%" align="left">
+           <tr>
+             <td width="8%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+             <td align="left"><%= link_to image_tag("/stylesheets/images/adicionar.png", :size => "25x25"), new_anexo_path(:unidade => params[:unidade], :title => "Incluir Anexo") %></td>
+         </table>
+        </div>
+ </table>
+</font>

@@ -1,0 +1,19 @@
+<br/>
+<font size="3">
+<table border="1" width="100%">
+  <tr>
+    <th colspan="2" width="80%">Componente:</th>
+    <th></th>
+  </tr>
+<% for compo in @componentes %>
+  <tr>
+    <td><%=h compo.nome %></td>
+      <div class="botao">
+        <% if current_user.has_role?('administrador')%>
+            <td align="center"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), compo, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+        <%end%>
+      </div>
+  </tr>
+<% end %>
+</table>
+</font>

@@ -1,0 +1,31 @@
+       <table>
+         <tr>
+            <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+            <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+          </tr>
+<tr>
+  <td colspan="2">
+<% if @itinerante.present? %>
+  <div id="calendar">
+    <h2 id="month">
+      <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-%d"), :search => params[:search] %>
+      <%=h @date.strftime("%B %Y") %>
+      <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-%d"), :search => params[:search] %>
+    </h2>
+    <% calendar_for @itinerante, :year => @date.year, :month => @date.month, :search => params[:search] do |calendar| %>
+      <%= calendar.head('Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado') %>
+      <% calendar.day(:day_method => :data_visita) do |date, articles| %>
+        <%= date.day %>
+        <ul>
+          <% for data in articles %>
+            <li><%= link_to h(data.unidade.nome), data%></li>
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
+<%end%>
+</td>
+</tr>
+
+</table>

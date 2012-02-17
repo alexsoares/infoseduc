@@ -1,0 +1,49 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  nome: MyString
+  RG: MyString
+  CPF: MyString
+  endereco: MyString
+  num: 1
+  complemento: MyString
+  bairro: MyString
+  cidade: MyString
+  fone: 1
+  cel: 1
+  email: MyString
+  data_nasc: 2010-10-04 12:55:39
+  faculdade: MyString
+  periodo_est: MyString
+  data_ingresso: 2010-10-04 12:55:39
+  data_termino: 2010-10-04 12:55:39
+  data_admissao: 2010-10-04 12:55:39
+  data_desliga: 2010-10-04 12:55:39
+  locacao: MyString
+  periodo_trab: MyString
+  aval: MyString
+  obs: MyText
+
+two:
+  nome: MyString
+  RG: MyString
+  CPF: MyString
+  endereco: MyString
+  num: 1
+  complemento: MyString
+  bairro: MyString
+  cidade: MyString
+  fone: 1
+  cel: 1
+  email: MyString
+  data_nasc: 2010-10-04 12:55:39
+  faculdade: MyString
+  periodo_est: MyString
+  data_ingresso: 2010-10-04 12:55:39
+  data_termino: 2010-10-04 12:55:39
+  data_admissao: 2010-10-04 12:55:39
+  data_desliga: 2010-10-04 12:55:39
+  locacao: MyString
+  periodo_trab: MyString
+  aval: MyString
+  obs: MyText

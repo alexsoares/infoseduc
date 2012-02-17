@@ -1,0 +1,40 @@
+   <fieldset><legend><font  size=4> Solicitação</font></legend>
+     <table>
+       <tr>
+             <td align="left"><b>Nº Ordem:</b></td>
+             <td align="left"><%=h @chamados.id %></td>
+       </tr>
+       <tr>
+         <td align="left"><b>Data Solicitação:</b></td>
+         <td align="left"><%=h @chamados.data_sol.strftime("%d de %B de %Y") %></td>
+       </tr>
+       <tr>
+         <td align="left"><b>Horas Solicitação:</b></td>
+         <td align="left"><%=h @chamados.data_sol.strftime("%H:%M horas") %></td>
+       </tr>
+       <tr>
+         <td align="left"><b>Solicitante</b></td>
+         <td align="left"><%=h @chamados.solicitante %></td>
+       </tr>
+       <tr>
+         <td align="left"><b>Unidade:</b></td>
+         <td align="left"> <%=h @chamados.unidade.nome %></td>
+       </tr>
+       <tr>
+         <td align="left"><b>Departamento:</b></td>
+         <td align="left"><%=h @chamados.depto %></td>
+       </tr>
+       <tr>
+         <td align="left"><b>Forma Solicitação:</b></td>
+         <td align="left"><%=h @chamados.forma_sol %></td>
+       </tr>
+       <tr>
+         <td align="left"><b>Descrição Problema:</b></td>
+         <td align="left"><%=h @chamados.problema %></td>
+       </tr>
+       <tr>
+         <td align="left"><b>Observação:</b></td>
+         <td align="left"><%=h @chamados.obs%></td>
+       </tr>
+     </table>
+    </fieldset>

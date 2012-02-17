@@ -1,0 +1,46 @@
+
+  <br/>  <br/>
+   <font  size="2">
+   <table  class="tabelas" border ="1" cellpadding="1" cellspacing="1" width="100%">
+      <tr>
+       <th>Nome</th>
+       <th>Endereco</th>
+       <th>Num</th>
+       <th>Complemento</th>
+       <th>Bairro</th>
+       <th>Fone</th>
+       <th>Email</th>
+      </tr>
+      <% for unidade in @tipos %>
+      <tr>
+       <td><%=h unidade.nome %></td>
+       <td><%=h unidade.endereco %></td>
+       <td><%=h unidade.num %></td>
+       <td><%=h unidade.complemento %></td>
+       <td><%=h unidade.bairro %></td>
+       <td><%=h unidade.fone %></td>
+       <td><%=h unidade.email %></td>
+
+     <div class="botao">
+     <tr>
+       <td colspan="12">
+          <div class="botao">
+            <table >
+               <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), unidade, :title => "Exibir Unidade" %></td>
+                <td align="center" colspan="1"> <%= link_to image_tag("/stylesheets/images/anexos.png", :size => "25x25"), anexos_path(:unidade => unidade), :title => "Anexos referentes à Unidade" %></td>
+                <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                  <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_unidade_path(unidade), :title => "Alterar Unidade"%></td>
+                     <% if current_user.has_role?('administrador')%>
+                       <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), unidade, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir Unidade" %></td>
+                     <%end%>
+               <%end%>
+             <td align="left" colspan="1"><%= link_to image_tag("/stylesheets/images/Mapa.png", :size => "25x25"), geo_path(unidade.id), :title => "Mapa" %></td>
+            </table>
+           </div>
+       </td>
+    </tr>
+   </div>
+
+   <% end %>
+  </table>
+ </font>

@@ -1,0 +1,49 @@
+<font  size="2">
+<div class="botao">
+ <br/><br/>
+    <table class="tabelas" align="center" width="100%">
+        <tr>
+          <td colspan="2" align="left">
+             <font  size=5 color="black"> <b> CONSULTA CARGA HORÁRIA</b></font>
+          </td>
+         </tr>
+
+      <br/>
+        <tr>
+          <td>
+            <div class="botao">
+            <table>
+              <tr>
+               <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+               <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+
+                 <% unless params[:estagiario_id_equals].present? %>
+                  <% form_tag carga_horaria_estagiarios_path, :method => 'get' do %>
+                        <td align="right">
+                          <font  size="4" color="black"><%= label_tag :estagiario_id_equals, "Estagiário:" %></font>
+                          <%= collection_select :estagiario, :estagiario_id_equals, @estagiarios, :id, :nome, :include_blank => true%>
+                          <%= label_tag :month, "Mês" %>
+                          <%= select_tag :month ,options_for_select(%w(1 2 3 4 5 6 7 8 9 10 11 12), params[:month]), :include_blank => true%>
+                          <td align="left"><input type="image" src="/stylesheets/images/buscar.png" title="Buscar">
+                        </td>
+                  <% end %>
+                <%end%>
+              </tr>
+           </table>
+           </div>
+     </td>
+   </tr>
+   <tr>
+     <td>
+        <%if @total_trabalhado.present?%>
+          <%= render :partial => "show_carga_horaria" %>
+        <%end%>
+        </td>
+      </tr>
+     </table>
+    <br>
+ </div>
+</font>
+
+
+

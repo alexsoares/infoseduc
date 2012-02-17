@@ -1,0 +1,47 @@
+<% form_for(@regiaos) do |f| %>
+  <font  size="2">
+ <table width="60%" align="center">
+  <tr>
+    <td>
+         <table width="100%">
+           <tr>
+             <td width="20%"align="left"><b>Região:</b></td>
+             <td colspan="2"align="left">   <%= f.text_field :regiao, :size=>31 %></td>
+                   <%= observe_field 'regiao_regiao',
+                      :frequency => 0.1,
+                      :update => "cadastrados",
+                      :with => :regiao_regiao,
+                     :url => { :action => 'lista' } %>
+          </tr>
+          <tr>
+            <td width="20%"align="left" valign="top"><b>Localidades:</b></td>
+            <td colspan="2"align="left"><%= f.text_area(:local, :cols =>40, :rows => "3") %></td>
+          </tr>
+          <tr>
+            <td width="20%"align="left" valign="top"><b>Unidades:</b></td>
+            <td colspan="2"align="left"><%= f.text_area(:unidade, :cols =>40, :rows => "3") %></td>
+          </tr>
+          <tr>
+             <td width="20%" align="left" valign="top"><b>Observações:</b></td>
+             <td colspan="2"align="left"><%= f.text_area(:obs, :cols =>40, :rows => "2") %></td>
+          </tr>
+      </table>
+          <table>
+          <tr>
+            <div class="botao">
+              <tr>
+               <div id='Certeza'>
+                  <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+               </div>
+               <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
+              <% end %>
+              </tr>
+            </div>
+          </tr>
+         </table>
+
+   </td>
+  </tr>
+</table>
+</font>
+        

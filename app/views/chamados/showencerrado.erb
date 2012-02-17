@@ -1,0 +1,80 @@
+<br/>
+<font size="2">
+<table  class="tabelas" width="100%"align="center">
+<tr>
+ <td>
+   <table>
+     <tr>
+       <td colspan="2" align="left">
+         <font  size=5 color="black"> <b> ORDEM DE SERVIÇO INTERNO ENCERRADO</b></font>
+       </td>
+      </tr>
+     <table>
+       <tr>
+         <td width="40%" valign="TOP">
+           <%= render 'formshow' %>
+         </td>
+        <td>
+         <fieldset><legend><font  size=4> Atendimento</font></legend>
+           <table>
+              <tr>
+                <td align="left" width="20%"><b>Data Atendimento:</b></td>
+                <td align="left"><%=h @chamados.data_aten.strftime("%d de %B de %Y") %></td>
+              </tr>
+              <tr>
+                <td align="left" width="20%"><b>Hora Atendimento:</b></td>
+                <td align="left"><%=h @chamados.data_aten.strftime("%H:%M horas")%></td>
+              </tr>
+              <tr>
+                <td align="left"><b>Funcionário:</b></td>
+               <%if @chamados.unidade_id.nil?%>
+                  <td><font color="red">ERRO no registro nº<%=h @chamados.id %></font></td>
+               <%else%>
+                  <td align="left"><%=h @chamados.estagiario.nome %></td>             </tr>
+               <%end%>
+             <tr>
+                <td align="left"><b>Tipo Problema:</b></td>
+                <%if @chamados.tipos_problema.nil?%>
+                   <td><font color="red">ERRO no registro nº<%=h @chamados.id %></font></td>
+                <%else%>
+                  <td align="left"><%=h @chamados.tipos_problema.tipo %></td>
+                <%end%>
+            </tr>
+            <tr>
+               <td align="left"><b>Patrimônio:</b></td>
+               <td align="left"><%=h @chamados.patrimonio %>
+                 <b>Local Atendimento:</b><%=h @chamados.local %></td>
+           </tr>
+           <tr>
+              <td align="left" valign="top"><b>Procedimentos executados:</b></td>
+              <td align="left"><%=h @chamados.procedimentos %></td>
+           </tr>
+           <tr>
+              <td align="left"><b>Situação Chamado:</b></td>
+              <td align="left"><%=h @chamados.situacao_chamado.situacao %></td>
+           </tr>
+           <tr>
+             <td align="left"><b>Término:</b></td>
+             <td align="left"><%=h @chamados.data_enc.strftime("%d de %B de %Y") %></td>
+           </tr>
+         </table>
+        </fieldset>
+      </td>
+     </tr>
+       <div class="botao">
+         <table width="50%" align="left">
+          <tr>
+             <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+             <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+          </tr>
+        </table>
+       </div>
+        </table>
+    </table>
+   </td>
+  </tr>
+ </table>
+</font>
+
+<br/>
+

@@ -1,0 +1,107 @@
+<% form_for(@relatestagiario) do |f| %>
+<%= f.error_messages %>
+<table class="tabelas" width="70%" align="center">
+ <tr>
+   <td align="left">
+         <font  size=5 color="black"> <b> RELATÓRIO ESTAGIÁRIO</b></font>
+   </td>
+ </tr>
+ <tr>
+   <td>
+   <font  size="2">
+   <table width="100%">
+     <tr>
+       <td>
+         <table>
+             <tr>
+               <td align="left"><b>Unidade:</b></td>
+               <td align="left" colspan="2"><%= f.collection_select :unidade_id, @unidades, :id, :nome, :include_blank => ' -- Selecione -- ' %>
+             </tr>
+             <tr>
+               <td align="left"><b> Estagiário:</b></td>
+               <td align="left" colspan="2"><%= f.collection_select :estagiario_id, @estagiarios, :id, :nome, :include_blank => ' -- Selecione -- ' %></td>
+             </tr>
+             <tr>
+               <td align="left"><b>Período:</b></td>
+               <td align="left"><%= f.text_field :periodo, :size =>20 %></td>
+               <td align="left"><i>OBS: Data de referência.  <br>   Exemplo: <b>12 a 15 de Junho</b></i></td>
+             </tr>
+             <tr>
+               <td align="left"><b>Data:</b></td>
+               <td align="left" ><%= f.date_select(:datahora, :order => [:day, :month, :year], :start_year => (Date.today.year)) %></td>
+               <td align="left"><i> (confecção do relatório)</i></td>
+             </tr>
+             <tr>
+               <td align="left"><b>Responsável:</b></td>
+               <td align="left"><%= f.text_field :responsavel, :size =>20 %></td>
+               <td align="left"><i> (pelo estagiário na unidade)</i></td>
+             </tr>
+             <tr>
+               <td colspan="3">
+                 <fieldset><legend><b><font  size=4> Atividades Desenvolvidas</font></b></legend>
+                 <table>
+                     <tr>
+                        <td> <font size="2"color="red"><b><u> OBSERVAÇÕES :</u></b></font></td>
+                        <td align="left">
+                         <font size="2" color="red"><i><b>1)Escrever em uma linha sem clicar ENTER </b></i></font>
+                       </td>
+                     <tr>
+                       <td></td>
+                       <td align="left">
+                         <font size="2"color="red"><i><b>2)Para separar utilize / (barra inclinada)</b></i></font>
+                     </td>
+                     <tr>
+                       <td></td>
+                       <td align="left">
+                         <font size="2"color="red"><i><b>3)Espaço reservado para digitação: 255 caracteres</b></i></font>
+                     </td>
+
+                      <tr>
+                           <td align="left"><b>Segunda Feira:</b></td>
+                           <td align="left"><%= f.text_field :segunda, :size =>42 %></td>
+                         </tr>
+                         <tr>
+                           <td align="left"><b>Terça Feira:</b></td>
+                           <td align="left"><%= f.text_field :terca, :size =>42 %></td>
+                         </tr>
+                         <tr>
+                           <td align="left"><b>Quarta Feira:</b></td>
+                           <td align="left"><%= f.text_field :quarta, :size =>42 %></td>
+                         </tr>
+                         <tr>
+                           <td align="left"><b>Quinta Feira:</b></td>
+                           <td align="left"><%= f.text_field :quinta, :size =>42 %></td>
+                         </tr>
+                         <tr>
+                           <td align="left"><b>Sexta Feira:</b></td>
+                           <td align="left"><%= f.text_field :sexta, :size =>42 %></td>
+                         </tr>
+                         <tr>
+                           <td  valign="top"align="left"><b>Procedimento <br> NÂO Executados:</b></td>
+                           <td align="left"> <%= f.text_area :providencia, :cols =>"54", :rows => "2"%></td>
+                         </tr>
+                         <tr>
+                           <td valign="top" align="left"><b>Observações:</b></td>
+                           <td align="left"><%= f.text_area(:obs, :cols =>"54", :rows => "2 ") %></td>
+                         </tr>
+                 </table>
+                 </fieldset>
+               </td>
+             </tr>
+         </table>
+       </td>
+     </tr>
+     <tr>
+       <table>
+         <tr>
+             <td align="left" width="6%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+             <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
+         </tr>
+       </table>
+    </tr>
+   </table>
+<% end %>
+   </font>
+  </td>
+ </tr>
+</table>

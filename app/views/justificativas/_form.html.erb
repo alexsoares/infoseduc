@@ -1,0 +1,88 @@
+<% if @ponto.present? %>
+  <%if !params[:ponto_id]%>
+    <% @ponto = Ponto.find(params[:justificativa][:ponto_id])%>
+  <%end%>
+      <font size="2">
+      <table>
+        <tr>
+          <td align="left"><b>Estagiário</b></td>
+          <td align="left" ><b><%= "#{@ponto.estagiario.nome}" %></b></td>        </tr>
+        <% form_for(@justificativa) do |f| %>
+        <%= f.error_messages %>
+          <tr>
+             <td><%= f.hidden_field(:estagiario_id, :value => @ponto.estagiario_id) %></td>
+             <td><%= f.hidden_field(:ponto_id, :value =>@ponto.id) %></td>
+          </tr>
+
+          <tr>
+          <td valign="top"><b>Justificativa:</b></td>
+          <td align="left" ><%= f.text_area(:justificativa, :cols=> "40", :rows=>"4") %></td>
+         </tr>
+         <tr>
+           <td align="left"><b>Referente à:</b></td>
+           <td align="left"><%= f.label :saida %><%= f.check_box :saida, :checked => true %> do dia <%= @ponto.entrada.strftime("%d/%m/%Y") %><%= f.hidden_field(:dia, :value => (@ponto.entrada.to_date)) %></td>
+        </tr>
+        <tr>
+          <td align="left"><b>Horário</b></td>
+          <td align="left"><%= f.text_field(:hour, :id =>"hour", :size=> 5) %> </td>
+        </tr>
+        <tr>
+          <td colspan="2"><font size="3" color="red"><i><b>Clique na caixa de Horário e arraste o botão Hour e Minute para marcar a hora</b></i></font></td>
+        <tr>
+         <td colspan="2">
+           <table>
+             <tr>
+               <td align="left" width="6%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+               <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
+            </tr>
+          </table>
+        </td>
+    </table>
+   </font>
+  <% end %>
+<%else%>
+  <% form_for(@justificativa) do |f| %>
+   <%= f.error_messages %>
+    <font size="2">
+      <table>
+        <tr>
+          <td valign="top"><b>Justificativa:</b></td>
+          <td align="left" ><%= f.text_area(:justificativa, :cols=> "40", :rows=>"4") %></td>
+        </tr>
+        <tr>
+          <td><b>Dia:</b></td>
+          <%= f.hidden_field(:estagiario_id, :value => params[:estagiario_id]) %>
+          <td align="left" ><%= f.hidden_field(:dia, :value => params[:date]) %>
+              <%dia = params[:date].to_date%>
+              <%= dia.strftime("%d/%m/%Y") %>
+             <b>Cumpriu horário ?</b>
+              <%= f.check_box :cumpriu_horario %>
+          </td>
+        </tr>
+        <tr>
+           <td align="left"><b>Feriado:</b></td>
+           <td align="left">SIM <%= f.check_box :feriado %> </td><p>
+       </tr>zz
+        <tr>
+           <td align="left"><b>Recesso:</b></td>
+           <td align="left">SIM <%= f.check_box :recesso %> </td><p>
+       </tr>
+        <tr>
+           <td align="left"><b>Fim de Semana:</b></td>
+           <td align="left">SIM <%= f.check_box :fimsemana %> </td><p>
+       </tr>
+        <tr>
+         <td colspan="2">
+           <table>
+             <tr>
+               <td align="left" width="6%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+               <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"></td>
+
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    </font>
+  <% end %>
+<%end%>

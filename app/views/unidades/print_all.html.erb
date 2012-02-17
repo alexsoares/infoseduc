@@ -1,0 +1,53 @@
+<br/>
+ <table class="tabelas" align="center" width="100%">
+  <tr>
+    <td colspan="2" align="left">
+         <font  size=5><b> UNIDADES CADASTRADAS</b></font>
+      </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="botao">
+       <table width="100%" align="center">
+         <tr>
+           <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+           <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+         </tr>
+      </table>
+     </div>
+   <br/>
+    <font size="2">
+     <table border="2" width="100%">
+        <tr>
+          <th>Nome</th>
+          <th>Ensino</th>
+          <th>Endereco</th>
+          <th>Num</th>
+          <th>Bairro</th>
+          <th>Fone</th>
+        </tr>
+        <% for unidades in @unidades %>
+         <tr>
+           <td align="left"><%=h unidades.nome %></td>
+           <td align="left"><%=h unidades.tipo.nome %></td>
+           <td align="left"><%=h unidades.endereco %></td>
+           <td align="left"><%=h unidades.num %></td>
+           <td align="left"><%=h unidades.bairro %></td>
+           <td align="left"><%=h unidades.fone %></td>
+         </tr>
+        <%end%>
+     </table>
+    </font>
+  
+  </table>
+  <div class="botao">
+   <table width="100%" align="center">
+    <tr>
+      <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+      <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+    </tr>
+   </table>
+  </div>
+  <br/>
+
+

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE abiword PUBLIC "-//ABISOURCE//DTD AWML 1.0 Strict//EN" "http://www.abisource.com/awml.dtd">
+<abiword template="false" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:math="http://www.w3.org/1998/Math/MathML" xid-max="160" xmlns:dc="http://purl.org/dc/elements/1.1/" fileformat="1.1" xmlns:svg="http://www.w3.org/2000/svg" xmlns:awml="http://www.abisource.com/awml.dtd" xmlns="http://www.abisource.com/awml.dtd" xmlns:xlink="http://www.w3.org/1999/xlink" version="2.6.6" xml:space="preserve" props="dom-dir:ltr; document-footnote-restart-section:0; document-endnote-type:numeric; document-endnote-place-enddoc:1; document-endnote-initial:1; lang:pt-BR; document-endnote-restart-section:0; document-footnote-restart-page:0; document-footnote-type:numeric; document-footnote-initial:1; document-endnote-place-endsection:0">
+<!-- ======================================================================== -->
+<!-- This file is an AbiWord document.                                        -->
+<!-- AbiWord is a free, Open Source word processor.                           -->
+<!-- More information about AbiWord is available at http://www.abisource.com/ -->
+<!-- You should not edit this file by hand.                                   -->
+<!-- ======================================================================== -->
+
+<metadata>
+<m key="dc.format">application/x-abiword</m>
+<m key="abiword.generator">AbiWord</m>
+</metadata>
+<styles>
+<s type="P" name="Normal" basedon="" followedby="Current Settings" props="font-family:Nimbus Roman No9 L; margin-top:0pt; font-variant:normal; margin-left:0pt; text-indent:0in; widows:2; font-style:normal; font-weight:normal; text-decoration:none; color:000000; line-height:1.0; text-align:left; margin-bottom:0pt; text-position:normal; margin-right:0pt; bgcolor:transparent; font-size:12pt; font-stretch:normal"/>
+<s type="C" name="Reference" props="font-size:10pt"/>
+</styles>
+<pagesize pagetype="A4" orientation="portrait" width="8.267717" height="11.692913" units="in" page-scale="1.000000"/>
+<section xid="1">
+<p style="Normal" xid="2" props="text-align:left; dom-dir:ltr">class ComputadoresController &lt; ApplicationController</p>
+<p style="Normal" xid="3" props="text-align:left; dom-dir:ltr">  # GET /computadores</p>
+<p style="Normal" xid="4" props="text-align:left; dom-dir:ltr">  # GET /computadores.xml</p>
+<p style="Normal" xid="5" props="text-align:left; dom-dir:ltr">   before_filter :load_unidades</p>
+<p style="Normal" xid="6" props="text-align:left; dom-dir:ltr">   before_filter :load_tipocontroles</p>
+<p style="Normal" xid="7"><c></c></p>
+<p style="Normal" xid="8"><c></c></p>
+<p style="Normal" xid="9" props="text-align:left; dom-dir:ltr">   def load_tipocontroles</p>
+<p style="Normal" xid="10" props="text-align:left; dom-dir:ltr">    @tipo_controles = TipoControle.find(:all)</p>
+<p style="Normal" xid="11" props="text-align:left; dom-dir:ltr">  end</p>
+<p style="Normal" xid="12">  </p>
+<p style="Normal" xid="13" props="text-align:left; dom-dir:ltr">   def load_unidades</p>
+<p style="Normal" xid="14" props="text-align:left; dom-dir:ltr">    @unidades = Unidade.find(:all, :order =&gt; 'nome ASC')</p>
+<p style="Normal" xid="15" props="text-align:left; dom-dir:ltr">  end</p>
+<p style="Normal" xid="16"><c></c></p>
+<p style="Normal" xid="17" props="text-align:left; dom-dir:ltr">  def index</p>
+<p style="Normal" xid="18" props="text-align:left; dom-dir:ltr">    if (params[:search].nil? || params[:search].empty?)</p>
+<p style="Normal" xid="19" props="text-align:left; dom-dir:ltr">      @computadores = Computadore.paginate :page =&gt; params[:page], :order =&gt; 'created_at DESC', :per_page =&gt; 10</p>
+<p style="Normal" xid="20" props="text-align:left; dom-dir:ltr">      $var = 0</p>
+<p style="Normal" xid="21" props="text-align:left; dom-dir:ltr">    else</p>
+<p style="Normal" xid="22" props="text-align:left; dom-dir:ltr">      @computadores = Computadore.find(:all, :joins =&gt; :unidade, :conditions =&gt; ["unidades.nome like ?", "%" + params[:search].to_s + "%"], :order =&gt; 'nome ASC')</p>
+<p style="Normal" xid="23" props="text-align:left; dom-dir:ltr">      $var=1</p>
+<p style="Normal" xid="24" props="text-align:left; dom-dir:ltr">    end</p>
+<p style="Normal" xid="25" props="text-align:left; dom-dir:ltr">    respond_to do |format|</p>
+<p style="Normal" xid="26" props="text-align:left; dom-dir:ltr">      format.html # index.html.erb</p>
+<p style="Normal" xid="27" props="text-align:left; dom-dir:ltr">      format.xml  { render :xml =&gt; @computadores }</p>
+<p style="Normal" xid="28" props="text-align:left; dom-dir:ltr">    end</p>
+<p style="Normal" xid="29" props="text-align:left; dom-dir:ltr">  end</p>
+<p style="Normal" xid="30"><c></c></p>
+<p style="Normal" xid="31" props="text-align:left; dom-dir:ltr">  # GET /computadores/1</p>
+<p style="Normal" xid="32" props="text-align:left; dom-dir:ltr">  # GET /computadores/1.xml</p>
+<p style="Normal" xid="33" props="text-align:left; dom-dir:ltr">  def show</p>
+<p style="Normal" xid="34" props="text-align:left; dom-dir:ltr">    @computadores = Computadore.find(params[:id])</p>
+<p style="Normal" xid="35"><c></c></p>
+<p style="Normal" xid="36" props="text-align:left; dom-dir:ltr">    respond_to do |format|</p>
+<p style="Normal" xid="37" props="text-align:left; dom-dir:ltr">      format.html # show.html.erb</p>
+<p style="Normal" xid="38" props="text-align:left; dom-dir:ltr">      format.xml  { render :xml =&gt; @computadores }</p>
+<p style="Normal" xid="39" props="text-align:left; dom-dir:ltr">    end</p>
+<p style="Normal" xid="40" props="text-align:left; dom-dir:ltr">  end</p>
+<p style="Normal" xid="41"><c></c></p>
+<p style="Normal" xid="42" props="text-align:left; dom-dir:ltr">  # GET /computadores/new</p>
+<p style="Normal" xid="43" props="text-align:left; dom-dir:ltr">  # GET /computadores/new.xml</p>
+<p style="Normal" xid="44" props="text-align:left; dom-dir:ltr">  def new</p>
+<p style="Normal" xid="45" props="text-align:left; dom-dir:ltr">    @computadores = Computadore.new</p>
+<p style="Normal" xid="46"><c></c></p>
+<p style="Normal" xid="47" props="text-align:left; dom-dir:ltr">    respond_to do |format|</p>
+<p style="Normal" xid="48" props="text-align:left; dom-dir:ltr">      format.html # new.html.erb</p>
+<p style="Normal" xid="49" props="text-align:left; dom-dir:ltr">      format.xml  { render :xml =&gt; @computadores }</p>
+<p style="Normal" xid="50" props="text-align:left; dom-dir:ltr">    end</p>
+<p style="Normal" xid="51" props="text-align:left; dom-dir:ltr">  end</p>
+<p style="Normal" xid="52"><c></c></p>
+<p style="Normal" xid="53" props="text-align:left; dom-dir:ltr">  # GET /computadores/1/edit</p>
+<p style="Normal" xid="54" props="text-align:left; dom-dir:ltr">  def edit</p>
+<p style="Normal" xid="55" props="text-align:left; dom-dir:ltr">    @computadores = Computadore.find(params[:id])</p>
+<p style="Normal" xid="56" props="text-align:left; dom-dir:ltr">  end</p>
+<p style="Normal" xid="57"><c></c></p>
+<p style="Normal" xid="58" props="text-align:left; dom-dir:ltr">  # POST /computadores</p>
+<p style="Normal" xid="59" props="text-align:left; dom-dir:ltr">  # POST /computadores.xml</p>
+<p style="Normal" xid="60" props="text-align:left; dom-dir:ltr">  def create</p>
+<p style="Normal" xid="61" props="text-align:left; dom-dir:ltr">    @computadores = Computadore.new(params[:computadore])</p>
+<p style="Normal" xid="62"><c></c></p>
+<p style="Normal" xid="63" props="text-align:left; dom-dir:ltr">    respond_to do |format|</p>
+<p style="Normal" xid="64" props="text-align:left; dom-dir:ltr">      if @computadores.save</p>
+<p style="Normal" xid="65" props="text-align:left; dom-dir:ltr">        flash[:notice] = 'COMPUTADOR CADASTRADO'</p>
+<p style="Normal" xid="66" props="text-align:left; dom-dir:ltr">        format.html { redirect_to(@computadores) }</p>
+<p style="Normal" xid="67" props="text-align:left; dom-dir:ltr">        format.xml  { render :xml =&gt; @computadores, :status =&gt; :created, :location =&gt; @computadores }</p>
+<p style="Normal" xid="68" props="text-align:left; dom-dir:ltr">      else</p>
+<p style="Normal" xid="69" props="text-align:left; dom-dir:ltr">        format.html { render :action =&gt; "new" }</p>
+<p style="Normal" xid="70" props="text-align:left; dom-dir:ltr">        format.xml  { render :xml =&gt; @computadores.errors, :status =&gt; :unprocessable_entity }</p>
+<p style="Normal" xid="71" props="text-align:left; dom-dir:ltr">      end</p>
+<p style="Normal" xid="72" props="text-align:left; dom-dir:ltr">    end</p>
+<p style="Normal" xid="73" props="text-align:left; dom-dir:ltr">  end</p>
+<p style="Normal" xid="74"><c></c></p>
+<p style="Normal" xid="75" props="text-align:left; dom-dir:ltr">  # PUT /computadores/1</p>
+<p style="Normal" xid="76" props="text-align:left; dom-dir:ltr">  # PUT /computadores/1.xml</p>
+<p style="Normal" xid="77" props="text-align:left; dom-dir:ltr">  def update</p>
+<p style="Normal" xid="78" props="text-align:left; dom-dir:ltr">    @computadores = Computadore.find(params[:id])</p>
+<p style="Normal" xid="79"><c></c></p>
+<p style="Normal" xid="80" props="text-align:left; dom-dir:ltr">    respond_to do |format|</p>
+<p style="Normal" xid="81" props="text-align:left; dom-dir:ltr">      if @computadores.update_attributes(params[:computadore])</p>
+<p style="Normal" xid="82" props="text-align:left; dom-dir:ltr">        flash[:notice] = 'COMPUTADOR ATUALIZADO'</p>
+<p style="Normal" xid="83" props="text-align:left; dom-dir:ltr">        format.html { redirect_to(@computadores) }</p>
+<p style="Normal" xid="84" props="text-align:left; dom-dir:ltr">        format.xml  { head :ok }</p>
+<p style="Normal" xid="85" props="text-align:left; dom-dir:ltr">      else</p>
+<p style="Normal" xid="86" props="text-align:left; dom-dir:ltr">        format.html { render :action =&gt; "edit" }</p>
+<p style="Normal" xid="87" props="text-align:left; dom-dir:ltr">        format.xml  { render :xml =&gt; @computadores.errors, :status =&gt; :unprocessable_entity }</p>
+<p style="Normal" xid="88" props="text-align:left; dom-dir:ltr">      end</p>
+<p style="Normal" xid="89" props="text-align:left; dom-dir:ltr">    end</p>
+<p style="Normal" xid="90" props="text-align:left; dom-dir:ltr">  end</p>
+<p style="Normal" xid="91"><c></c></p>
+<p style="Normal" xid="92" props="text-align:left; dom-dir:ltr">  # DELETE /computadores/1</p>
+<p style="Normal" xid="93" props="text-align:left; dom-dir:ltr">  # DELETE /computadores/1.xml</p>
+<p style="Normal" xid="94" props="text-align:left; dom-dir:ltr">  def destroy</p>
+<p style="Normal" xid="95" props="text-align:left; dom-dir:ltr">    @computadores = Computadore.find(params[:id])</p>
+<p style="Normal" xid="96" props="text-align:left; dom-dir:ltr">    @computadores.destroy</p>
+<p style="Normal" xid="97"><c></c></p>
+<p style="Normal" xid="98" props="text-align:left; dom-dir:ltr">    respond_to do |format|</p>
+<p style="Normal" xid="99" props="text-align:left; dom-dir:ltr">      format.html { redirect_to(computadores_url) }</p>
+<p style="Normal" xid="100" props="text-align:left; dom-dir:ltr">      format.xml  { head :ok }</p>
+<p style="Normal" xid="101" props="text-align:left; dom-dir:ltr">    end</p>
+<p style="Normal" xid="102" props="text-align:left; dom-dir:ltr">  end</p>
+<p style="Normal" xid="103"><c></c></p>
+<p style="Normal" xid="104" props="text-align:left; dom-dir:ltr">    def nome_unidade</p>
+<p style="Normal" xid="105" props="text-align:left; dom-dir:ltr">   $unidade = params[:computadore_unidade_id]</p>
+<p style="Normal" xid="106" props="text-align:left; dom-dir:ltr">   @computadorunidade = Unidade.find(:all, :conditions =&gt; ['id =?',$unidade])</p>
+<p style="Normal" xid="107" props="text-align:left; dom-dir:ltr">   $nomeunidade= Unidade.find_by_id($unidade).nome</p>
+<p style="Normal" xid="108" props="text-align:left; dom-dir:ltr">     render :update do |page|</p>
+<p style="Normal" xid="109" props="text-align:left; dom-dir:ltr">       page.replace_html 'unidade_nome', :partial =&gt; 'exibe_unidade'</p>
+<p style="Normal" xid="110" props="text-align:left; dom-dir:ltr">    end</p>
+<p style="Normal" xid="111" props="text-align:left; dom-dir:ltr">  end</p>
+<p style="Normal" xid="112"><c></c></p>
+<p style="Normal" xid="113" props="text-align:left; dom-dir:ltr">def consulta</p>
+<p style="Normal" xid="114" props="text-align:left; dom-dir:ltr">    render 'consultas'</p>
+<p style="Normal" xid="115" props="text-align:left; dom-dir:ltr">  end</p>
+<p style="Normal" xid="116"><c></c></p>
+<p style="Normal" xid="117" props="text-align:left; dom-dir:ltr">def lista_unidades</p>
+<p style="Normal" xid="118" props="text-align:left; dom-dir:ltr">    $unidade = params[:computadore_unidade_id]</p>
+<p style="Normal" xid="119" props="text-align:left; dom-dir:ltr">    @computadores = Computadore.find(:all, :conditions =&gt; ['unidade_id='+ $unidade])</p>
+<p style="Normal" xid="120" props="text-align:left; dom-dir:ltr">    render :partial =&gt; 'lista_unidades'</p>
+<p style="Normal" xid="121" props="text-align:left; dom-dir:ltr">  end</p>
+<p style="Normal" xid="122"><c></c></p>
+<p style="Normal" xid="123" props="text-align:left; dom-dir:ltr">def consultatipo</p>
+<p style="Normal" xid="124" props="text-align:left; dom-dir:ltr">    render 'consultastipo'</p>
+<p style="Normal" xid="125" props="text-align:left; dom-dir:ltr"> end</p>
+<p style="Normal" xid="126"><c></c></p>
+<p style="Normal" xid="127" props="text-align:left; dom-dir:ltr">def lista_tipos</p>
+<p style="Normal" xid="128" props="text-align:left; dom-dir:ltr">    $tipo = params[:computadore_tipo_controle_id]</p>
+<p style="Normal" xid="129" props="text-align:left; dom-dir:ltr">     @computadores = Computadore.find(:all, :conditions =&gt; ['tipo_controle_id='+ $tipo])</p>
+<p style="Normal" xid="130" props="text-align:left; dom-dir:ltr">    render :partial =&gt; 'lista_unidades'</p>
+<p style="Normal" xid="131" props="text-align:left; dom-dir:ltr">  end</p>
+<p style="Normal" xid="132"><c></c></p>
+<p style="Normal" xid="133" props="text-align:left; dom-dir:ltr">def consultatiponome</p>
+<p style="Normal" xid="134" props="text-align:left; dom-dir:ltr">    render 'consultastiponome'</p>
+<p style="Normal" xid="135" props="text-align:left; dom-dir:ltr"> end</p>
+<p style="Normal" xid="136"><c></c></p>
+<p style="Normal" xid="137" props="text-align:left; dom-dir:ltr">def lista_tiponome</p>
+<p style="Normal" xid="138" props="text-align:left; dom-dir:ltr">   $tipo = params[:computadore_tipo_controle_id]</p>
+<p style="Normal" xid="139" props="text-align:left; dom-dir:ltr">   @unidade = Unidade.find :all, :conditions =&gt; {:tipo_id =&gt; params[:computadore_tipo_controle_id]}</p>
+<p style="Normal" xid="140" props="text-align:left; dom-dir:ltr">     render :update do |page|</p>
+<p style="Normal" xid="141" props="text-align:left; dom-dir:ltr">      page.replace_html 'esp_unidade', :partial =&gt; 'unidade_box'</p>
+<p style="Normal" xid="142" props="text-align:left; dom-dir:ltr">  end</p>
+<p style="Normal" xid="143" props="text-align:left; dom-dir:ltr">end</p>
+<p style="Normal" xid="144"><c></c></p>
+<p style="Normal" xid="145" props="text-align:left; dom-dir:ltr">def lista_tipounidades</p>
+<p style="Normal" xid="146" props="text-align:left; dom-dir:ltr">    $unidade = params[:computadore_unidade_id]</p>
+<p style="Normal" xid="147" props="text-align:left; dom-dir:ltr">    @computadores = Computadore.find(:all, :conditions =&gt; ['unidade_id=? and tipo_controle_id=?',$unidade, $tipo])</p>
+<p style="Normal" xid="148" props="text-align:left; dom-dir:ltr">    render :partial =&gt; 'lista_unidades'</p>
+<p style="Normal" xid="149" props="text-align:left; dom-dir:ltr">  end</p>
+<p style="Normal" xid="150"><c></c></p>
+<p style="Normal" xid="151" props="text-align:left; dom-dir:ltr">def totalizaC</p>
+<p style="Normal" xid="152" props="text-align:left; dom-dir:ltr">    @computadores = Computadore.find(:all<c props="font-family:Nimbus Roman No9 L; font-size:12pt; color:000000; text-decoration:none; text-position:normal; font-weight:normal; font-style:normal; lang:pt-BR">:conditions =&gt; ['unidade_id=? and tipo_controle_id=?',$unidade, $tipo])</c></p>
+<p style="Normal" xid="153" props="text-align:left; dom-dir:ltr">     respond_to do |format|</p>
+<p style="Normal" xid="154" props="text-align:left; dom-dir:ltr">       format.html # index.html.erb</p>
+<p style="Normal" xid="155" props="text-align:left; dom-dir:ltr">      format.xml  { render :xml =&gt; @computadores }</p>
+<p style="Normal" xid="156">   </p>
+<p style="Normal" xid="157" props="text-align:left; dom-dir:ltr">    end</p>
+<p style="Normal" xid="158" props="text-align:left; dom-dir:ltr">  end</p>
+<p style="Normal" xid="159" props="text-align:left; dom-dir:ltr">  end</p>
+<p style="Normal" xid="160"></p>
+</section>
+</abiword>

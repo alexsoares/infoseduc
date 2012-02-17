@@ -1,0 +1,55 @@
+<% form_for(@anexo, :html => {:multipart=>true}) do |f| %>
+  <%= f.error_messages %>
+  <font  size="2">
+   <table class="tabelas" width="60%" align="center">
+    <tr>
+     <td align="left">
+       <font  size=5><b> CADASTRO DE UNIDADES - ANEXOS</b></font>
+     </td>
+    </tr>
+    <tr>
+      <td>
+        <fieldset><legend><font  size=4> Anexo</font></legend>
+          <table>
+             <tr>
+               <td align="left"> <b>Unidade:</b></td>
+               <td align="left">
+                <%if params[:unidade].present?%>
+                    <%= f.label Unidade.find(params[:unidade]).nome %> <%= f.label params[:unidade] %>
+                    <%= f.hidden_field(:unidade_id, :value => params[:unidade])  %>
+                <%else%>
+                     <%= f.collection_select :unidade_id, @unidades, :id, :nome, :include_blank => ' -- Selecione -- ', :size=> 30 %>
+                <%end%>
+              </td>
+
+               <td align="right"><b>Usuário:</b></td>
+               <td align="left"><%= f.label current_user.name %>
+                   <%= f.hidden_field(:user_id, :value => current_user.id)  %>
+               </td>
+            </tr>
+             <tr>
+               <td align="left"><b>Título:</b></td>
+               <td colspan="3" align="left"><%= f.text_field :titulo, :size => 23 %></td>
+             </tr>
+             <tr>
+               <td align="left"><b>Descrição:</b></td>
+               <td colspan="3" align="left"><%= f.text_area(:descricao , :cols =>"30", :rows => "2")%></td>
+             </tr>
+             <tr>
+               <td align="left"><b>Arquivo:</b></td>
+               <td colspan="3" align="left"><%= f.file_field :file %></td>
+             </tr>
+          </table>
+         </fieldset>
+         <table>
+           <tr>
+              <td align="left" width="6%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), anexos_path,  :title => "Voltar" %></td>
+               <td align="left"><input type="image" src="/stylesheets/images/salvar.png"></td>
+           </tr>
+         </table>
+      </td>
+    </tr>
+  </table>
+ </font>
+<% end %>
+<br/>

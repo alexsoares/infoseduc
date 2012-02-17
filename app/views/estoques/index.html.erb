@@ -1,0 +1,93 @@
+ <table class="tabelas"  align="center" width="80%">
+  <tr>
+       <td colspan="2" align="left">
+         <font  size=5 color="black"> <b> ESTOQUE INFORMÁTICA SEDUC</b></font>
+       </td>
+  </tr>
+  <tr>
+    <td>
+   <br/>
+   <font  size="2">
+   <div class="botao">
+   <table  width="100%">
+    <tr>
+      <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+      <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+      <td align="right">
+       <div class="botao">
+         <table>
+        <tr>
+        <% form_tag estoques_path, :method => 'get' do %>
+        <td align="right"><font size="4"> Digite Produto:</font>
+           <%= text_field_tag :search, params[:search] %>
+            <td align="left"><input type="image" src="/stylesheets/images/buscar.png" title="Buscar">
+        </td>
+        <% end %>
+        </tr>
+     </table>
+     </div>
+     </td>
+     </tr>
+  </table>
+  <br/>
+  </div>
+   <table align="center"  border="2" width="100%">
+      <tr>
+        <th>Produto</th>
+        <th>Especificação</th>
+        <th>Saldo</th>
+        <th>Observação</th>
+      </tr>
+      <%$totalc = 0%>
+      <% for estoques in @estoques %>
+      <%if estoques.saldo != 0%>
+     <tr>
+        <td><%=h estoques.componente.nome %></td>
+        <td><%=h estoques.especifica %></td>
+        <td align="center"><b><%=h estoques.saldo %></b></td>
+        <td><%=h estoques.obs %></td>
+      </tr>
+      <%$totalc= $totalc + estoques.saldo%>
+      <tr>
+        <td colspan="4">
+          <div class="botao">
+          <table>
+               <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), estoques, :title => "Exibir Dados" %></td>
+                <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                  <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_estoque_path(estoques), :title => "Alterar Dados"%></td>
+                     <% if current_user.has_role?('administrador')%>
+                       <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), estoques, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+                     <%end%>
+               <%end%>
+          </table>
+          </div>
+        </td>
+      </tr>
+      <%end%>
+      <%end%>
+      <tr>
+       <td colspan="6" align="left"><font  color ="black "size="2"><b> Total <%if $var1 == 1 %><%=h estoques.componente.nome %><%end%>: <%= $totalc %></b></font> </td>
+      </tr>
+   </table>
+   <div class="botao">
+   <table width="100%" align="center">
+    <tr>
+      <% if current_user.has_role?('administrador') %>
+        <td width="8%"><%= button_to 'Cadastrar', new_estoque_path %></td>
+      <%end%>
+      <td align="left" width="8%"><%= button_to 'Entrada', new_entrada_path %></td>
+      <td align="left" width="8%"><%= button_to 'Saida', new_saida_path %></td>
+      <td width="8%"><%= button_to 'Voltar', homes_path, {:method => "get"}%></td>
+      <td width="8"align="left"><input type="Button" Value="Imprimir" onclick="javascript:window.print()"></td>
+      <% if  $var == 0 then %>
+
+      <%end%>
+
+    </tr>
+  </table>
+  </div>
+
+  </font>
+  </td>
+</table>
+  <br/>

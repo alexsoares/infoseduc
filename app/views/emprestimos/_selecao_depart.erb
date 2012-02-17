@@ -1,0 +1,7 @@
+<table width="100%">
+   <tr>
+     <td><font size="2"><b>Departamento:</b></font></td>
+     <td align="left"width="75%"><%= collection_select  :emprestimo, :departamento_id, @departamentos, :id, :depto, :include_blank => ' --- Selecione opção ---'  %>
+     </td>
+   </tr>
+</table>

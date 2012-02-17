@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  unidade: 
+  problema: MyString
+  solicitante: 
+  data_sol: 2011-01-28 10:03:48
+  solicitado: MyString
+  atendente: MyString
+  solicitacao: MyString
+  protocolo: MyString
+  obs: MyString
+
+two:
+  unidade: 
+  problema: MyString
+  solicitante: 
+  data_sol: 2011-01-28 10:03:48
+  solicitado: MyString
+  atendente: MyString
+  solicitacao: MyString
+  protocolo: MyString
+  obs: MyString

@@ -1,0 +1,91 @@
+<font size="2">
+ <table class="tabelas"  align="center" width="100%">
+   <tr>
+       <td colspan="2" align="left">
+         <font  size=5 color="black"> <b> IMPRESSORAS</b></font>
+       </td>
+      </tr>
+  <tr>
+   <td>
+   <br/>
+   <div class="botao">
+   <table width="100%">
+    <tr>
+      <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+      <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+      <td align="right">
+      <div class="botao">
+       <table>
+         <tr>
+            <% form_tag impressoras_path, :method => 'get' do %>
+            <td align="right"><font size="4"> Unidade:</font>
+                <%= text_field_tag :search, params[:search] %>
+              <td align="left"><input type="image" src="/stylesheets/images/buscar.png" title="Buscar">
+             <% end %>
+            </td>
+        </tr>
+      </table>
+     </div>
+     </td>
+     </tr>
+  </table>
+  <br/>
+  </div>
+     <table border="2" width="100%">
+              <%$imp = 0%>
+                <tr>
+                    <th>Unidade</th>
+                    <th>Tipo Controle</th>
+                    <th>Quantidade</th>
+                    <th>Configuração</th>
+                    <th>Usuário</th>
+                    <th>Nº Patrimônio</th>
+                 </tr>
+              <% @impressoras.each do |impressora| %>
+                 <tr>
+                    <td align="left"><%=h impressora.unidade.nome %></td>
+                    <td align="left"><%=h impressora.tipo_controle.nome %></td>
+                    <td align="center"><%=h impressora.quant %></td>
+                    <td align="left"><%=h impressora.config %></td>
+                    <td align="left"><%=h impressora.user %></td>
+                    <%if impressora.tipo_controle.nome == 'TERCEIROS'%>
+                      <td align="left"><%=h impressora.pertence %></td>
+                    <%else%>
+                       <td align="left"><%=h impressora.pat %></td>
+                    <%end%>
+               </tr>
+               <%$imp = $imp + impressora.quant%>
+               <tr>
+                <td colspan="7">
+                <div class="botao">
+                  <table>
+                    <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), impressora, :title => "Exibir Dados" %></td>
+                    <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                      <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_impressora_path(impressora), :title => "Alterar Dados"%></td>
+                         <% if current_user.has_role?('administrador')%>
+                           <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), impressora, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+                        <%end%>
+                    <%end%>
+                </table>
+                </div>
+               </td>
+            </tr>
+              <% end %>
+             <tr>
+               <td align="left"colspan="7"><font color="black">Total de Impressoras Cadastradas  => <%=  $imp%></font></td>
+             </tr>
+            </table>
+
+     <div class="botao">
+       <table width="100%">
+        <tr>
+          <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+          <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+        </tr>
+      </table>
+      </div>
+  </td>
+</table>
+</font>
+<br/>
+

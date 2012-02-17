@@ -1,0 +1,104 @@
+<br/>
+ <table class="tabelas" align="center" width="100%">
+   <tr>
+      <td colspan="2" align="left">
+         <font  size=5 color="black"> <b> EX-ESTAGIÁRIOS</b></font>
+      </td>
+     </tr>
+   <tr>
+     <td>
+       <br/>
+       <div class="botao">
+       <table width="100%">
+        <tr>
+             <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+             <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+          <!--<td width="8%" align="left"><input type="Button" Value="Imprimir" onclick="javascript:window.print()"></td>-->
+          <td align="right">
+           <div class="botao">
+           <table>
+            <tr>
+            <% form_tag baixas_path, :method => 'get' do %>
+            <td align="right"><font size="4"> Digite nome:</font>
+               <%= text_field_tag :search , params[:search] %>
+               <td align="left"><input type="image" src="/stylesheets/images/buscar.png" title="Buscar">
+            </td>
+            <% end %>
+            </tr>
+           </table>
+         </div>
+         </td>
+       </tr>
+      </table>
+      <br/>
+      </div>
+      <font  size="2">
+      <table border="2" width="100%">
+      <% for estagiarios in @baixas %>
+       <tr>
+         <td rowspan="4" valign="top"><%= image_tag estagiarios.photo.url(:thumb) %></td>
+         <th height="10%">Nome</th>
+         <th>Fone</th>
+         <th>Cel</th>
+         <th>Email</th>
+       <tr>
+          <td align="center"><%=h estagiarios.nome %></td>
+          <td align="center"><%=h estagiarios.fone %></td>
+          <td align="center"><%=h estagiarios.cel %></td>
+          <td><%=h estagiarios.email %></td>       </tr>
+       </tr>
+       <tr>
+         <th>Unidade</th>
+         <th>Período</th>
+         <th>Admissão</th>
+         <th>Demissão</th>
+      </tr>
+      <tr>
+        <% if estagiarios.unidade_id.nil? then %>
+              <td><%=h estagiarios.regiao.regiao  %></td>
+            <%else%>
+              <td><%=h estagiarios.unidade.nome  %></td>
+            <%end%>
+         <td><%=h estagiarios.periodo_trab %></td>
+         <td><%=h estagiarios.data_admissao.strftime("%d/%m/%Y")  %></td>
+           <% if estagiarios.desligado == 1 %>
+              <td><%=h estagiarios.data_desliga.strftime("%d/%m/%Y")  %></td>
+            <%end%>
+
+      </tr>
+      <tr>
+        <td colspan="12">
+          <div class="botao">
+          <table>
+               <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), estagiarios, :title => "Exibir Unidade" %></td>
+                <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                  <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"), edit_estagiario_path(estagiarios), :title => "Alterar Dados"%></td>
+                     <% if current_user.has_role?('administrador')%>
+                       <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), estagiarios, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+                     <%end%>
+               <%end%>
+          </table>
+          </div>
+         </td>
+      </tr>
+
+
+      <% end %>
+     </table>
+   </font>
+   <div class="botao">
+   <table width="100%"align="center">
+     <tr>
+        <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+         <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+     </tr>
+   </table>
+  </div>
+ </table>
+<br/>
+
+
+
+
+
+

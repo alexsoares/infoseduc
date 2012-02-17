@@ -1,0 +1,62 @@
+<br/>
+<fieldset><legend><font  size=5> TIPOS DE UNIDADE</font></legend>
+<font  size="2">
+ <table width="100%"  >
+  <tr>
+    <td width="50%" valign="top">
+      <% form_for(@situacao_chamados) do |f| %>
+        <fieldset><legend><font  size=4> Cadastrar Tipos</font></legend>
+         <table>
+           <tr>
+             <td width="20%"align="left" ><b>Situacao: </b>
+                 <%= f.text_field :situacao  %>
+                   <%= observe_field 'situacao_chamado_situacao',
+                      :frequency => 0.1,
+                      :update => "cadastrados",
+                      :with => :tipo_nome,
+                     :url => { :action => 'lista' } %>
+            </td>
+          </tr>
+          <tr>
+            <td align="left">
+                 <div class="botao">
+                    <%= f.submit "Salvar" %>
+                 </div>
+            </td>
+          </tr>
+         </table>
+        </fieldset>
+      <% end %>
+     </td>
+     <td width="50%" align="">
+         <fieldset><legend><font  size=4> Tipos Cadastrados</font></legend>
+          <table width="100%">
+           <tr>
+              <td align="left">
+                <div id="cadastrados"></div>
+              </td>
+           </tr>
+          </table>
+         </fieldset>
+       </td>
+  </tr>
+</table>
+
+</font>
+</fieldset>
+<table>
+  <tr>
+    <td colspan="12">
+       <div class="botao">
+        <table>
+           <td align="left" width="6%"><%= button_to 'Voltar', homes_path, {:method => "get"}%></td>
+           <td align="left"><input type="Button" Value="Imprimir" onclick="javascript:window.print()"></td>
+        </table>
+        </div>
+    </td>
+  </tr>
+</table>
+<br/>
+
+
+

@@ -1,0 +1,65 @@
+<br/><br/>
+<table class="tabelas"  width="40%" align="center">
+  <tr>
+       <td colspan="2" align="left">
+         <font  size=5 color="black"> <b> MÊS BASE</b></font>
+       </td>
+      </tr>
+ <tr>
+ <tr>
+  <td>
+      <div class="botao">
+       <table width="100%" align="center">
+        <tr>
+          <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+          <td width="6%" align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+          <td align="left" ><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "30x30"),  new_mes_basis_path, :title => "Cadastrar" %></td>
+        </tr>
+     </table>
+    </div>
+    <fieldset>
+    <legend><font  size=4>Dias Úteis no Mês</font></legend>
+     <table width="100%" align="center"border="2">
+      <tr>
+        <th><font  size=2>Mês</font></th>
+        <th><font  size=2>Qtde dias</font></th>
+      </tr>
+      <% @mes_bases.each do |mes_base| %>
+       <tr>
+        <td><font  size=2><%=h "#{translate_month_tag(mes_base.mes)} / #{mes_base.data.strftime("%Y")}" %></font></td>
+        <td align="center"><font  size=2><%=h mes_base.qtde_dias %></font></td>
+       </tr>
+       <tr>
+         <td colspan="2">
+           <div class="botao">
+             <table>
+                 <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), mes_base, :title => "Exibir Dados" %></td>
+                  <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                    <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/edit.png", :size => "25x25"),{:action => "edit", :id =>mes_base}, :method => "get", :title => "Alterar Dados"%></td>
+                       <% if current_user.has_role?('administrador')%>
+                         <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.PNG", :size => "25x25"), mes_base, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir" %></td>
+                       <%end%>
+                 <%end%>
+             </table>
+            </div>
+       </tr>
+     <% end %>
+     <div class="botao">
+       <table width="100%" align="center">
+        <tr>
+          <td width="6%"align="left" > <%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+          <td width="6%" align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
+          <td align="left" ><%= link_to image_tag("/stylesheets/images/cadastrar.gif", :size => "30x30"),  new_mes_basis_path, :title => "Cadastrar" %></td>
+        </tr>
+      </table>
+      </div>
+     </table>
+     </fieldset>
+    </td>
+   </tr>
+  </table>
+
+
+<br/>
+<br />
+

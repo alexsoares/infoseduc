@@ -1,0 +1,62 @@
+<br/><font color="black">
+ <table  align="center" width="50%">
+  <tr>
+  <td bgcolor="#F5DEB3">
+  <fieldset><legend><font  size=5> DATASHOW</font></legend>
+  <div class="botao">
+   <table width="100%">
+    <tr>
+       <td bgcolor="#F5DEB3" align="left"width="6%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+    </tr>
+  </table>
+  </div>
+   <table align="center" width="100%">
+    <tr>
+      <td bgcolor="#F5DEB3" valign="top" width="20%">
+        <br/>
+         <table border="1" width="100%">
+         <%$totals = 0%>
+          <tr>
+             <th  valign="top" align="left" bgcolor="orange"><font  size="2">Unidade</font></th>
+             <th  valign="top" align="center" bgcolor="orange"><font  size="2">Configuração</font></th>
+             <th  valign="top" align="center" bgcolor="orange"><font  size="2">Nº</font></th>
+          </tr>
+          <% for data in @datashows %>
+          <tr>
+             <td bgcolor="#F5DEB3" valign="top"align="left"><font  size="2"><%=h data.unidade.nome %></font></td>
+             <td bgcolor="#F5DEB3" valign="top"><font  size="2"><%=h data.config %></font></td>
+             <td bgcolor="#F5DEB3" valign="top"><font  size="2"><%=h data.quant %></font></td>
+             <%$totals= $totals + data.quant%>
+        </tr>
+         <tr>
+            <td bgcolor="#F5DEB3" colspan="12">
+            <div class="botao">
+             <table>
+               <tr>
+                 <td bgcolor="#F5DEB3"><%= link_to image_tag("/stylesheets/images/exibir.gif", :size => "25x25"), data, :title => "Exibir Dados" %></td>
+               </tr>
+             </table>
+            </div>
+           </td>
+          </tr>
+         <% end %>
+         <tr>
+            <td bgcolor="#F5DEB3" colspan="3" align="left"><font  size="2"><b> Total => <%= $totals %></b></font> </td>
+         </tr>
+        </table>
+       </fieldset>
+      </td>
+   </table>
+  <div class="botao">
+   <table width="100%">
+    <tr>
+       <td bgcolor="#F5DEB3" align="left"width="6%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), homes_path, :title => "Voltar" %></td>
+     </tr>
+  </table>
+  </div>
+  </td>
+  </tr>
+ </table>
+ <br/>
+</font>
+

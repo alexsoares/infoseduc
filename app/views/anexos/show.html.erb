@@ -1,0 +1,59 @@
+<br/>
+<font size="2">
+<table  class="tabelas" width="50%"align="center">
+ <tr>
+    <td colspan="2" align="left">
+      <font  size=5 color="black"> <b>ANEXOS - UNIDADE</b></font>
+    </td>
+  </tr>
+  <tr>
+     <td>
+        <fieldset><legend><font  size=4> Documento anexado</font></legend>
+         <table width="100%">
+           <tr>
+             <td valign="top" width="50%">
+               <table>
+                  <tr>
+                    <td align="left"><b>Unidade: </b></td>
+                    <td align="left"><%=h @anexo.unidade.nome %></td>
+                  </tr>
+                  <tr>
+                    <td align="left"><b>Título: </b></td>
+                    <td align="left"><%=h @anexo.titulo %> </td>
+                  </tr>
+                  <tr>
+                    <td align="left"><b>Descrição: </b></td>
+                    <td align="left"><%=h @anexo.descricao %> </td>
+                  </tr>
+                  <tr>
+                    <td align="left"><b>Usuário: </b></td>
+                    <td align="left" colspan="2"><%=h @anexo.user.name %></td>
+                  </tr>
+                </table>
+              </td>
+              <td  valign="top" ><%= link_to image_tag(@anexo.file.url(:thumb), :size => "120x120"), @anexo.file.url %>
+                <br/><br/><font size="1">(Clique na imagem para vizualizar)</font>
+              </td>
+            </tr>
+         </table>
+       </fieldset>
+      <div class="botao">
+       <table>
+        <tr>
+         <td align="left"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"), anexos_path(:unidade => @anexo.unidade_id) , :title => "Voltar"%></td>
+         </tr>
+      </table>
+      </div>
+   </td>
+ </tr>
+ </table>
+</font>
+
+
+
+
+
+
+<div align="left">
+
+</div>

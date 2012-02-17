@@ -1,0 +1,109 @@
+<br/>
+<br/>
+<table  class="tabelas" width="60%"align="center">
+ <tr>
+      <td colspan="2" align="left">
+         <font  size=5 color="black"> <b> RELATÓRIO ESTAGIÁRIO</b></font>
+      </td>
+
+ </tr>
+ <tr>
+  <td>
+  <font  size="2">
+  <table width="100%">
+   <tr>
+    <td colspan="2">
+      <fieldset><legend><b><font  size=4> Dados Estagiário</font></b></legend>
+        <table>
+            <tr>
+              <td width="10%"align="left"><b>Estagiário:</b></td>
+              <td align="left"><%=h @relatestagiario.estagiario.nome %></td>
+            </tr>
+            <tr>
+              <td width="10%"align="left"><b>Unidade:</b></td>
+              <td align="left"><%=h @relatestagiario.unidade.nome %></td>
+            </tr>
+            <tr>
+              <td align="left"><b>Período:</b></td>
+              <td align="left"><%=h @relatestagiario.periodo %></td>
+            </tr>
+            <tr>
+              <td align="left"><b>Data/Hora:</b></td>
+              <td align="left"><%=h @relatestagiario.datahora.strftime("%d de %B de %Y - %H:%M horas") %></td>
+            </tr>
+            <tr>
+              <td align="left"><b>Responsável:</b></td>
+              <td align="left"><%=h @relatestagiario.responsavel %></td>
+            </tr>
+            <tr>
+               <td align="left"><b>Observações:</b></td>
+               <td align="left"><%=h @relatestagiario.obs %></td>
+            </tr>
+        </table>
+      </fieldset>
+     </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+      <fieldset><legend><b><font  size=4> Atividades Desenvolvidas</font></b></legend>
+       <table>
+         <% @relatestagiario.separacao %>
+            <tr>
+            <td align="left"><b>Segunda Feira:</b></td>
+            <td align="left"><%=h @relatestagiario.segunda %></td>
+          </tr>
+           <tr>
+            <td align="left"><b>Terça Feira:</b></td>
+            <td align="left"><%=h @relatestagiario.terca %></td>
+          </tr>
+           <tr>
+            <td align="left"><b>Quarta Feira:</b></td>
+            <td align="left"><%=h @relatestagiario.quarta %></td>
+          </tr>
+           <tr>
+            <td align="left"><b>Quinta Feira:</b></td>
+            <td align="left"><%=h @relatestagiario.quinta %></td>
+          </tr>
+           <tr>
+            <td align="left"><b>Sexta Feira:</b></td>
+            <td align="left"><%=h @relatestagiario.sexta %></td>
+          </tr>
+          <tr>
+            <td align="left"><b>NÃO Executado:</b></td>
+            <td align="left"><%=h @relatestagiario.providencia %></td>
+          </tr>
+        </table>
+      </fieldset>
+     </td>
+   </tr>
+   <tr>
+     <td align="left"><b>Validação:</b></td>
+     <% if @relatestagiario.validacao == false %>
+        <td align="left"><b><font color="red">NÃO VALIDADO</font></b></td>
+     <%else%>
+        <td align="left"><b> VALIDADO</b></td>
+     <%end%>
+  </tr>
+  <tr>
+    <td align="left"><b>Por (nome):</b></td>
+    <td align="left"><%=h @relatestagiario.nome %></td>
+  </tr>
+   <div class="botao">
+   <table width="60%" align="left">
+    <tr>
+           <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
+           <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>    </tr>
+  </table>
+ </div>
+ </table>
+ </font>
+
+</td>
+</tr>
+</table>
+
+
+<br/>
+
+
+
