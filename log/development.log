@@ -4611,3 +4611,370 @@ Rendering unidades/index
   [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `estagiarios` WHERE (`estagiarios`.regiao_id = 3) [0m
   [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2012-04-24 17:10:58' AND ends_at >= '2012-04-24 17:10:58') [0m
 Completed in 392ms (View: 320, DB: 11) | 200 OK [http://localhost/unidades]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UnidadesController#new (for 127.0.0.1 at 2012-04-24 14:55:33) [GET]
+  [4;36;1mUnidade Load (0.3ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;35;1mEstagiario Load (0.4ms)[0m   [0mSELECT * FROM `estagiarios` ORDER BY nome ASC[0m
+  [4;36;1mTipo Load (0.2ms)[0m   [0;1mSELECT * FROM `tipos` ORDER BY nome ASC[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mRegiao Load (0.1ms)[0m   [0;1mSELECT * FROM `regiaos` ORDER BY regiao ASC[0m
+  [4;35;1mUnidade Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+Rendering template within layouts/application
+Rendering unidades/new
+  [4;36;1mTipo Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `tipos`[0m
+  [4;35;1mRegiao Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `regiaos`[0m
+Rendered unidades/_form (22.5ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2012-04-24 17:55:33' AND ends_at >= '2012-04-24 17:55:33') [0m
+  [4;35;1mUser Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 270ms (View: 73, DB: 8) | 200 OK [http://localhost/unidades/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UnidadesController#new (for 127.0.0.1 at 2012-04-24 15:20:22) [GET]
+  [4;36;1mUnidade Load (2.2ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;35;1mEstagiario Load (0.4ms)[0m   [0mSELECT * FROM `estagiarios` ORDER BY nome ASC[0m
+  [4;36;1mTipo Load (0.1ms)[0m   [0;1mSELECT * FROM `tipos` ORDER BY nome ASC[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mRegiao Load (0.2ms)[0m   [0;1mSELECT * FROM `regiaos` ORDER BY regiao ASC[0m
+  [4;35;1mUnidade Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+Rendering template within layouts/application
+Rendering unidades/new
+  [4;36;1mTipo Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `tipos`[0m
+  [4;35;1mRegiao Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `regiaos`[0m
+
+ActionView::TemplateError (undefined method `biblioteca' for #<Unidade:0xb6046f6c>) on line #76 of app/views/unidades/_form.html.erb:
+73:                  </tr>
+74:                   <tr>
+75:                    <td align="left"><b>Biblioteca:</b></td>
+76:                    <td> <%= f.text_field :biblioteca, :size =>30%></td>
+77:                  </tr>
+78:                   <tr>
+79:                    <td align="left"><b>IP:</b></td>
+
+    app/views/unidades/_form.html.erb:76
+    searchlogic (2.4.14) [v] lib/searchlogic/rails_helpers.rb:72:in `fields_for'
+    searchlogic (2.4.14) [v] lib/searchlogic/rails_helpers.rb:61:in `form_for'
+    app/views/unidades/_form.html.erb:2
+    app/views/unidades/new.html.erb:2
+    app/controllers/unidades_controller.rb:62:in `new'
+
+Rendered rescues/_trace (88.8ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20101001122305)
+Migrating to CreateTipos (20101001122400)
+Migrating to CreateUnidades (20101004110726)
+Migrating to CreateEstagiarios (20101004155539)
+Migrating to CreateAdministracaos (20101007135321)
+Migrating to CreateDepartamentos (20101014110459)
+Migrating to CreateSenhas (20101015183233)
+Migrating to CreateRoles (20101018114954)
+Migrating to CreateEstoques (20101019124816)
+Migrating to CreateEntradas (20101020131609)
+Migrating to CreateSaidas (20101020175407)
+Migrating to CreateRelatorios (20101026122542)
+Migrating to CreateComponentes (20101028114426)
+Migrating to CreateFornecedores (20101029145323)
+Migrating to CreateTiposProblemas (20101103153013)
+Migrating to CreateSituacaoChamados (20101103165828)
+Migrating to CreateChamados (20101103174224)
+Migrating to CreateItinerarios (20101104150801)
+Migrating to CreateComputadores (20101117121045)
+Migrating to CreateImpressoras (20101117121112)
+Migrating to CreateDatashows (20101117121158)
+Migrating to CreateTipoControles (20101117141103)
+Migrating to CreateEmfaltas (20101124163117)
+Migrating to CreateRegiaos (20101130123417)
+Migrating to CreateEmprestimos (20101210112302)
+Migrating to CreateEmpresas (20101223122810)
+Migrating to CreateCExternos (20101223122913)
+Migrating to CreateDocumentos (20101223145850)
+Migrating to CreateProtocolos (20110128120348)
+Migrating to AddUnidadeToCExterno (20110223113501)
+Migrating to CreateTipoOsexternas (20110228112418)
+Migrating to AddTipoToCExternos (20110228113134)
+Migrating to CreateRelatestagiarios (20110311114941)
+Migrating to CreatePontos (20110311165033)
+Migrating to AddEmailToChamado (20110322133856)
+Migrating to AddUnidadeToUser (20110323144343)
+Migrating to AddResetToUser (20110404143409)
+Migrating to CreateMesBases (20110407135724)
+Migrating to CreateInformativos (20110413181604)
+Migrating to CreateChats (20110413184055)
+Migrating to CreateOnlineUsers (20110414181544)
+Migrating to AddUserToChat (20110414182151)
+Migrating to CreateChatsUsers (20110415105033)
+Migrating to AddUserToOnlineUsers (20110415150449)
+Migrating to AddChatSessionToOnlineUser (20110418110933)
+Migrating to AddValidaToRelatestagiarios (20110420112516)
+Migrating to AddNomedequemvalidouToRelatestagiarios (20110420112939)
+Migrating to AddAnoToPontos (20110518112420)
+Migrating to CreateJustificativas (20110523132416)
+Migrating to AddEstagiarioToJustificativas (20110524113328)
+Migrating to AddCumpriuHorarioToJustificativas (20110524173252)
+Migrating to AddQtdHrsToJustificativas (20110525174323)
+Migrating to AddMesToPontos (20110530110408)
+Migrating to AddHoraSaidaToJustificativas (20110530180036)
+Migrating to CreateEquipamentos (20110629182236)
+Migrating to CreateAnexos (20110812155839)
+Migrating to AddAttachmentsFileToAnexo (20110812155933)
+Migrating to AddUnidadeToAnexo (20110812160952)
+Migrating to CreateContatoInternos (20110817164957)
+Migrating to CreateContatos (20110912165441)
+Migrating to CreateDataFiles (20110912182850)
+Migrating to CreateTemps (20110913095449)
+Migrating to AddFeriadoToJustificativas (20110913144607)
+Migrating to CreateNoticias (20110916152409)
+Migrating to AddAttachmentsImagemToNoticia (20110916152540)
+Migrating to AddDescricaoCurtaToNoticias (20110919123246)
+Migrating to AddFotoToEstagiarios (20120207173900)
+Migrating to AddRecessoToJustificativas (20120210134702)
+Migrating to AddFimsemanaToJustificativas (20120210134720)
+Migrating to AddIpToUnidades (20120424132727)
+Migrating to AddBibliotecaToUnidades (20120424182105)
+  [4;36;1mSQL (303.5ms)[0m   [0;1mALTER TABLE `unidades` ADD `biblioteca` varchar(255)[0m
+  [4;35;1mSQL (32.9ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20120424182105')[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `administracaos`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mdescribe `administracaos`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `administracaos`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW FIELDS FROM `anexos`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mdescribe `anexos`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `anexos`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mSHOW FIELDS FROM `c_externos`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mdescribe `c_externos`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `c_externos`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSHOW FIELDS FROM `chamados`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mdescribe `chamados`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `chamados`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `chats`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mdescribe `chats`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `chats`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `chats_users`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `chats_users`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `chats_users`[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mSHOW FIELDS FROM `componentes`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `componentes`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `componentes`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW FIELDS FROM `computadores`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mdescribe `computadores`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW KEYS FROM `computadores`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW FIELDS FROM `contato_internos`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `contato_internos`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `contato_internos`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW FIELDS FROM `contatos`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mdescribe `contatos`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `contatos`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `data_files`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `data_files`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `data_files`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `datashows`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `datashows`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `datashows`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `departamentos`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `departamentos`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `departamentos`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW FIELDS FROM `documentos`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mdescribe `documentos`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `documentos`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW FIELDS FROM `emfaltas`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mdescribe `emfaltas`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW KEYS FROM `emfaltas`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW FIELDS FROM `empresas`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mdescribe `empresas`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `empresas`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `emprestimos`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mdescribe `emprestimos`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `emprestimos`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW FIELDS FROM `entradas`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mdescribe `entradas`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `entradas`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW FIELDS FROM `equipamentos`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mdescribe `equipamentos`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `equipamentos`[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mSHOW FIELDS FROM `estagiarios`[0m
+  [4;35;1mSQL (2.1ms)[0m   [0mdescribe `estagiarios`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW KEYS FROM `estagiarios`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW FIELDS FROM `estoques`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mdescribe `estoques`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `estoques`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW FIELDS FROM `fornecedores`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mdescribe `fornecedores`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `fornecedores`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `impressoras`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mdescribe `impressoras`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW KEYS FROM `impressoras`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW FIELDS FROM `informativos`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mdescribe `informativos`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `informativos`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `itinerarios`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mdescribe `itinerarios`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW KEYS FROM `itinerarios`[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mSHOW FIELDS FROM `justificativas`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mdescribe `justificativas`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW KEYS FROM `justificativas`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW FIELDS FROM `mes_bases`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mdescribe `mes_bases`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `mes_bases`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW FIELDS FROM `noticias`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `noticias`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `noticias`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `online_users`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mdescribe `online_users`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mSHOW KEYS FROM `online_users`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW FIELDS FROM `pontos`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `pontos`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW KEYS FROM `pontos`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW FIELDS FROM `protocolos`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mdescribe `protocolos`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `protocolos`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW FIELDS FROM `regiaos`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `regiaos`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `regiaos`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW FIELDS FROM `relatestagiarios`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mdescribe `relatestagiarios`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW KEYS FROM `relatestagiarios`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW FIELDS FROM `relatorios`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `relatorios`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `relatorios`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `roles`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `roles`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `roles_users`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW KEYS FROM `roles_users`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `saidas`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mdescribe `saidas`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `saidas`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW FIELDS FROM `senhas`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `senhas`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW KEYS FROM `senhas`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `situacao_chamados`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `situacao_chamados`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `situacao_chamados`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW FIELDS FROM `temps`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mdescribe `temps`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `temps`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `tipo_controles`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mdescribe `tipo_controles`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `tipo_controles`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `tipo_osexternas`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mdescribe `tipo_osexternas`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `tipo_osexternas`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `tipos`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mdescribe `tipos`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `tipos`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW FIELDS FROM `tipos_problemas`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mdescribe `tipos_problemas`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `tipos_problemas`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mdescribe `unidades`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `unidades`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UnidadesController#index (for 127.0.0.1 at 2012-04-24 15:21:35) [GET]
+  [4;36;1mUnidade Load (1.9ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;35;1mEstagiario Load (0.4ms)[0m   [0mSELECT * FROM `estagiarios` ORDER BY nome ASC[0m
+  [4;36;1mTipo Load (0.1ms)[0m   [0;1mSELECT * FROM `tipos` ORDER BY nome ASC[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mRegiao Load (0.1ms)[0m   [0;1mSELECT * FROM `regiaos` ORDER BY regiao ASC[0m
+  [4;35;1mUnidade Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+  [4;36;1mUnidade Load (0.9ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC LIMIT 0, 15[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT count(*) AS count_all FROM `unidades` [0m
+Rendering template within layouts/application
+Rendering unidades/index
+  [4;36;1mTipo Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `tipos`[0m
+  [4;35;1mTipo Load (0.1ms)[0m   [0mSELECT * FROM `tipos` WHERE (`tipos`.`id` = 5) [0m
+  [4;36;1mUser Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mRegiao Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `regiaos`[0m
+  [4;36;1mRegiao Load (0.1ms)[0m   [0;1mSELECT * FROM `regiaos` WHERE (`regiaos`.`id` = 3) [0m
+  [4;35;1mEstagiario Load (0.1ms)[0m   [0mSELECT * FROM `estagiarios` WHERE (`estagiarios`.regiao_id = 3) [0m
+  [4;36;1mEstagiario Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `estagiarios`[0m
+  [4;35;1mTipo Load (0.1ms)[0m   [0mSELECT * FROM `tipos` WHERE (`tipos`.`id` = 8) [0m
+  [4;36;1mRegiao Load (0.1ms)[0m   [0;1mSELECT * FROM `regiaos` WHERE (`regiaos`.`id` = 4) [0m
+  [4;35;1mEstagiario Load (0.1ms)[0m   [0mSELECT * FROM `estagiarios` WHERE (`estagiarios`.regiao_id = 4) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `tipos` WHERE (`tipos`.`id` = 8) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `regiaos` WHERE (`regiaos`.`id` = 4) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `estagiarios` WHERE (`estagiarios`.regiao_id = 4) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `tipos` WHERE (`tipos`.`id` = 8) [0m
+  [4;36;1mRegiao Load (0.1ms)[0m   [0;1mSELECT * FROM `regiaos` WHERE (`regiaos`.`id` = 2) [0m
+  [4;35;1mEstagiario Load (0.1ms)[0m   [0mSELECT * FROM `estagiarios` WHERE (`estagiarios`.regiao_id = 2) [0m
+  [4;36;1mTipo Load (0.1ms)[0m   [0;1mSELECT * FROM `tipos` WHERE (`tipos`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `regiaos` WHERE (`regiaos`.`id` = 4) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `estagiarios` WHERE (`estagiarios`.regiao_id = 4) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `tipos` WHERE (`tipos`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `regiaos` WHERE (`regiaos`.`id` = 3) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `estagiarios` WHERE (`estagiarios`.regiao_id = 3) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `tipos` WHERE (`tipos`.`id` = 8) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `regiaos` WHERE (`regiaos`.`id` = 4) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `estagiarios` WHERE (`estagiarios`.regiao_id = 4) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `tipos` WHERE (`tipos`.`id` = 8) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `regiaos` WHERE (`regiaos`.`id` = 4) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `estagiarios` WHERE (`estagiarios`.regiao_id = 4) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `tipos` WHERE (`tipos`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `regiaos` WHERE (`regiaos`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `estagiarios` WHERE (`estagiarios`.regiao_id = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `tipos` WHERE (`tipos`.`id` = 8) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `regiaos` WHERE (`regiaos`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `estagiarios` WHERE (`estagiarios`.regiao_id = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `tipos` WHERE (`tipos`.`id` = 5) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `regiaos` WHERE (`regiaos`.`id` = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `estagiarios` WHERE (`estagiarios`.regiao_id = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `tipos` WHERE (`tipos`.`id` = 5) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `regiaos` WHERE (`regiaos`.`id` = 2) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `estagiarios` WHERE (`estagiarios`.regiao_id = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `tipos` WHERE (`tipos`.`id` = 8) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `regiaos` WHERE (`regiaos`.`id` = 3) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `estagiarios` WHERE (`estagiarios`.regiao_id = 3) [0m
+  [4;35;1mTipo Load (0.1ms)[0m   [0mSELECT * FROM `tipos` WHERE (`tipos`.`id` = 12) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `tipos` WHERE (`tipos`.`id` = 8) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `regiaos` WHERE (`regiaos`.`id` = 3) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `estagiarios` WHERE (`estagiarios`.regiao_id = 3) [0m
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2012-04-24 18:21:35' AND ends_at >= '2012-04-24 18:21:35') [0m
+Completed in 416ms (View: 249, DB: 15) | 200 OK [http://localhost/unidades]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UnidadesController#new (for 127.0.0.1 at 2012-04-24 15:21:39) [GET]
+  [4;36;1mUnidade Load (0.3ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;35;1mEstagiario Load (0.4ms)[0m   [0mSELECT * FROM `estagiarios` ORDER BY nome ASC[0m
+  [4;36;1mTipo Load (0.2ms)[0m   [0;1mSELECT * FROM `tipos` ORDER BY nome ASC[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mRegiao Load (0.2ms)[0m   [0;1mSELECT * FROM `regiaos` ORDER BY regiao ASC[0m
+  [4;35;1mUnidade Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+Rendering template within layouts/application
+Rendering unidades/new
+  [4;36;1mTipo Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `tipos`[0m
+  [4;35;1mRegiao Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `regiaos`[0m
+Rendered unidades/_form (20.2ms)
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2012-04-24 18:21:39' AND ends_at >= '2012-04-24 18:21:39') [0m
+  [4;35;1mUser Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;35;1mroles_users Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `roles_users`[0m
+  [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;35;1mRole Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Completed in 218ms (View: 69, DB: 7) | 200 OK [http://localhost/unidades/new]
