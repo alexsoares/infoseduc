@@ -34,7 +34,7 @@
                    <td align="left"><b> Endereço:</b></td>
                    <td> <%= f.text_field :endereco,:size =>18 %>
                        <b>Nº </b>
-                       <%= f.text_field :num, :size => 2 %></td>
+                       <%= f.text_field :num, :size => 1 %></td>
                  </tr>
                  <tr>
                    <td align="left"><b> Bairro:</b></td>
@@ -42,9 +42,9 @@
                  </tr>
                  <tr>
                    <td align="left"><b> Complemento:</b></td>
-                   <td><%= f.text_field :complemento, :size =>8%>
+                   <td><%= f.text_field :complemento, :size =>7%>
                       <b>Fone</b>
-                      <%= f.text_field :fone, :size =>9%>
+                      <%= f.text_field :fone, :size =>7%>
                    </td>
                  </tr>
                  <tr>
@@ -65,24 +65,24 @@
                 <table>
                   <tr>
                    <td align="left"><b>Diretor(a):</b></td>
-                   <td> <%= f.text_field :diretor, :size =>26%></td>
+                   <td> <%= f.text_field :diretor, :size =>24%></td>
                  </tr>
                  <tr>
                    <td align="left"><b>Coordenador(a):</b></td>
-                   <td> <%= f.text_field :coordenador, :size =>26%></td>
+                   <td> <%= f.text_field :coordenador, :size =>24%></td>
                  </tr>
                   <tr>
                    <td align="left"><b>Biblioteca:</b></td>
-                   <td> <%= f.text_field :biblioteca, :size =>26%></td>
+                   <td> <%= f.text_field :biblioteca, :size =>24%></td>
                  </tr>
                   <tr>
                    <td align="left"><b>IP:</b></td>
-                   <td> <%= f.text_field :ip, :size =>26%></td>
+                   <td> <%= f.text_field :ip, :size =>24%></td>
                  </tr>
 
                  <tr >
                     <td valign="top"><b>Observações:</b></td>
-                    <td valign="top"><%= f.text_area(:obs, :cols =>"28", :rows => "6") %></td>
+                    <td valign="top"><%= f.text_area(:obs, :cols =>"30", :rows => "6") %></td>
                  </tr>
                 </table>
               </td>
