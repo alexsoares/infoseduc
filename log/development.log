@@ -4978,3 +4978,278 @@ Rendered unidades/_form (20.2ms)
   [4;36;1mRole Load (0.1ms)[0m   [0;1mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
   [4;35;1mRole Columns (0.6ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
 Completed in 218ms (View: 69, DB: 7) | 200 OK [http://localhost/unidades/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2012-04-24 15:29:52) [GET]
+  [4;36;1mUser Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mNoticia Load (0.1ms)[0m   [0;1mSELECT * FROM `noticias` ORDER BY created_at DESC LIMIT 3[0m
+Rendering template within layouts/application
+Rendering homes/index
+Rendered homes/_informe (4.9ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2012-04-24 18:29:52' AND ends_at >= '2012-04-24 18:29:52') [0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 294ms (View: 242, DB: 4) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.8ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UnidadesController#new (for 127.0.0.1 at 2012-04-24 15:29:57) [GET]
+  [4;35;1mUnidade Load (0.3ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mEstagiario Load (0.5ms)[0m   [0;1mSELECT * FROM `estagiarios` ORDER BY nome ASC[0m
+  [4;35;1mTipo Load (0.1ms)[0m   [0mSELECT * FROM `tipos` ORDER BY nome ASC[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY regiao ASC[0m
+  [4;36;1mUnidade Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+Rendering template within layouts/application
+Rendering unidades/new
+  [4;35;1mTipo Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `tipos`[0m
+  [4;36;1mRegiao Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `regiaos`[0m
+Rendered unidades/_form (31.6ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2012-04-24 18:29:58' AND ends_at >= '2012-04-24 18:29:58') [0m
+  [4;36;1mUser Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 292ms (View: 218, DB: 8) | 200 OK [http://localhost/unidades/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UnidadesController#mesmo_nome (for 127.0.0.1 at 2012-04-24 15:30:04) [POST]
+  Parameters: {"authenticity_token"=>"VHrPNbwY4o3ue+A8sBTDA79swYnWM425Ug6cQUwzXpY=", "unidade_nome"=>"sdadsds"}
+  [4;35;1mUnidade Load (0.4ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mEstagiario Load (0.6ms)[0m   [0;1mSELECT * FROM `estagiarios` ORDER BY nome ASC[0m
+  [4;35;1mTipo Load (0.1ms)[0m   [0mSELECT * FROM `tipos` ORDER BY nome ASC[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY regiao ASC[0m
+  [4;36;1mUnidade Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+  [4;35;1mUnidade Load (0.5ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`nome` = 'sdadsds') LIMIT 1[0m
+Completed in 74ms (View: 2, DB: 3) | 200 OK [http://localhost/unidades/mesmo_nome]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UnidadesController#create (for 127.0.0.1 at 2012-04-24 15:30:17) [POST]
+  Parameters: {"unidade"=>{"coordenador"=>"sadsda", "regiao_id"=>"1", "complemento"=>"sadsad", "diretor"=>"sdasda", "endereco"=>"dsadsa", "nome"=>"sdadsds", "tipo_id"=>"1", "biblioteca"=>"sdasda", "ip"=>"sadsda", "bairro"=>"sdasda", "email"=>"dsadsadsa", "fone"=>"", "num"=>"", "obs"=>"sdasda"}, "authenticity_token"=>"VHrPNbwY4o3ue+A8sBTDA79swYnWM425Ug6cQUwzXpY=", "x"=>"9", "y"=>"8"}
+  [4;36;1mUnidade Load (0.3ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;35;1mEstagiario Load (0.5ms)[0m   [0mSELECT * FROM `estagiarios` ORDER BY nome ASC[0m
+  [4;36;1mTipo Load (0.1ms)[0m   [0;1mSELECT * FROM `tipos` ORDER BY nome ASC[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mRegiao Load (0.2ms)[0m   [0;1mSELECT * FROM `regiaos` ORDER BY regiao ASC[0m
+  [4;35;1mUnidade Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `unidades`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUnidade Create (0.5ms)[0m   [0mINSERT INTO `unidades` (`coordenador`, `created_at`, `regiao_id`, `complemento`, `endereco`, `diretor`, `estagiarioM`, `estagiarioV`, `estagiarioE`, `estagiarioN`, `nome`, `updated_at`, `tipo_id`, `biblioteca`, `cidade`, `ip`, `bairro`, `email`, `num`, `fone`, `obs`) VALUES('SADSDA', '2012-04-24 18:30:17', 1, 'SADSAD', 'DSADSA', 'SDASDA', 0, 0, 1, 0, 'SDADSDS', '2012-04-24 18:30:17', 1, 'sdasda', NULL, 'sadsda', 'SDASDA', 'dsadsadsa', NULL, '', 'SDASDA')[0m
+  [4;36;1mSQL (44.1ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/unidades/73
+Completed in 141ms (DB: 48) | 302 Found [http://localhost/unidades]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UnidadesController#show (for 127.0.0.1 at 2012-04-24 15:30:17) [GET]
+  Parameters: {"id"=>"73"}
+  [4;35;1mUnidade Load (1.6ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mEstagiario Load (0.4ms)[0m   [0;1mSELECT * FROM `estagiarios` ORDER BY nome ASC[0m
+  [4;35;1mTipo Load (0.2ms)[0m   [0mSELECT * FROM `tipos` ORDER BY nome ASC[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;35;1mRegiao Load (0.2ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY regiao ASC[0m
+  [4;36;1mUnidade Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+  [4;35;1mUnidade Load (0.3ms)[0m   [0mSELECT * FROM `unidades` WHERE (`unidades`.`id` = 73) [0m
+Rendering template within layouts/application
+Rendering unidades/show
+  [4;36;1mTipo Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `tipos`[0m
+  [4;35;1mTipo Load (0.1ms)[0m   [0mSELECT * FROM `tipos` WHERE (`tipos`.`id` = 1) [0m
+  [4;36;1mRegiao Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `regiaos`[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` WHERE (`regiaos`.`id` = 1) [0m
+  [4;36;1mEstagiario Load (0.3ms)[0m   [0;1mSELECT * FROM `estagiarios` WHERE (`estagiarios`.regiao_id = 1) [0m
+  [4;35;1mEstagiario Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `estagiarios`[0m
+  [4;36;1mUser Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2012-04-24 18:30:18' AND ends_at >= '2012-04-24 18:30:18') [0m
+Completed in 247ms (View: 90, DB: 12) | 200 OK [http://localhost/unidades/73]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomesController#index (for 127.0.0.1 at 2012-04-24 15:36:32) [GET]
+  [4;36;1mUser Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mNoticia Load (0.1ms)[0m   [0;1mSELECT * FROM `noticias` ORDER BY created_at DESC LIMIT 3[0m
+Rendering template within layouts/application
+Rendering homes/index
+Rendered homes/_informe (2.5ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2012-04-24 18:36:32' AND ends_at >= '2012-04-24 18:36:32') [0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 94ms (View: 46, DB: 4) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UnidadesController#new (for 127.0.0.1 at 2012-04-24 15:36:40) [GET]
+  [4;35;1mUnidade Load (1.9ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mEstagiario Load (0.4ms)[0m   [0;1mSELECT * FROM `estagiarios` ORDER BY nome ASC[0m
+  [4;35;1mTipo Load (0.1ms)[0m   [0mSELECT * FROM `tipos` ORDER BY nome ASC[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY regiao ASC[0m
+  [4;36;1mUnidade Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+Rendering template within layouts/application
+Rendering unidades/new
+  [4;35;1mTipo Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `tipos`[0m
+  [4;36;1mRegiao Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `regiaos`[0m
+Rendered unidades/_form (33.8ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2012-04-24 18:36:40' AND ends_at >= '2012-04-24 18:36:40') [0m
+  [4;36;1mUser Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 265ms (View: 205, DB: 10) | 200 OK [http://localhost/unidades/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UnidadesController#new (for 127.0.0.1 at 2012-04-24 15:37:11) [GET]
+  [4;35;1mUnidade Load (0.3ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mEstagiario Load (0.4ms)[0m   [0;1mSELECT * FROM `estagiarios` ORDER BY nome ASC[0m
+  [4;35;1mTipo Load (0.1ms)[0m   [0mSELECT * FROM `tipos` ORDER BY nome ASC[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY regiao ASC[0m
+  [4;36;1mUnidade Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+Rendering template within layouts/application
+Rendering unidades/new
+  [4;35;1mTipo Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `tipos`[0m
+  [4;36;1mRegiao Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `regiaos`[0m
+Rendered unidades/_form (24.1ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2012-04-24 18:37:11' AND ends_at >= '2012-04-24 18:37:11') [0m
+  [4;36;1mUser Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.5ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 143ms (View: 79, DB: 7) | 200 OK [http://localhost/unidades/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UnidadesController#new (for 127.0.0.1 at 2012-04-24 15:37:26) [GET]
+  [4;35;1mUnidade Load (0.3ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mEstagiario Load (0.4ms)[0m   [0;1mSELECT * FROM `estagiarios` ORDER BY nome ASC[0m
+  [4;35;1mTipo Load (0.1ms)[0m   [0mSELECT * FROM `tipos` ORDER BY nome ASC[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY regiao ASC[0m
+  [4;36;1mUnidade Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+Rendering template within layouts/application
+Rendering unidades/new
+  [4;35;1mTipo Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `tipos`[0m
+  [4;36;1mRegiao Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `regiaos`[0m
+Rendered unidades/_form (22.2ms)
+  [4;35;1mInformativo Load (0.7ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2012-04-24 18:37:27' AND ends_at >= '2012-04-24 18:37:27') [0m
+  [4;36;1mUser Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 138ms (View: 75, DB: 8) | 200 OK [http://localhost/unidades/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UnidadesController#new (for 127.0.0.1 at 2012-04-24 15:38:04) [GET]
+  [4;35;1mUnidade Load (0.3ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mEstagiario Load (0.4ms)[0m   [0;1mSELECT * FROM `estagiarios` ORDER BY nome ASC[0m
+  [4;35;1mTipo Load (0.1ms)[0m   [0mSELECT * FROM `tipos` ORDER BY nome ASC[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY regiao ASC[0m
+  [4;36;1mUnidade Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+Rendering template within layouts/application
+Rendering unidades/new
+  [4;35;1mTipo Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `tipos`[0m
+  [4;36;1mRegiao Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `regiaos`[0m
+Rendered unidades/_form (20.3ms)
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2012-04-24 18:38:05' AND ends_at >= '2012-04-24 18:38:05') [0m
+  [4;36;1mUser Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 224ms (View: 76, DB: 8) | 200 OK [http://localhost/unidades/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UnidadesController#new (for 127.0.0.1 at 2012-04-24 15:38:15) [GET]
+  [4;35;1mUnidade Load (0.4ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mEstagiario Load (0.4ms)[0m   [0;1mSELECT * FROM `estagiarios` ORDER BY nome ASC[0m
+  [4;35;1mTipo Load (0.2ms)[0m   [0mSELECT * FROM `tipos` ORDER BY nome ASC[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY regiao ASC[0m
+  [4;36;1mUnidade Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+Rendering template within layouts/application
+Rendering unidades/new
+  [4;35;1mTipo Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `tipos`[0m
+  [4;36;1mRegiao Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `regiaos`[0m
+Rendered unidades/_form (23.8ms)
+  [4;35;1mInformativo Load (0.7ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2012-04-24 18:38:15' AND ends_at >= '2012-04-24 18:38:15') [0m
+  [4;36;1mUser Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 240ms (View: 96, DB: 8) | 200 OK [http://localhost/unidades/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UnidadesController#new (for 127.0.0.1 at 2012-04-24 15:38:47) [GET]
+  [4;35;1mUnidade Load (0.3ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mEstagiario Load (0.4ms)[0m   [0;1mSELECT * FROM `estagiarios` ORDER BY nome ASC[0m
+  [4;35;1mTipo Load (0.1ms)[0m   [0mSELECT * FROM `tipos` ORDER BY nome ASC[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;35;1mRegiao Load (0.1ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY regiao ASC[0m
+  [4;36;1mUnidade Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+Rendering template within layouts/application
+Rendering unidades/new
+  [4;35;1mTipo Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `tipos`[0m
+  [4;36;1mRegiao Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `regiaos`[0m
+Rendered unidades/_form (108.3ms)
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2012-04-24 18:38:47' AND ends_at >= '2012-04-24 18:38:47') [0m
+  [4;36;1mUser Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 226ms (View: 165, DB: 8) | 200 OK [http://localhost/unidades/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UnidadesController#new (for 127.0.0.1 at 2012-04-24 15:39:17) [GET]
+  [4;35;1mUnidade Load (0.3ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mEstagiario Load (0.5ms)[0m   [0;1mSELECT * FROM `estagiarios` ORDER BY nome ASC[0m
+  [4;35;1mTipo Load (0.1ms)[0m   [0mSELECT * FROM `tipos` ORDER BY nome ASC[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;35;1mRegiao Load (0.2ms)[0m   [0mSELECT * FROM `regiaos` ORDER BY regiao ASC[0m
+  [4;36;1mUnidade Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `unidades`[0m
+Rendering template within layouts/application
+Rendering unidades/new
+  [4;35;1mTipo Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `tipos`[0m
+  [4;36;1mRegiao Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `regiaos`[0m
+Rendered unidades/_form (32.9ms)
+  [4;35;1mInformativo Load (0.7ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2012-04-24 18:39:17' AND ends_at >= '2012-04-24 18:39:17') [0m
+  [4;36;1mUser Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 19) LIMIT 1[0m
+  [4;36;1mroles_users Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `roles_users`[0m
+  [4;35;1mRole Load (0.1ms)[0m   [0mSELECT * FROM `roles` INNER JOIN `roles_users` ON `roles`.id = `roles_users`.role_id WHERE (`roles_users`.user_id = 19 ) [0m
+  [4;36;1mRole Columns (0.6ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Completed in 316ms (View: 212, DB: 9) | 200 OK [http://localhost/unidades/new]
