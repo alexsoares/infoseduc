@@ -19,27 +19,35 @@
        <td><%=h unidade.bairro %></td>
       </tr>
       <tr>
-       <td rowspan="4" ></td>
+       <td rowspan="6" ></td>
        <th>Fone</th>
        <th>Email</th>
-       <th>Diretor</th>
-       <th>Coordenador</th>
+       <th colspan="2">Nº IP</th>
        <th>Obs</th>
       </tr>
       <tr>
         <td><%=h unidade.fone %></td>
         <td><%=h unidade.email %></td>
-        <td><%=h unidade.diretor %></td>
-        <td><%=h unidade.coordenador %></td>
+        <td colspan="2"><%=h unidade.ip %></td>
         <td><%=h unidade.obs %></td>
+     </tr>
+      <tr>
+       <th colspan="2">Diretor(a)</th>
+       <th colspan="3">Coordenador (a)</th>
+       
+      </tr>
+      <tr>
+        <td colspan="2"><%=h unidade.diretor %></td>
+        <td colspan="3"><%=h unidade.coordenador %></td>
      </tr>
     <%if current_user.has_role?('administrador')%>
      <tr>
-        <th colspan="4">Estagiários</th>
-       <th>Região</th>
+        <th colspan="2">Estagiários</th>
+        <th colspan="2">Região</th>
+        <th>biblioteca</th>
      </tr>
      <tr>
-        <td colspan="4" align="left">
+        <td colspan="2" align="left">
              <%if (unidade.estagiarioE == 1) then%>
               <% unidade.regiao.estagiarios.each do |est| %>
                  <% if (est.desligado == 0 and est.periodo_trab == 'ITINERANTE') then%>
@@ -76,13 +84,14 @@
              <%end%>
            <%end%>
            </td>
-            <td>
+           <td colspan="2">
               <% if unidade.regiao_id.nil? then %>
                   Estagiário Fixo
               <%else%>
                  <%=h unidade.regiao.regiao %>
               <%end%>
         </td>
+        <td ><%=h unidade.biblioteca %></td>
      </tr>
      <%end%>
      <tr>

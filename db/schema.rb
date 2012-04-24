@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120210121327) do
+ActiveRecord::Schema.define(:version => 20120424132727) do
 
   create_table "administracaos", :force => true do |t|
     t.integer  "unidade_id",       :null => false
@@ -172,7 +172,7 @@ ActiveRecord::Schema.define(:version => 20120210121327) do
 
   create_table "emprestimos", :force => true do |t|
     t.integer  "unidade_id"
-    t.integer  "departamento_id", :default => 1
+    t.integer  "departamento_id"
     t.datetime "emprestimo"
     t.datetime "devolucao"
     t.string   "responsavel"
@@ -320,10 +320,9 @@ ActiveRecord::Schema.define(:version => 20120210121327) do
     t.boolean  "cumpriu_horario"
     t.integer  "qtd_hrs"
     t.datetime "hora_saida"
-    t.boolean  "feriadosssss",    :default => false, :null => false
-    t.boolean  "feriado"
-    t.boolean  "fimsemana"
+    t.boolean  "feriado",         :default => false
     t.boolean  "recesso"
+    t.boolean  "fimsemana"
   end
 
   create_table "mes_bases", :force => true do |t|
@@ -358,10 +357,9 @@ ActiveRecord::Schema.define(:version => 20120210121327) do
 
   create_table "pontos", :force => true do |t|
     t.integer  "estagiario_id"
-    t.integer  "feriado",          :default => 0, :null => false
     t.datetime "entrada"
     t.datetime "saida"
-    t.integer  "total_trabalhado", :default => 1
+    t.integer  "total_trabalhado"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "ano"
@@ -511,6 +509,8 @@ ActiveRecord::Schema.define(:version => 20120210121327) do
     t.integer  "estagiarioN", :default => 0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "biblioteca"
+    t.string   "ip"
   end
 
   create_table "users", :force => true do |t|

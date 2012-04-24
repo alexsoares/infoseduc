@@ -2,7 +2,7 @@
 <% form_for(@unidades) do |f| %>
 <%= f.error_messages %>
 <font  size="2">
- <table class="tabelas" width="100%">
+ <table class="tabelas" width="100%" align="center" >
   <tr>
    <td colspan="2" align="left">
      <font  size=5><b> CADASTRO DE UNIDADES</b></font>
@@ -17,7 +17,7 @@
                 <table>
                  <tr>
                    <td align="left"><b>Nome:</b></td>
-                   <td><%= f.text_field :nome, :size =>30 %></td>
+                   <td><%= f.text_field :nome, :size =>36 %></td>
                        <%= observe_field :unidade_nome,
                         :with => :unidade_nome,
                         :url => { :action => 'mesmo_nome' } %>
@@ -32,19 +32,19 @@
 
                  <tr>
                    <td align="left"><b> Endereço:</b></td>
-                   <td> <%= f.text_field :endereco,:size =>22 %>
+                   <td> <%= f.text_field :endereco,:size =>27 %>
                        <b>Nº </b>
                        <%= f.text_field :num, :size => 2 %></td>
                  </tr>
                  <tr>
                    <td align="left"><b> Bairro:</b></td>
-                   <td><%= f.text_field :bairro, :size =>30 %></td>
+                   <td><%= f.text_field :bairro, :size =>36 %></td>
                  </tr>
                  <tr>
                    <td align="left"><b> Complemento:</b></td>
-                   <td><%= f.text_field :complemento, :size =>11%>
+                   <td><%= f.text_field :complemento, :size =>13%>
                       <b>Fone</b>
-                      <%= f.text_field :fone, :size =>11%>
+                      <%= f.text_field :fone, :size =>14%>
                    </td>
                  </tr>
                  <tr>
@@ -57,23 +57,32 @@
                  </tr>
                  <tr>
                    <td align="left"><b>E_mail:</b></td>
-                   <td><%= f.text_field :email, :size =>30 %></td>
+                   <td><%= f.text_field :email, :size =>36 %></td>
                  </tr>
                </table>
               </td>
               <td valign="top">
                 <table>
                   <tr>
-                   <td align="left"><b>Diretor:</b></td>
-                   <td> <%= f.text_field :diretor, :size =>28%></td>
+                   <td align="left"><b>Diretor(a):</b></td>
+                   <td> <%= f.text_field :diretor, :size =>30%></td>
                  </tr>
                  <tr>
-                   <td align="left"><b>Coordenador:</b></td>
-                   <td> <%= f.text_field :coordenador, :size =>28%></td>
+                   <td align="left"><b>Coordenador(a):</b></td>
+                   <td> <%= f.text_field :coordenador, :size =>30%></td>
                  </tr>
+                  <tr>
+                   <td align="left"><b>Biblioteca:</b></td>
+                   <td> <%= f.text_field :biblioteca, :size =>30%></td>
+                 </tr>
+                  <tr>
+                   <td align="left"><b>IP:</b></td>
+                   <td> <%= f.text_field :ip, :size =>30%></td>
+                 </tr>
+
                  <tr >
                     <td valign="top"><b>Observações:</b></td>
-                    <td valign="top"><%= f.text_area(:obs, :cols =>"37", :rows => "10") %></td>
+                    <td valign="top"><%= f.text_area(:obs, :cols =>"30", :rows => "6") %></td>
                  </tr>
                 </table>
               </td>
